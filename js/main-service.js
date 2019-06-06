@@ -4,8 +4,8 @@ var gMeme = {
     selectedImgId: 5,
     txts: []
 }
-
 let gImages = []
+let gSearches = {}
 
 function createLine() {
     let newLine = {
@@ -25,6 +25,7 @@ function createLine() {
     gLineId++;
     return newLine
 }
+
 function createImages() {
     createImage('001', ['']);
     createImage('002', ['president', 'trump']);
@@ -78,3 +79,22 @@ function filterImagesByKeywords(txt) {
 function getMeme() {
     return gMeme;
 }
+
+function findFrequentSearch(words) {
+    // let res = words.reduce((acc, word) => {
+    //     (!acc[word]) ? acc[word] = 1 : acc[word]++;
+    //     return acc
+    // }, {})
+//     let mostShownCount = Math.max(...Object.values(res));
+//     let mostOften = []
+//     for (let x in res) {
+//         if (res[x] === mostShownCount) mostOften.push({ num: +x, quantity: res[x] })
+//     }
+//     return mostOften;
+}
+
+function addSearch(txt) {
+    (!gSearches[txt]) ? gSearches[txt] = 1 : gSearches[txt]++;
+}
+
+function calcSearches()

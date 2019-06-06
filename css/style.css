@@ -1,8 +1,67 @@
+@font-face {
+    font-family: pacifico;
+    src: url(../Fonts/Pacifico/Pacifico-Regular.ttf)
+}
+
+/* Base */
+body {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  padding: 0;
+  margin: 0;  
+}
+
+button {
+    cursor: pointer;
+    background-color: transparent;
+}
+
+canvas {
+    border: solid black 1px;
+}
+/* main-nav */
+
+.main-nav {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-link {
+    margin-right: 16px;
+}
+
+.logo {
+    font-family: pacifico;
+    font-size: 2rem;
+}
+
 .gallery-container img {
     width: 75px;
     height: 75px;
 }
 
-canvas {
-    border: solid black 1px;
+/* helpers */
+
+.clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* flex */
+
+.flex {
+    display: flex;
 }
