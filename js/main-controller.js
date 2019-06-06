@@ -85,7 +85,6 @@ function alignSelect(alignment) {
     gCurrLine.align = alignment;
     switch (alignment) {
         case 'left':
-            console.log(alignment);
             gCurrLine.position.x = 0;
             break;
         case 'center':

@@ -19,6 +19,7 @@ function createLine() {
             x: getCanvasWidth() / 2
         },
         align : 'center' 
+        
     }
     gMeme.txts.push(newLine);
     gLineId++;
