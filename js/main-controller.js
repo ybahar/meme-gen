@@ -2,11 +2,12 @@
 let gCanvas;
 let gCtx;
 let gCurrLine;
+let gElSelectedImg;
 function renderImages() {
     let images = getImages();
     let strHtml = ``;
     images.forEach(image => {
-        strHtml += `<img data-id="${image.id}" src="${image.url}" onclick="renderCanvas(this)"></img>`
+        strHtml += `<img data-id="${image.id}" src="${image.url}" onclick="setElImg(this)"></img>`
     });
     document.querySelector('.gallery-container').innerHTML = strHtml;
 }
@@ -32,6 +33,11 @@ function createCanvas() {
     gCanvas.height = window.innerHeight - 100
 }
 
+function setElImg(elImg){
+    gElSelectedImg = elImg;
+    renderCanvas(elImg);
+}
+
 function renderCanvas(elImg) {
     gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
 }
@@ -39,6 +45,7 @@ function renderCanvas(elImg) {
 function writeOnCanvas(lastWord) {
     gCurrLine.txt = lastWord;
     console.log(gCurrLine);
+    renderCanvas(gElSelectedImg);
     drawText(gCurrLine, 20, 20);
 }
 
