@@ -15,7 +15,7 @@ function createLine() {
         size: 16,
         align: 'center',
         color: 'white',
-        postion: {
+        position: {
             y: gLineId * 20,
             x: getCanvasWidth() / 50
         }
