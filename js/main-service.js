@@ -4,8 +4,17 @@ var gMeme = {
     selectedImgId: 5,
     txts: []
 }
-let gImages = [];
-let gSearches = {};
+let gImages = []
+let gSearches = {
+    'five': 5,
+    'one': 1,
+    'six': 6,
+    'three': 3,
+    'thirty': 30,
+    'twelve': 12,
+    'fifteen': 15,
+    'eight': 8,
+}
 
 function createLine() {
     let newLine = {
@@ -33,7 +42,7 @@ function createImages() {
     createImage('003', ['baby', 'kid', 'qute']);
     createImage('004', ['dog', 'animal']);
     createImage('005', ['baby', 'animal', 'qute']);
-    createImage('006', []);
+    createImage('006', ['thirty']);
     createImage('007', []);
     createImage('008', []);
     createImage('009', []);
@@ -81,21 +90,24 @@ function getMeme() {
     return gMeme;
 }
 
-function findFrequentSearch(words) {
-    // let res = words.reduce((acc, word) => {
-    //     (!acc[word]) ? acc[word] = 1 : acc[word]++;
-    //     return acc
-    // }, {})
-//     let mostShownCount = Math.max(...Object.values(res));
-//     let mostOften = []
-//     for (let x in res) {
-//         if (res[x] === mostShownCount) mostOften.push({ num: +x, quantity: res[x] })
-//     }
-//     return mostOften;
-}
 
 function addSearch(txt) {
     (!gSearches[txt]) ? gSearches[txt] = 1 : gSearches[txt]++;
 }
 
-function calcSearches(){}
+
+function calcTopFiveSearches() {
+    let sortedValues = sortByNum(Object.values(gSearches))
+    let mostOften = [];
+    let counter = 0
+    while (counter < 5) {
+        let currWordCount = sortedValues.shift()
+        for (let searchWord in gSearches) {
+            if (gSearches[searchWord] === currWordCount) {
+                mostOften.push({ word: searchWord, quantity: gSearches[searchWord] })
+                counter++;
+            }
+        }
+    }
+    return mostOften;
+}

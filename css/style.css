@@ -2,9 +2,7 @@
     font-family: pacifico;
     src: url(../Fonts/Pacifico/Pacifico-Regular.ttf)
 }
-.impact{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
+
 /* Base */
 body {
     margin: 0;
@@ -16,8 +14,11 @@ a {
 }
 
 h1,h2,h3,h4,h5,h6 {
-  padding: 0;
   margin: 0;  
+}
+
+p {
+    margin: 0;
 }
 
 button {
@@ -53,6 +54,12 @@ canvas {
     width: 75px;
     height: 75px;
 }
+
+.topSearches {
+    cursor: pointer;
+    justify-content: space-evenly;
+}
+
 
 
 /* helpers */
