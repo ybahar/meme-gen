@@ -54,4 +54,11 @@ function getImageById(id){
   return gImages.find(image=>id===image.id)
 }
 
+function getLineIdxById(id){
+    return gMeme.txts.findIndex(line => id === line.id  + '')
+}
 
+function getLineById(id){
+      let idx = getLineIdxById(id);
+      return gMeme.txts[idx];
+}

@@ -10,6 +10,10 @@
 </head>
 
 <body onload="onInit()">
+     <select onchange="onLineSelect(this.value)" name="" id="">
+        <option value="1">1</option>
+    </select>
+    <button onclick="onCreateLine()">add line</button>
     <section class="gallery-container">
     </section>
     <canvas id="canvas"></canvas>
