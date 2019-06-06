@@ -62,12 +62,14 @@ function decreaseFontSize() {
 }
 
 function changeColor(color) {
+    console.log(color)
     gCurrLine.color = `${color}`;
 }
 
 function onCanvasClicked(ev) {
-    let {offsetX, offsetY} = ev
+    const {offsetX, offsetY} = ev;
 }
+
 function getCanvasWidth(){
     return gCanvas.width;
 }
