@@ -19,9 +19,11 @@ function onInit() {
     createImages();
     renderImages();
     onCreateLine();
+    console.log(filterImagesByKeywords('baby'))
+
 }
 
-function onCreateLine(){
+function onCreateLine() {
     let newLine = createLine();
     gCurrLine = newLine;
 }
@@ -33,7 +35,7 @@ function createCanvas() {
     gCanvas.height = window.innerHeight - 100
 }
 
-function setElImg(elImg){
+function setElImg(elImg) {
     gElSelectedImg = elImg;
     renderCanvas(elImg);
 }
@@ -44,7 +46,6 @@ function renderCanvas(elImg) {
 
 function writeOnCanvas(lastWord) {
     gCurrLine.txt = lastWord;
-    console.log(gCurrLine);
     renderCanvas(gElSelectedImg);
     drawText(gCurrLine, 20, 20);
 }
@@ -56,7 +57,7 @@ function drawText() {
     gCtx.strokeText(gCurrLine.txt, gCurrLine.position.x, gCurrLine.position.y);
 }
 
-function onLineSelect(id){
+function onLineSelect(id) {
     gCurrLine = getLineById(id);
 }
 
@@ -69,15 +70,18 @@ function decreaseFontSize() {
 }
 
 function changeColor(color) {
-    console.log(`${color}`)
-    console.log(gCurrLine)
     gCurrLine.color = `${color}`;
 }
 
 function onCanvasClicked(ev) {
-    const {offsetX, offsetY} = ev;
+    const { offsetX, offsetY } = ev;
 }
 
-function getCanvasWidth(){
+function getCanvasWidth() {
     return gCanvas.width;
+}
+
+function downloadImg(elLink) {
+    var imgContent = canvas.toDataURL('image/jpeg');
+    elLink.href = imgContent
 }
