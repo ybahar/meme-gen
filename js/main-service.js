@@ -20,16 +20,16 @@ function createLine() {
     let newLine = {
         id: gLineId,
         txt: '',
-        size: 16,
+        size: 30,
         align: 'center',
-        color: 'white',
+        color: 'black',
         position: {
             y: gLineId * 20,
             x: getCanvasWidth() / 2
         },
-        align : 'center' ,
-        font : 'impact'
-        
+        align: 'center',
+        font: 'impact'
+
     }
     gMeme.txts.push(newLine);
     gLineId++;
@@ -110,4 +110,10 @@ function calcTopFiveSearches() {
         }
     }
     return mostOften;
+}
+
+function checkSearchedWord(elImg, word) {
+    console.log(word)
+    let imgKeywords = getImageById(elImg.dataset.id).keywords
+    console.log(imgKeywords.filter(keyword=>keyword.includes(word)))
 }

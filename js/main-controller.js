@@ -2,7 +2,7 @@
 let gCanvas;
 let gCtx;
 let gCurrLine;
-let gFonts = ['impact','pacifico'];
+let gFonts = ['impact', 'pacifico'];
 
 function renderImages(filteredImages) {
     let images = (!filteredImages) ? getImages() : filteredImages;
@@ -14,7 +14,7 @@ function renderImages(filteredImages) {
 }
 
 
-function renderFonts(){
+function renderFonts() {
     let strHTML = ``;
     gFonts.forEach(font => {
         strHTML += `<div onclick="onFontChange('${font}')"><span style="font-family: ${font}">${font} A b c</span></div>`
@@ -22,11 +22,11 @@ function renderFonts(){
     document.querySelector('.font-select').innerHTML = strHTML;
 }
 
-function onFontChange(font){
+function onFontChange(font) {
     gCurrLine.font = font;
     writeOnCanvas();
 }
-function openFontArea(){
+function openFontArea() {
     document.querySelector('.font-select').classList.toggle('open');
 }
 
@@ -51,7 +51,6 @@ function renderLineSelect() {
     let strHTML = '';
     let meme = getMeme();
     meme.txts.forEach(line => {
-        console.log(line.id);
         strHTML += `<option value="${line.id}">${line.id}</option>`
     })
     elSelect.innerHTML = strHTML;
@@ -64,8 +63,11 @@ function createCanvas() {
     gCanvas.height = window.innerHeight - 100
 }
 
+// change to onElImg
 function setElImg(elImg) {
     getMeme().img = elImg;
+    let searchWord = document.querySelector('.image-search').value
+    checkSearchedWord(elImg, searchWord);
     renderCanvas(elImg);
 }
 
