@@ -30,7 +30,7 @@ function renderCanvas(elImg) {
 }
 
 function writeOnCanvas(lastWord) {
-    gCtx.clearRect(0, 0, gCanvas.width, 50)
+    // gCtx.clearRect(0, 0, gCanvas.width, 50)
     drawText(lastWord, 20, 20)
 }
 
