@@ -69,8 +69,6 @@ function onCanvasClicked(ev) {
     const {offsetX, offsetY} = ev;
 }
 
-
-
 function getCanvasWidth(){
     return gCanvas.width;
 }
