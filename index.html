@@ -10,7 +10,17 @@
 </head>
 
 <body onload="onInit()">
-     <select onchange="onLineSelect(this.value)" name="" id="">
+    <section class="main-nav">
+        <div class="logo">Memememe</div>
+        <nav class="main-nav flex space-between">
+            <ul class="clean-list flex">
+                <li><a class="nav-link" href="#about-us">About us!</a></li>
+                <li><a class="nav-link" href="">gallery</a></li>
+                <li><a class="nav-link" href="">get in touch</a></li>
+            </ul>
+        </nav>
+    </section>
+    <select onchange="onLineSelect(this.value)" name="" id="">
         <option class="line-select" value="1">1</option>
     </select>
     <button onclick="onCreateLine()">add line</button>
@@ -21,10 +31,22 @@
     <button onclick="increaseFontSize()">+</button>
     <button onclick="decreaseFontSize()">-</button>
     <input onchange="changeColor(this.value)" type="color">
-    <a href="#" onclick="downloadImg(this)" download="my-img.jpg" >
-        Download as jpeg
-      </a>
-      <input placeholder="search image" oninput="onFilterimage(this.value)" type="text">
+    <a href="#" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
+    <input placeholder="search image" oninput="onFilterimage(this.value)" type="text">
+    <footer>
+        <h1 id="about-us">About Us!</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta sint nesciunt ex tenetur minus accusamus
+            labore soluta obcaecati totam reiciendis voluptatem modi illum, deserunt, quis officiis molestias inventore
+            quisquam in.
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus delectus cumque ullam quas ut praesentium
+            officiis maxime sit, expedita suscipit saepe. Explicabo consequuntur reiciendis pariatur voluptate, eaque
+            dolore. Debitis, iste!
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus animi amet, aut at, beatae quis ut, odit
+            aliquam optio impedit libero officia numquam veniam voluptas repudiandae hic. Error, ipsum totam?
+        </p>
+    </footer>
+
+
     <script src="js/main-service.js"></script>
     <script src="js/main-controller.js"></script>
 </body>

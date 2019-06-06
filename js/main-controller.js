@@ -84,14 +84,17 @@ function onLineSelect(id) {
 
 function increaseFontSize() {
     gCurrLine.size += 3;
+    writeOnCanvas()
 }
 
 function decreaseFontSize() {
     gCurrLine.size -= 3;
+    writeOnCanvas()
 }
 
 function changeColor(color) {
     gCurrLine.color = `${color}`;
+    writeOnCanvas()
 }
 
 function onCanvasClicked(ev) {
@@ -111,3 +114,4 @@ function onFilterimage(txt) {
     let filteredImages = (txt === '') ? txt : filterImagesByKeywords(txt);
     renderImages(filteredImages);
 }
+
