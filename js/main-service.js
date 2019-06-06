@@ -27,7 +27,9 @@ function createLine() {
             y: gLineId * 20,
             x: getCanvasWidth() / 2
         },
-        align: 'center'
+        align : 'center' ,
+        font : 'impact'
+        
     }
     gMeme.txts.push(newLine);
     gLineId++;
@@ -92,6 +94,8 @@ function getMeme() {
 function addSearch(txt) {
     (!gSearches[txt]) ? gSearches[txt] = 1 : gSearches[txt]++;
 }
+
+
 function calcTopFiveSearches() {
     let sortedValues = sortByNum(Object.values(gSearches))
     let mostOften = [];

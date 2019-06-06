@@ -60,6 +60,19 @@ canvas {
     justify-content: space-evenly;
 }
 
+.font-select{
+    display: none;
+    width: 100vw;
+    
+}
+
+
+.font-select.open {
+    display: block;
+    animation: open-menu .4s;
+    animation-iteration-count: 1;
+    height: 50vh;
+}
 /* helpers */
 
 .clean-list {
@@ -72,4 +85,56 @@ canvas {
 
 .flex {
     display: flex;
+}
+
+@keyframes open-menu{
+  0%{
+     display: none;
+     height: 0vh;
+  }
+  2%{
+      display: block;
+      height: 1vh;
+    }
+    10%{
+        display: block;
+        height: 5vh;
+        
+    }
+    20%{
+        display: block;
+        height: 10vh;
+    }
+    30%{
+        display: block;
+        height: 15vh;
+    }
+    40%{
+        display: block;
+        height: 20vh;
+    }
+    50%{
+        display: block;
+        height: 25vh;
+    }
+    60%{
+        display: block;
+        height: 30vh;
+    }
+    70%{
+        display: block;
+        height: 35vh;
+    }
+    80%{
+        display: block;
+        height: 40vh;
+    }
+    90%{
+        display: block;
+        height: 45vh;
+    }
+    100%{
+        display: block;
+        height: 50vh;
+  }
 }
