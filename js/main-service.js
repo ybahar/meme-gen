@@ -5,6 +5,7 @@ var gMeme = {
     txts: []
 }
 let gImages = []
+let gSearches = {}
 
 function createLine() {
     let newLine = {
@@ -22,6 +23,7 @@ function createLine() {
     gLineId++;
     return newLine
 }
+
 function createImages() {
     createImage('001', ['']);
     createImage('002', ['president', 'trump']);
@@ -90,5 +92,7 @@ function findFrequentSearch(words) {
 }
 
 function addSearch(txt) {
-    
+    (!gSearches[txt]) ? gSearches[txt] = 1 : gSearches[txt]++;
 }
+
+function calcSearches()
