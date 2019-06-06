@@ -29,3 +29,5 @@ function createImage(id,keywords){
 function getImages(){
     return gImages;
 }
+
+
