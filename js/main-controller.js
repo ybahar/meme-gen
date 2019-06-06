@@ -7,8 +7,8 @@ function renderImages(filteredImages) {
     let images = (!filteredImages) ? getImages() : filteredImages;
     let strHtml = ``;
     images.forEach(image =>
-            strHtml += `<img data-id="${image.id}" src="${image.url}" onclick="setElImg(this)"></img>`
-        );
+        strHtml += `<img data-id="${image.id}" src="${image.url}" onclick="setElImg(this)"></img>`
+    );
     document.querySelector('.gallery-container').innerHTML = strHtml;
 }
 
@@ -19,6 +19,7 @@ function onInit() {
     createImages();
     renderImages();
     onCreateLine();
+    alignSelect('center');
 }
 
 function onCreateLine() {
@@ -31,9 +32,9 @@ function renderLineSelect() {
     let elSelect = document.querySelector('.line-select');
     let strHTML = '';
     let meme = getMeme();
-     meme.txts.forEach(line=>{
-         console.log(line.id);
-       strHTML += `<option value="${line.id}">${line.id}</option>`
+    meme.txts.forEach(line => {
+        console.log(line.id);
+        strHTML += `<option value="${line.id}">${line.id}</option>`
     })
     elSelect.innerHTML = strHTML;
 
@@ -45,7 +46,7 @@ function createCanvas() {
     gCanvas.height = window.innerHeight - 100
 }
 
-function setElImg(elImg){
+function setElImg(elImg) {
     getMeme().img = elImg;
     renderCanvas(elImg);
 }
@@ -56,10 +57,11 @@ function renderCanvas(elImg) {
 
 function writeOnCanvas(lastWord) {
     let meme = getMeme();
-    if(lastWord || lastWord === ''){
+    if (lastWord || lastWord === '') {
         gCurrLine.txt = lastWord;
         //MAKE THIS SHIT BETTER 
-        gCurrLine.position.x = getCanvasWidth() /2 -  lastWord.length* (gCurrLine.size/5);
+        // gCurrLine.position.x = getCanvasWidth() /2 -  lastWord.length* (gCurrLine.size/5);
+        // gCtx.textAlign = 'center'
     }
     if (meme.img) {
         renderCanvas(meme.img);
@@ -70,6 +72,7 @@ function writeOnCanvas(lastWord) {
 }
 
 function drawText(line) {
+    gCtx.textAlign = line.align;
     gCtx.beginPath();
     gCtx.fillStyle = 'white';
     gCtx.strokeStyle = line.color;
@@ -78,6 +81,21 @@ function drawText(line) {
     gCtx.closePath();
 }
 
+function alignSelect(alignment) {
+    gCurrLine.align = alignment;
+    switch (alignment) {
+        case 'left':
+            console.log(alignment);
+            gCurrLine.position.x = 0;
+            break;
+        case 'center':
+            gCurrLine.position.x = getCanvasWidth() / 2;
+            break;
+        case 'right':
+            gCurrLine.position.x = getCanvasWidth();
+            break;
+    }
+}
 function onLineSelect(id) {
     gCurrLine = getLineById(id);
 }
@@ -111,3 +129,4 @@ function onFilterimage(txt) {
     let filteredImages = (txt === '') ? txt : filterImagesByKeywords(txt);
     renderImages(filteredImages);
 }
+
