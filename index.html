@@ -20,8 +20,8 @@
             </ul>
         </nav>
     </section>
-    <select onchange="onLineSelect(this.value)" name="" id="">
-        <option class="line-select" value="1">1</option>
+    <select class="line-select" onchange="onLineSelect(this.value)" name="" id="">
+        <option value="1">1</option>
     </select>
     <button onclick="onCreateLine()">add line</button>
     <section class="gallery-container">
@@ -33,6 +33,9 @@
     <input onchange="changeColor(this.value)" type="color">
     <a href="#" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
     <input placeholder="search image" oninput="onFilterimage(this.value)" type="text">
+    <button onclick="alignSelect('left')">left</button>
+    <button onclick="alignSelect('center')">center</button>
+    <button onclick="alignSelect('right')">right</button>
     <footer>
         <h1 id="about-us">About Us!</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta sint nesciunt ex tenetur minus accusamus
@@ -45,8 +48,6 @@
             aliquam optio impedit libero officia numquam veniam voluptas repudiandae hic. Error, ipsum totam?
         </p>
     </footer>
-
-
     <script src="js/main-service.js"></script>
     <script src="js/main-controller.js"></script>
 </body>
