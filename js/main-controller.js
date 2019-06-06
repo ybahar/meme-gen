@@ -2,36 +2,31 @@
 let gCanvas;
 let gCtx;
 
-
-function test() {
-    createImages();
-    renderImages();
-}
-function renderImages() {
+function renderImages(){
     let images = getImages();
     let strHtml = ``;
     images.forEach(image => {
-        strHtml += `<img data-id="${image.id}" src="${image.url}" ></img>`
+       strHtml += `<img data-id="${image.id}" src="${image.url}" onclick="renderCanvas(this)"></img>`
     });
     document.querySelector('.gallery-container').innerHTML = strHtml;
 }
 
 
 function onInit() {
-    createCanvas();
+createCanvas();
+createImages();
+renderImages();
 }
 
-function createCanvas() {
-    gCanvas = document.getElementById('canvas');
-    gCtx = gCanvas.getContext('2d');
-    gCanvas.width = window.innerWidth - 50
-    gCanvas.height = window.innerHeight - 100
+function createCanvas() {    
+        gCanvas = document.getElementById('canvas');
+        gCtx = gCanvas.getContext('2d');
+        gCanvas.width = window.innerWidth - 50
+        gCanvas.height = window.innerHeight - 100
 }
 
-function renderCanvas(img) {
-    gCanvas.width = img.width;
-    gCanvas.height = img.height;
-    gCtx.drawImage(img, 0, 0);
+function renderCanvas(elImg) {
+    gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
 }
 
 function writeOnCanvas(lastWord) {
@@ -40,9 +35,8 @@ function writeOnCanvas(lastWord) {
 }
 
 function drawText(txt, x, y) {
-    gCtx.fillStyle = 'white'
-    gCtx.strokeStyle = 'green'
+    gCtx.fillStyle = 'white';
+    gCtx.strokeStyle = 'green';
     gCtx.font = "17px Arial";
-    // ctx.fillText(txt, x, y);
     gCtx.strokeText(txt, x, y);
 }
