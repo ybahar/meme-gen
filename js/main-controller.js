@@ -2,8 +2,9 @@
 let gCanvas;
 let gCtx;
 let gCurrLine;
-function renderImages() {
-    let images = getImages();
+
+function renderImages(filteredImages) {
+    let images = (!filteredImages) ? getImages() : filteredImages;
     let strHtml = ``;
     images.forEach(image => {
         strHtml += `<img data-id="${image.id}" src="${image.url}" onclick="setElImg(this)"></img>`
@@ -28,12 +29,12 @@ function onCreateLine() {
     renderLineSelect();
 }
 
-function renderLineSelect(){
+function renderLineSelect() {
     let elSelect = document.querySelector('.line-select');
     let strHTML = '';
     let meme = getMeme();
-        strHTML += `<option value="${newLine.id}">${newLine.id}</option>`
-        elSelect.innerHTML = strHTML;
+    strHTML += `<option value="${newLine.id}">${newLine.id}</option>`
+    elSelect.innerHTML = strHTML;
 
 }
 function createCanvas() {
@@ -43,7 +44,7 @@ function createCanvas() {
     gCanvas.height = window.innerHeight - 100
 }
 
-function setElImg(elImg){
+function setElImg(elImg) {
     gMeme.img = elImg;
     renderCanvas(elImg);
 }
@@ -54,13 +55,13 @@ function renderCanvas(elImg) {
 
 function writeOnCanvas(lastWord = null) {
     let meme = getMeme();
-    if(!lastWord === null){
+    if (!lastWord === null) {
         gCurrLine.txt = lastWord;
     }
-    if(meme.img){
+    if (meme.img) {
         renderCanvas(meme.img);
     }
-    meme.txts.forEach(line=> {
+    meme.txts.forEach(line => {
         drawText(line);
     })
 }
@@ -101,4 +102,9 @@ function getCanvasWidth() {
 function downloadImg(elLink) {
     var imgContent = canvas.toDataURL('image/jpeg');
     elLink.href = imgContent
+}
+
+function onFilterimage(txt) {
+    let filteredImages = (txt === '') ? txt : filterImagesByKeywords(txt);
+    renderImages(filteredImages);
 }

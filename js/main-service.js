@@ -68,7 +68,8 @@ function getLineById(id) {
 function filterImagesByKeywords(txt) {
     return gImages
         .filter(img => img.keywords
-            .find(image => image === txt)
+            .find(image => image
+                .includes(txt))
         )
 }
 
