@@ -17,7 +17,7 @@ function createLine() {
         color: 'white',
         postion: {
             y: gLineId * 20,
-            x: getCanvasWidth / 50
+            x: getCanvasWidth() / 50
         }
     }
     gMeme.txts.push(newLine);
@@ -56,4 +56,11 @@ function getImageById(id) {
     return gImages.find(image => id === image.id)
 }
 
+function getLineIdxById(id){
+    return gMeme.txts.findIndex(line => id === line.id  + '')
+}
 
+function getLineById(id){
+      let idx = getLineIdxById(id);
+      return gMeme.txts[idx];
+}

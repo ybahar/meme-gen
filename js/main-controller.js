@@ -1,7 +1,7 @@
 'use strict';
 let gCanvas;
 let gCtx;
-
+let gCurrLine;
 function renderImages() {
     let images = getImages();
     let strHtml = ``;
@@ -12,10 +12,17 @@ function renderImages() {
 }
 
 
+
 function onInit() {
     createCanvas();
     createImages();
     renderImages();
+    onCreateLine();
+}
+
+function onCreateLine(){
+    let newLine = createLine();
+    gCurrLine = newLine;
 }
 
 function createCanvas() {
@@ -30,7 +37,9 @@ function renderCanvas(elImg) {
 }
 
 function writeOnCanvas(lastWord) {
-    drawText(lastWord, 20, 20)
+    gCurrLine.txt = lastWord;
+    console.log(gCurrLine);
+    drawText(gCurrLine, 20, 20);
 }
 
 function drawText() {
@@ -38,6 +47,10 @@ function drawText() {
     gCtx.strokeStyle = '';
     gCtx.font = `${gCurrLine.size}px Arial`;
     gCtx.strokeText(gCurrLine.txt, gCurrLine.position.x, gCurrLine.position.y);
+}
+
+function onLineSelect(id){
+    gCurrLine = getLineById(id);
 }
 
 function increaseFontSize() {
@@ -57,3 +70,7 @@ function onCanvasClicked(ev) {
 }
 
 
+
+function getCanvasWidth(){
+    return gCanvas.width;
+}
