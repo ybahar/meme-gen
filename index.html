@@ -9,7 +9,7 @@
     <title>Meme-gen</title>
 </head>
 
-<body onload="onInit()">
+<body onload="onInit()" onkeydown="moveLine(event)">
     <section class="main-nav">
         <div class="logo">Memememe</div>
         <nav class="main-nav flex space-between">
@@ -23,10 +23,8 @@
     <select class="line-select" onchange="onLineSelect(this.value)" name="" id="">
         <option value="1">1</option>
     </select>
-    <button onclick="openFontArea()">A</button>
-    <section class="font-select close">
-    
-    </section>
+    <select onchange="onFontChange(this.value)" class="font-select"></select></select>
+  
     <button onclick="onCreateLine()">add line</button>
     <section class="gallery-container">
     </section>

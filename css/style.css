@@ -60,19 +60,8 @@ canvas {
     justify-content: space-evenly;
 }
 
-.font-select{
-    display: none;
-    width: 100vw;
-    
-}
 
 
-.font-select.open {
-    display: block;
-    animation: open-menu .4s;
-    animation-iteration-count: 1;
-    height: 50vh;
-}
 /* helpers */
 
 .clean-list {

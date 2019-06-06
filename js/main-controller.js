@@ -17,7 +17,8 @@ function renderImages(filteredImages) {
 function renderFonts() {
     let strHTML = ``;
     gFonts.forEach(font => {
-        strHTML += `<div onclick="onFontChange('${font}')"><span style="font-family: ${font}">${font} A b c</span></div>`
+        console.log('fonts entered')
+        strHTML += `<option onclick="onFontChange('${font}')" style="font-family: ${font}">${font}</option>`
     });
     document.querySelector('.font-select').innerHTML = strHTML;
 }
@@ -25,6 +26,7 @@ function renderFonts() {
 function onFontChange(font) {
     gCurrLine.font = font;
     writeOnCanvas();
+
 }
 function openFontArea() {
     document.querySelector('.font-select').classList.toggle('open');
@@ -158,3 +160,21 @@ function onFilterimage(txt) {
     renderImages(filteredImages);
 }
 
+function moveLine(keyboardEvent) {
+    switch (keyboardEvent.code) {
+        case 'ArrowUp':
+            gCurrLine.position.y -= 20;
+            break;
+        case 'ArrowDown':
+            gCurrLine.position.y += 20;
+            break;
+        case 'ArrowLeft':
+            gCurrLine.position.x -= 20;
+            break;
+        case 'ArrowRight':
+            gCurrLine.position.x += 20;
+            break;
+        default: return null;
+    }
+ writeOnCanvas();
+}
