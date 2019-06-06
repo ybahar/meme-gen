@@ -22,8 +22,7 @@ function createLine() {
     }
     gMeme.txts.push(newLine);
     gLineId++;
-
-
+    return newLine
 }
 function createImages() {
     createImage('001', []);
