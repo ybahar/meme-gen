@@ -1,3 +1,4 @@
+
 function onInit() {
 createCanvas();
 }
@@ -14,3 +15,8 @@ function renderCanvas(img) {
     canvas.height = img.height;
     ctx.drawImage(img, 0, 0);
 }
+
+function writeOnCanvas(lastWord) {
+    
+}
+
