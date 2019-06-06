@@ -62,6 +62,7 @@ function decreaseFontSize() {
 }
 
 function changeColor(color) {
+    console.log(color)
     gCurrLine.color = `${color}`;
 }
 
