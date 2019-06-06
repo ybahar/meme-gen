@@ -64,3 +64,7 @@ function getLineById(id){
       let idx = getLineIdxById(id);
       return gMeme.txts[idx];
 }
+
+function getMeme(){
+    return gMeme;
+}
