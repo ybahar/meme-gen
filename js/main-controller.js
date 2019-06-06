@@ -42,20 +42,29 @@ function writeOnCanvas(lastWord) {
     drawText(gCurrLine, 20, 20);
 }
 
-function drawText(line) {
+function drawText() {
     gCtx.fillStyle = 'white';
     gCtx.strokeStyle = '';
-    gCtx.font = `${line.size}px Arial`;
-    gCtx.strokeText(line.txt, line.position.x, line.position.y);
+    gCtx.font = `${gCurrLine.size}px Arial`;
+    gCtx.strokeText(gCurrLine.txt, gCurrLine.position.x, gCurrLine.position.y);
 }
 
 function onLineSelect(id){
     gCurrLine = getLineById(id);
 }
-function encreaseFontSize() {
 
+function increaseFontSize() {
+    gCurrLine.size += 3;
 }
 
 function decreaseFontSize() {
+    gCurrLine.size -= 3;
+}
 
+function changeColor(color) {
+    gCurrLine.color = `${color}`;
+}
+
+function onCanvasClicked(ev) {
+    let {offsetX, offsetY} = ev
 }
