@@ -1,5 +1,5 @@
 'use strict';
-let gLineId=1;
+let gLineId = 1;
 var gMeme = {
     selectedImgId: 5,
     txts: []
@@ -8,7 +8,6 @@ var gMeme = {
 let gImages = []
 
 function createLine() {
-
     let newLine = {
         id: gLineId,
         txt: '',
@@ -25,11 +24,11 @@ function createLine() {
     return newLine
 }
 function createImages() {
-    createImage('001', []);
-    createImage('002', []);
-    createImage('003', []);
-    createImage('004', []);
-    createImage('005', []);
+    createImage('001', ['']);
+    createImage('002', ['president', 'trump']);
+    createImage('003', ['baby', 'kid', 'qute']);
+    createImage('004', ['dog', 'animal']);
+    createImage('005', ['baby', 'animal', 'qute']);
     createImage('006', []);
     createImage('007', []);
     createImage('008', []);
@@ -56,15 +55,24 @@ function getImageById(id) {
     return gImages.find(image => id === image.id)
 }
 
-function getLineIdxById(id){
-    return gMeme.txts.findIndex(line => id === line.id  + '')
+function getLineIdxById(id) {
+    return gMeme.txts.findIndex(line => id === line.id + '')
 }
 
-function getLineById(id){
-      let idx = getLineIdxById(id);
-      return gMeme.txts[idx];
+function getLineById(id) {
+    let idx = getLineIdxById(id);
+    return gMeme.txts[idx];
 }
 
-function getMeme(){
+
+function filterImagesByKeywords(txt) {
+    return gImages
+        .filter(img => img.keywords
+            .find(image => image
+                .includes(txt))
+        )
+}
+
+function getMeme() {
     return gMeme;
 }

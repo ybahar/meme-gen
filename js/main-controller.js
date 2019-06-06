@@ -2,12 +2,13 @@
 let gCanvas;
 let gCtx;
 let gCurrLine;
-function renderImages() {
-    let images = getImages();
+
+function renderImages(filteredImages) {
+    let images = (!filteredImages) ? getImages() : filteredImages;
     let strHtml = ``;
-    images.forEach(image => {
-        strHtml += `<img data-id="${image.id}" src="${image.url}" onclick="setElImg(this)"></img>`
-    });
+    images.forEach(image =>
+            strHtml += `<img data-id="${image.id}" src="${image.url}" onclick="setElImg(this)"></img>`
+        );
     document.querySelector('.gallery-container').innerHTML = strHtml;
 }
 
@@ -20,20 +21,24 @@ function onInit() {
     onCreateLine();
 }
 
-function onCreateLine(){
+function onCreateLine() {
     let newLine = createLine();
     gCurrLine = newLine;
     renderLineSelect();
 }
 
-function renderLineSelect(){
+function renderLineSelect() {
     let elSelect = document.querySelector('.line-select');
     let strHTML = '';
     let meme = getMeme();
+<<<<<<< HEAD
      meme.txts.forEach(line=>{
          console.log(line.id);
        strHTML += `<option value="${line.id}">${line.id}</option>`
     })
+=======
+    strHTML += `<option value="${newLine.id}">${newLine.id}</option>`
+>>>>>>> dfec2fdfce94b9b73b067fc27d2198a4ee93dad0
     elSelect.innerHTML = strHTML;
 
 }
@@ -44,8 +49,13 @@ function createCanvas() {
     gCanvas.height = window.innerHeight - 100
 }
 
+<<<<<<< HEAD
 function setElImg(elImg){
     getMeme().img = elImg;
+=======
+function setElImg(elImg) {
+    gMeme.img = elImg;
+>>>>>>> dfec2fdfce94b9b73b067fc27d2198a4ee93dad0
     renderCanvas(elImg);
 }
 
@@ -55,15 +65,19 @@ function renderCanvas(elImg) {
 
 function writeOnCanvas(lastWord) {
     let meme = getMeme();
+<<<<<<< HEAD
     if(lastWord || lastWord === ''){
+=======
+    if (!lastWord === null) {
+>>>>>>> dfec2fdfce94b9b73b067fc27d2198a4ee93dad0
         gCurrLine.txt = lastWord;
         //MAKE THIS SHIT BETTER 
         gCurrLine.position.x = getCanvasWidth() /2 -  lastWord.length* (gCurrLine.size/5);
     }
-    if(meme.img){
+    if (meme.img) {
         renderCanvas(meme.img);
     }
-    meme.txts.forEach(line=> {
+    meme.txts.forEach(line => {
         drawText(line);
     })
 }
@@ -77,7 +91,7 @@ function drawText(line) {
     gCtx.closePath();
 }
 
-function onLineSelect(id){
+function onLineSelect(id) {
     gCurrLine = getLineById(id);
 }
 
@@ -90,15 +104,23 @@ function decreaseFontSize() {
 }
 
 function changeColor(color) {
-    console.log(`${color}`)
-    console.log(gCurrLine)
     gCurrLine.color = `${color}`;
 }
 
 function onCanvasClicked(ev) {
-    const {offsetX, offsetY} = ev;
+    const { offsetX, offsetY } = ev;
 }
 
-function getCanvasWidth(){
+function getCanvasWidth() {
     return gCanvas.width;
+}
+
+function downloadImg(elLink) {
+    var imgContent = canvas.toDataURL('image/jpeg');
+    elLink.href = imgContent
+}
+
+function onFilterimage(txt) {
+    let filteredImages = (txt === '') ? txt : filterImagesByKeywords(txt);
+    renderImages(filteredImages);
 }
