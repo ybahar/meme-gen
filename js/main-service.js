@@ -1,6 +1,27 @@
 'use strict';
-
+var gMeme = {
+    selectedImgId: 5,
+    txts: []
+   }
+   
 let gImages = []
+
+function createLine(){
+  
+  let newLine =     {
+          txt : '',
+          size : 16,
+          align: 'center',
+          color: 'white',
+          postion : {
+              y : gLineId * 20 ,
+              x : getCanvasWidth / 50
+          }
+       }
+       gMeme.txts.push(newLine);
+
+  
+}
 function createImages(){
     createImage('001',[]);
     createImage('002',[]);
