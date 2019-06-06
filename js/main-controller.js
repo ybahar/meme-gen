@@ -1,5 +1,7 @@
-
 'use strict';
+let gCanvas;
+let gCtx;
+
 
 function test(){
     createImages();
@@ -18,15 +20,15 @@ createCanvas();
 }
 
 function createCanvas() {    
-        canvas = document.getElementById('canvas');
-        ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth - 50
-        canvas.height = window.innerHeight - 100
+        let gCanvas = document.getElementById('canvas');
+        let ctx = gCanvas.getContext('2d');
+        gCanvas.width = window.innerWidth - 50
+        gCanvas.height = window.innerHeight - 100
 }
 
 function renderCanvas(img) {
-    canvas.width = img.width;
-    canvas.height = img.height;
+    gCanvas.width = img.width;
+    gCanvas.height = img.height;
     ctx.drawImage(img, 0, 0);
 }
 
