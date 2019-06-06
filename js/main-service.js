@@ -4,8 +4,8 @@ var gMeme = {
     selectedImgId: 5,
     txts: []
 }
-let gImages = []
-let gSearches = {}
+let gImages = [];
+let gSearches = {};
 
 function createLine() {
     let newLine = {
@@ -18,7 +18,8 @@ function createLine() {
             y: gLineId * 20,
             x: getCanvasWidth() / 2
         },
-        align : 'center' 
+        align : 'center' ,
+        font : 'impact'
         
     }
     gMeme.txts.push(newLine);
@@ -97,4 +98,4 @@ function addSearch(txt) {
     (!gSearches[txt]) ? gSearches[txt] = 1 : gSearches[txt]++;
 }
 
-function calcSearches()
+function calcSearches(){}

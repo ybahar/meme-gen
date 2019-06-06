@@ -2,6 +2,7 @@
 let gCanvas;
 let gCtx;
 let gCurrLine;
+let gFonts = ['impact','pacifico'];
 
 function renderImages(filteredImages) {
     let images = (!filteredImages) ? getImages() : filteredImages;
@@ -13,6 +14,21 @@ function renderImages(filteredImages) {
 }
 
 
+function renderFonts(){
+    let strHTML = ``;
+    gFonts.forEach(font => {
+        strHTML += `<div onclick="onFontChange('${font}')"><span style="font-family: ${font}">${font} A b c</span></div>`
+    });
+    document.querySelector('.font-select').innerHTML = strHTML;
+}
+
+function onFontChange(font){
+    gCurrLine.font = font;
+    writeOnCanvas();
+}
+function openFontArea(){
+    document.querySelector('.font-select').classList.toggle('open');
+}
 
 function onInit() {
     createCanvas();
@@ -20,6 +36,7 @@ function onInit() {
     renderImages();
     onCreateLine();
     alignSelect('center');
+    renderFonts();
 }
 
 function onCreateLine() {
@@ -59,9 +76,6 @@ function writeOnCanvas(lastWord) {
     let meme = getMeme();
     if (lastWord || lastWord === '') {
         gCurrLine.txt = lastWord;
-        //MAKE THIS SHIT BETTER 
-        // gCurrLine.position.x = getCanvasWidth() /2 -  lastWord.length* (gCurrLine.size/5);
-        // gCtx.textAlign = 'center'
     }
     if (meme.img) {
         renderCanvas(meme.img);
@@ -76,7 +90,7 @@ function drawText(line) {
     gCtx.beginPath();
     gCtx.fillStyle = 'white';
     gCtx.strokeStyle = line.color;
-    gCtx.font = `${line.size}px Arial`;
+    gCtx.font = `${line.size}px ${line.font}`;
     gCtx.strokeText(line.txt, line.position.x, line.position.y);
     gCtx.closePath();
 }
