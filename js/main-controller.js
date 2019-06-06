@@ -20,6 +20,7 @@ function onInit() {
     renderImages();
     onCreateLine();
     alignSelect('center');
+    renderTopFiveSearches()
 }
 
 function onCreateLine() {
@@ -49,6 +50,13 @@ function createCanvas() {
 function setElImg(elImg) {
     getMeme().img = elImg;
     renderCanvas(elImg);
+}
+
+function renderTopFiveSearches() {
+    let topFiveSearches = calcTopFiveSearches()
+    let strHTML = topFiveSearches.map(word =>
+        `<p onClick="onFilterimage(this.innerText)" style='font-size:${word.quantity * 3}px'>${word.word}</p>`)
+    document.querySelector('.topSearches').innerHTML = strHTML.join('');
 }
 
 function renderCanvas(elImg) {
@@ -85,7 +93,6 @@ function alignSelect(alignment) {
     gCurrLine.align = alignment;
     switch (alignment) {
         case 'left':
-            console.log(alignment);
             gCurrLine.position.x = 0;
             break;
         case 'center':
@@ -95,7 +102,9 @@ function alignSelect(alignment) {
             gCurrLine.position.x = getCanvasWidth();
             break;
     }
+    writeOnCanvas()
 }
+
 function onLineSelect(id) {
     gCurrLine = getLineById(id);
 }
