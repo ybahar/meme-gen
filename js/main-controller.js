@@ -2,7 +2,6 @@
 let gCanvas;
 let gCtx;
 let gCurrLine;
-let gElSelectedImg;
 function renderImages() {
     let images = getImages();
     let strHtml = ``;
@@ -35,8 +34,8 @@ function createCanvas() {
     gCanvas.height = window.innerHeight - 100
 }
 
-function setElImg(elImg) {
-    gElSelectedImg = elImg;
+function setElImg(elImg){
+    gMeme.img = elImg;
     renderCanvas(elImg);
 }
 
@@ -45,16 +44,23 @@ function renderCanvas(elImg) {
 }
 
 function writeOnCanvas(lastWord) {
+    let meme = getMeme();
     gCurrLine.txt = lastWord;
-    renderCanvas(gElSelectedImg);
-    drawText(gCurrLine, 20, 20);
+    if(meme.img){
+        renderCanvas(meme.img);
+    }
+    meme.txts.forEach(line=> {
+        drawText(line);
+    })
 }
 
-function drawText() {
+function drawText(line) {
+    gCtx.beginPath();
     gCtx.fillStyle = 'white';
-    gCtx.strokeStyle = gCurrLine.color;
-    gCtx.font = `${gCurrLine.size}px Arial`;
-    gCtx.strokeText(gCurrLine.txt, gCurrLine.position.x, gCurrLine.position.y);
+    gCtx.strokeStyle = line.color;
+    gCtx.font = `${line.size}px Arial`;
+    gCtx.strokeText(line.txt, line.position.x, line.position.y);
+    gCtx.closePath();
 }
 
 function onLineSelect(id) {

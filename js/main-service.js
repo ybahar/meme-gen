@@ -66,7 +66,11 @@ function getLineById(id){
 
 
 function filterImagesByKeywords(txt) {
-    return gImages.filter((img)=>{ 
+    return gImages.filter(img=>{ 
         return img.keywords.find(image => image === txt)
     })
+}
+
+function getMeme(){
+    return gMeme;
 }
