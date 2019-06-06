@@ -69,14 +69,20 @@ function createCanvas() {
 function setElImg(elImg) {
     getMeme().img = elImg;
     let searchWord = document.querySelector('.image-search').value
-    checkSearchedWord(elImg, searchWord);
+    if (searchWord) {
+        document.querySelector('.image-search').value = ''
+        checkSearchedWord(elImg, searchWord);
+        renderTopFiveSearches()
+        renderImages()
+    }
     renderCanvas(elImg);
 }
+
 
 function renderTopFiveSearches() {
     let topFiveSearches = calcTopFiveSearches()
     let strHTML = topFiveSearches.map(word =>
-        `<p onClick="onFilterimage(this.innerText)" style='font-size:${word.quantity * 3}px'>${word.word}</p>`)
+        `<p onClick="onFilterimage(this.innerText)" style='font-size:${word.quantity * 13}px'>${word.word}</p>`)
     document.querySelector('.topSearches').innerHTML = strHTML.join('');
 }
 
@@ -176,5 +182,5 @@ function moveLine(keyboardEvent) {
             break;
         default: return null;
     }
- writeOnCanvas();
+    writeOnCanvas();
 }

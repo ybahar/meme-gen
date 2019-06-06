@@ -7,13 +7,13 @@ var gMeme = {
 let gImages = []
 let gSearches = {
     'five': 5,
-    'one': 1,
-    'six': 6,
-    'three': 3,
-    'thirty': 30,
-    'twelve': 12,
-    'fifteen': 15,
-    'eight': 8,
+    'one': 0,
+    'six': 0,
+    'three': 0,
+    'thirty': 0,
+    'twelve': 0,
+    'fifteen': 0,
+    'eight': 0,
 }
 
 function createLine() {
@@ -113,7 +113,7 @@ function calcTopFiveSearches() {
 }
 
 function checkSearchedWord(elImg, word) {
-    console.log(word)
-    let imgKeywords = getImageById(elImg.dataset.id).keywords
-    console.log(imgKeywords.filter(keyword=>keyword.includes(word)))
+    let imgKeywords = getImageById(elImg.dataset.id).keywords;
+    let similarWord = imgKeywords.filter(keyword=>keyword.includes(word));
+    addSearch(similarWord);
 }
