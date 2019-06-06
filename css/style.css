@@ -2,7 +2,9 @@
     font-family: pacifico;
     src: url(../Fonts/Pacifico/Pacifico-Regular.ttf)
 }
-
+.impact{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 /* Base */
 body {
     margin: 0;
@@ -52,19 +54,7 @@ canvas {
     height: 75px;
 }
 
-.font-select{
-    display: none;
-    width: 100vw;
-    
-}
 
-
-.font-select.open {
-    display: block;
-    animation: open-menu .4s;
-    animation-iteration-count: 1;
-    height: 50vh;
-}
 /* helpers */
 
 .clean-list {
