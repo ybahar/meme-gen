@@ -30,4 +30,8 @@ function getImages(){
     return gImages;
 }
 
+function getImageById(id){
+  return gImages.find(image=>id===image.id)
+}
+
 
