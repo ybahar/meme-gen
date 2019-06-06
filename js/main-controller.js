@@ -25,8 +25,17 @@ function onInit() {
 function onCreateLine() {
     let newLine = createLine();
     gCurrLine = newLine;
+    renderLineSelect();
 }
 
+function renderLineSelect(){
+    let elSelect = document.querySelector('.line-select');
+    let strHTML = '';
+    let meme = getMeme();
+        strHTML += `<option value="${newLine.id}">${newLine.id}</option>`
+        elSelect.innerHTML = strHTML;
+
+}
 function createCanvas() {
     gCanvas = document.getElementById('canvas');
     gCtx = gCanvas.getContext('2d');
@@ -43,9 +52,11 @@ function renderCanvas(elImg) {
     gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
 }
 
-function writeOnCanvas(lastWord) {
+function writeOnCanvas(lastWord = null) {
     let meme = getMeme();
-    gCurrLine.txt = lastWord;
+    if(!lastWord === null){
+        gCurrLine.txt = lastWord;
+    }
     if(meme.img){
         renderCanvas(meme.img);
     }
