@@ -6,9 +6,9 @@ let gCurrLine;
 function renderImages(filteredImages) {
     let images = (!filteredImages) ? getImages() : filteredImages;
     let strHtml = ``;
-    images.forEach(image => {
-        strHtml += `<img data-id="${image.id}" src="${image.url}" onclick="setElImg(this)"></img>`
-    });
+    images.forEach(image =>
+            strHtml += `<img data-id="${image.id}" src="${image.url}" onclick="setElImg(this)"></img>`
+        );
     document.querySelector('.gallery-container').innerHTML = strHtml;
 }
 
@@ -19,8 +19,6 @@ function onInit() {
     createImages();
     renderImages();
     onCreateLine();
-    console.log(filterImagesByKeywords('baby'))
-
 }
 
 function onCreateLine() {
