@@ -1,3 +1,4 @@
+
 'use strict';
 
 function test(){
@@ -28,3 +29,8 @@ function renderCanvas(img) {
     canvas.height = img.height;
     ctx.drawImage(img, 0, 0);
 }
+
+function writeOnCanvas(lastWord) {
+    
+}
+
