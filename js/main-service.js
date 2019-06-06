@@ -1,7 +1,6 @@
 'use strict';
 
 let gImages = []
-console.log('hi');
 function createImages(){
     createImage('001',[]);
     createImage('002',[]);
