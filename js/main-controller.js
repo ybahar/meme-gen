@@ -44,7 +44,7 @@ function writeOnCanvas(lastWord) {
 
 function drawText() {
     gCtx.fillStyle = 'white';
-    gCtx.strokeStyle = '';
+    gCtx.strokeStyle = gCurrLine.color;
     gCtx.font = `${gCurrLine.size}px Arial`;
     gCtx.strokeText(gCurrLine.txt, gCurrLine.position.x, gCurrLine.position.y);
 }
@@ -62,7 +62,8 @@ function decreaseFontSize() {
 }
 
 function changeColor(color) {
-    console.log(color)
+    console.log(`${color}`)
+    console.log(gCurrLine)
     gCurrLine.color = `${color}`;
 }
 
