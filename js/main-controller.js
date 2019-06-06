@@ -53,5 +53,7 @@ function changeColor(color) {
 }
 
 function onCanvasClicked(ev) {
-    let {offsetX, offsetY} = ev
+    const {offsetX, offsetY} = ev;
 }
+
+
