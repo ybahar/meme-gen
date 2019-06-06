@@ -68,3 +68,6 @@ function changeColor(color) {
 function onCanvasClicked(ev) {
     let {offsetX, offsetY} = ev
 }
+function getCanvasWidth(){
+    return gCanvas.width;
+}

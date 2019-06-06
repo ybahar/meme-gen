@@ -17,7 +17,7 @@ function createLine() {
         color: 'white',
         postion: {
             y: gLineId * 20,
-            x: getCanvasWidth / 50
+            x: getCanvasWidth() / 50
         }
     }
     gMeme.txts.push(newLine);
