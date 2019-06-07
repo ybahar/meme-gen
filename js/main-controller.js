@@ -43,8 +43,8 @@ function onInit() {
 }
 
 function onCreateLine() {
-    let newLine = createLine();
-    gCurrLine = newLine;
+    createLine();
+    onLineSelect();
     renderLineSelect();
 }
 
@@ -52,10 +52,12 @@ function renderLineSelect() {
     let elSelect = document.querySelector('.line-select');
     let strHTML = '';
     let meme = getMeme();
+    let i = 1;
     meme.txts.forEach(line => {
-        strHTML += `<option value="${line.id}">${line.id}</option>`
+        strHTML += `<option value="${line.id}">${i++}</option>`
     })
     elSelect.innerHTML = strHTML;
+    document.querySelector('.line-select').value = gCurrLine.id;
 
 }
 function createCanvas() {
@@ -76,6 +78,13 @@ function setElImg(elImg) {
         renderImages()
     }
     renderCanvas(elImg);
+}
+function onLineDelete() {
+    deleteLine(gCurrLine.id);
+    onLineSelect();
+    writeOnCanvas();
+    renderLineSelect();
+
 }
 
 
@@ -131,6 +140,7 @@ function alignSelect(alignment) {
 
 function onLineSelect(id) {
     gCurrLine = getLineById(id);
+    document.querySelector('.meme-text').value = gCurrLine.txt;
 }
 
 function increaseFontSize() {

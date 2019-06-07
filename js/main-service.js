@@ -33,7 +33,6 @@ function createLine() {
     }
     gMeme.txts.push(newLine);
     gLineId++;
-    return newLine
 }
 
 function createImages() {
@@ -69,12 +68,24 @@ function getImageById(id) {
 }
 
 function getLineIdxById(id) {
-    return gMeme.txts.findIndex(line => id === line.id + '')
+    return gMeme.txts.findIndex(line => +id === line.id)
 }
 
 function getLineById(id) {
+    if(!id){
+        return gMeme.txts[gMeme.txts.length-1];
+    }
     let idx = getLineIdxById(id);
     return gMeme.txts[idx];
+}
+
+function deleteLine(id){
+    
+    let idx = getLineIdxById(id);
+    gMeme.txts.splice(idx,1);
+    if(!gMeme.txts.length){
+        createLine();
+    }
 }
 
 
