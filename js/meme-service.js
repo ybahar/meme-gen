@@ -54,11 +54,12 @@ function getMeme() {
 }
 
 function findLineByPos(x,y){
-    // console.log(x)
+    /* FINDINGS : average line length is a little less then half
+     the font size * number of letters (spaces included) */
    return gMeme.txts.find(line=> {
-        let xDiff = line.position.x - x;
+        let xDiff = line.position.x - x; 
         if (Math.abs(xDiff) > ((line.size/4)*line.txt.length ) ){
-            return false;
+            return false; // starting from the center of the line and checking to both sides abs(x-oX) < fontsize / 4;
         }
         if (line.position.y < y || line.position.y - line.size > y) return false;
         else return true;
