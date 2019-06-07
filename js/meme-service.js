@@ -52,3 +52,16 @@ function deleteLine(id) {
 function getMeme() {
     return gMeme;
 }
+
+function findLineByPos(x,y){
+    // console.log(x)
+   return gMeme.txts.find(line=> {
+        let xDiff = line.position.x - x;
+        if (Math.abs(xDiff) > ((line.size/4)*line.txt.length ) ){
+            return false;
+        }
+        if (line.position.y < y || line.position.y - line.size > y) return false;
+        else return true;
+        
+    })
+}

@@ -64,6 +64,9 @@ function alignSelect(alignment) {
 
 function onCanvasClicked(ev) {
     const { offsetX, offsetY } = ev;
+    let line = findLineByPos(offsetX,offsetY);
+    console.log(line)
+
 }
 
 function getCanvasWidth() {
