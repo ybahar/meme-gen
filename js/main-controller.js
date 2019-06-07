@@ -63,6 +63,19 @@ function renderLineSelect() {
 // change to onElImg
 function setMemeImg(elImg) {
     getMeme().img = elImg;
+    addSearch123(elImg);
+    // let searchWord = document.querySelector('.image-search').value
+    // if (searchWord) {
+    //     document.querySelector('.image-search').value = ''
+    //     checkSearchedWord(elImg, searchWord);
+    //     renderTopFiveSearches()
+    //     renderImages()
+    // }
+    renderCanvas(elImg);
+}
+
+
+function addSearch123(elImg) {
     let searchWord = document.querySelector('.image-search').value
     if (searchWord) {
         document.querySelector('.image-search').value = ''
@@ -70,7 +83,6 @@ function setMemeImg(elImg) {
         renderTopFiveSearches()
         renderImages()
     }
-    renderCanvas(elImg);
 }
 function onLineDelete() {
     deleteLine(gCurrLine.id);
@@ -79,7 +91,6 @@ function onLineDelete() {
     renderLineSelect();
 
 }
-
 
 function renderTopFiveSearches() {
     let topFiveSearches = calcTopFiveSearches()

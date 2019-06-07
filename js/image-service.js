@@ -1,5 +1,4 @@
 'use strict';
-
 let gImages = []
 let gSearches = {
     'five': 5,
