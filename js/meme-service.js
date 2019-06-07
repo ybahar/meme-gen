@@ -8,8 +8,8 @@ var gMeme = {
 
 function createLine() {
     // start at top for first / bottom for last / and account for font size of previous line 
-    let y = !(gMeme.txts.length) ? gLineId * 45 : (gMeme.txts.length === 1) ?
-        getCanvasHeight() - 90 : (gLineId === 3) ? gMeme.txts[0].position.y + 45 : getLineById().position.y + 45
+    let y = !(gMeme.txts.length) ? 45 : (gMeme.txts.length === 1) ?
+        getCanvasHeight() - 90 : (gMeme.txts.length === 2) ? gMeme.txts[0].position.y + 45 : getLineById().position.y + 45
     let newLine = {
         id: gLineId,
         txt: '',

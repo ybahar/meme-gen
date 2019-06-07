@@ -51,7 +51,9 @@ canvas {
 }
 
 .gallery-container img {
-    width: 75px;
+    width: 100px;
+    height: 75px;
+    object-fit: cover;
 }
 
 .topSearches {
