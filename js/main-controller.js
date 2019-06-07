@@ -35,8 +35,6 @@ function onInit() {
     createCanvas();
     createImages();
     renderImages();
-    onCreateLine();
-    alignSelect('center');
     renderTopFiveSearches()
     renderFonts();
 }
@@ -72,6 +70,7 @@ function setMemeImg(elImg) {
     //     renderImages()
     // }
     renderCanvas(elImg);
+    initCanvasForMeme();
 }
 
 
@@ -86,9 +85,9 @@ function addSearch123(elImg) {
 }
 function onLineDelete() {
     deleteLine(gCurrLine.id);
+    renderLineSelect();
     onLineSelect();
     writeOnCanvas();
-    renderLineSelect();
 
 }
 
@@ -110,9 +109,11 @@ function onFilterimage(txt) {
     renderImages(filteredImages);
 }
 
-function onLineSelect(id) {
-    gCurrLine = getLineById(id);
+function onLineSelect(id , line) {
+    gCurrLine =(line)? line : getLineById(id);
     document.querySelector('.meme-text').value = gCurrLine.txt;
+    document.querySelector('.line-select').value = gCurrLine.id;
+
 }
 
 function increaseFontSize() {

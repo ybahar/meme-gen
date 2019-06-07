@@ -51,8 +51,9 @@ canvas {
 }
 
 .gallery-container img {
-    width: 75px;
+    width: 100px;
     height: 75px;
+    object-fit: cover;
 }
 
 .topSearches {
@@ -60,7 +61,10 @@ canvas {
     justify-content: space-evenly;
 }
 
-
+.canvas-container{
+    justify-content: center;
+    align-items: center;
+}
 
 /* helpers */
 
