@@ -79,5 +79,5 @@ function calcTopFiveSearches() {
 function checkSearchedWord(elImg, word) {
     let imgKeywords = getImageById(elImg.dataset.id).keywords;
     let similarWord = imgKeywords.filter(keyword=>keyword.includes(word));
-    addSearch(similarWord);
+    addSearch(similarWord[0]);
 }
