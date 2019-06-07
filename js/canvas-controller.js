@@ -84,6 +84,10 @@ function getCanvasWidth() {
 
 
 function moveLine(keyboardEvent) {
+    if ([37, 38, 39, 40].indexOf(keyboardEvent.keyCode) > -1) {
+
+        keyboardEvent.preventDefault();
+    }
     switch (keyboardEvent.code) {
         case 'ArrowUp':
             gCurrLine.position.y -= 20;
