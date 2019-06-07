@@ -2,7 +2,7 @@
 
 let gCanvas;
 let gCtx;
-
+let isMouseClicked = false;
 function createCanvas() {
     gCanvas = document.getElementById('canvas');
     gCtx = gCanvas.getContext('2d');
@@ -65,10 +65,24 @@ function alignSelect(alignment) {
 function onCanvasClicked(ev) {
     const { offsetX, offsetY } = ev;
     let line = findLineByPos(offsetX,offsetY);
-    console.log(line)
+    if(line){
+        onLineSelect(null , line);
+        isMouseClicked = true;
+    }
+
 
 }
 
+function dragLine(ev){
+    if(!isMouseClicked) return;
+ gCurrLine.position.x = ev.offsetX;
+ gCurrLine.position.y = ev.offsetY;
+ writeOnCanvas();
+}
+
+function onMouseRelease(){
+    isMouseClicked = false;
+}
 function getCanvasWidth() {
     return gCanvas.width;
 }

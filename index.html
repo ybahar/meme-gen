@@ -30,7 +30,8 @@
     <section class="gallery-container">
     </section>
     <section class="flex canvas-container">
-        <canvas id="canvas" onclick="onCanvasClicked(event)"></canvas>
+        <canvas id="canvas" onmousedown="onCanvasClicked(event)" onmouseup="onMouseRelease()" onmousemove="dragLine(event)">
+        </canvas>
     </section>
     <input type="text" class="meme-text" placeholder="Add your own text." oninput="writeOnCanvas(this.value)">
     <button onclick="increaseFontSize()">+</button>
