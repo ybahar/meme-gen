@@ -35,8 +35,6 @@ function onInit() {
     createCanvas();
     createImages();
     renderImages();
-    onCreateLine();
-    alignSelect('center');
     renderTopFiveSearches()
     renderFonts();
 }
@@ -72,6 +70,7 @@ function setMemeImg(elImg) {
     //     renderImages()
     // }
     renderCanvas(elImg);
+    initCanvasForMeme();
 }
 
 

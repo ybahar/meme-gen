@@ -6,12 +6,19 @@ let gCtx;
 function createCanvas() {
     gCanvas = document.getElementById('canvas');
     gCtx = gCanvas.getContext('2d');
-    gCanvas.width = window.innerWidth - 50
-    gCanvas.height = window.innerHeight - 100
+   
 }
 
+function initCanvasForMeme(){
+    onCreateLine();
+    alignSelect('center');
+
+
+}
 
 function renderCanvas(elImg) {
+    gCanvas.width = elImg.naturalWidth;
+    gCanvas.height = elImg.naturalHeight;
     gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
 }
 

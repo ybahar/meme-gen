@@ -29,7 +29,9 @@
     <button onclick="onLineDelete()">Delete line</button>
     <section class="gallery-container">
     </section>
-    <canvas id="canvas" onclick="onCanvasClicked(event)"></canvas>
+    <section class="flex canvas-container">
+        <canvas id="canvas" onclick="onCanvasClicked(event)"></canvas>
+    </section>
     <input type="text" class="meme-text" placeholder="Add your own text." oninput="writeOnCanvas(this.value)">
     <button onclick="increaseFontSize()">+</button>
     <button onclick="decreaseFontSize()">-</button>
