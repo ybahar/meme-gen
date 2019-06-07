@@ -68,6 +68,19 @@ function createCanvas() {
 // change to onElImg
 function setElImg(elImg) {
     getMeme().img = elImg;
+    addSearch123(elImg);
+    // let searchWord = document.querySelector('.image-search').value
+    // if (searchWord) {
+    //     document.querySelector('.image-search').value = ''
+    //     checkSearchedWord(elImg, searchWord);
+    //     renderTopFiveSearches()
+    //     renderImages()
+    // }
+    renderCanvas(elImg);
+}
+
+
+function addSearch123(elImg) {
     let searchWord = document.querySelector('.image-search').value
     if (searchWord) {
         document.querySelector('.image-search').value = ''
@@ -75,9 +88,7 @@ function setElImg(elImg) {
         renderTopFiveSearches()
         renderImages()
     }
-    renderCanvas(elImg);
 }
-
 
 function renderTopFiveSearches() {
     let topFiveSearches = calcTopFiveSearches()

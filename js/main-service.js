@@ -1,6 +1,6 @@
 'use strict';
 let gLineId = 1;
-var gMeme = {
+let gMeme = {
     selectedImgId: 5,
     txts: []
 }
