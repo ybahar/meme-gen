@@ -57,11 +57,12 @@ function findLineByPos(x, y) {
     return gMeme.txts.find(line => {
         let xDiff = line.position.x - x;
         let txtDimensions = gCtx.measureText(line.txt)
-        if (line.align === 'center')
-        if (Math.abs(xDiff) > txtDimensions.width ) {
+        if (line.align === 'center'){
+        if (Math.abs(xDiff) > txtDimensions.width / 2) {
             return false;
+        }
         } else {
-            if (Math.abs(xDiff) > ((line.size / 2) * line.txt.length)) {
+            if (Math.abs(xDiff) > (txtDimensions.width)) {
                 return false
             }
             
@@ -70,17 +71,17 @@ function findLineByPos(x, y) {
         else return true;
         /* FINDINGS : average line length is a little less then half
          the font size * number of letters (spaces included) */
-        // if (line.align === 'center')
-        //     if (Math.abs(xDiff) > ((line.size / 4) * line.txt.length)) {
-        //         return false; // starting from the center of the line and checking to both sides abs(x-oX) < fontsize / 4;
-        //     } else {
-        //         if (Math.abs(xDiff) > ((line.size / 2) * line.txt.length)) {
-        //             return false
-        //         }
+    //     if (line.align === 'center'){
+    //         if (Math.abs(xDiff) > ((line.size / 4) * line.txt.length)) {
+    //             return false; // starting from the center of the line and checking to both sides abs(x-oX) < fontsize / 4;
+    //         } else {
+    //             if (Math.abs(xDiff) > ((line.size / 2) * line.txt.length)) {
+    //                 return false
+    //             }
 
-        //     }
-        // if (line.position.y < y || line.position.y - line.size > y) return false;
-        // else return true;
+    //         }
+    //     if (line.position.y < y || line.position.y - line.size > y) return false;
+    //     else return true;
     // }
 
 })
