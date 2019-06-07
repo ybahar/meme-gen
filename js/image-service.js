@@ -2,7 +2,7 @@
 let gImages = []
 let gSearches = {
     'five': 5,
-    'one': 0,
+    'one': 1,
     'six': 0,
     'three': 0,
     'thirty': 0,
@@ -10,7 +10,6 @@ let gSearches = {
     'fifteen': 0,
     'eight': 0,
 }
-
 
 function createImages() {
     createImage('001', ['']);
@@ -44,7 +43,6 @@ function getImageById(id) {
     return gImages.find(image => id === image.id)
 }
 
-
 function filterImagesByKeywords(txt) {
     return gImages
         .filter(img => img.keywords
@@ -53,12 +51,9 @@ function filterImagesByKeywords(txt) {
         )
 }
 
-
-
 function addSearch(txt) {
     (!gSearches[txt]) ? gSearches[txt] = 1 : gSearches[txt]++;
 }
-
 
 function calcTopFiveSearches() {
     let sortedValues = sortByNum(Object.values(gSearches))
@@ -79,5 +74,6 @@ function calcTopFiveSearches() {
 function checkSearchedWord(elImg, word) {
     let imgKeywords = getImageById(elImg.dataset.id).keywords;
     let similarWord = imgKeywords.filter(keyword=>keyword.includes(word));
+    console.log(similarWord[0])
     addSearch(similarWord[0]);
 }

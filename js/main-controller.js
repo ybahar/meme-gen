@@ -94,6 +94,7 @@ function onLineDelete() {
 
 function renderTopFiveSearches() {
     let topFiveSearches = calcTopFiveSearches()
+    console.log(topFiveSearches)
     let strHTML = topFiveSearches.map(word =>
         `<p onClick="onFilterimage(this.innerText)" style='font-size:${word.quantity * 13}px'>${word.word}</p>`)
     document.querySelector('.topSearches').innerHTML = strHTML.join('');

@@ -5,16 +5,9 @@ function sortByNum(items) {
 }
 
 function sortByName(items) {
-    items.sort(function (a, b) {
+    items.sort((a, b) => {
         var txtA = a.txt.toUpperCase(); // ignore upper and lowercase
         var txtB = b.txt.toUpperCase(); // ignore upper and lowercase
-        if (txtA < txtB) {
-            return -1;
-        }
-        if (txtA > txtB) {
-            return 1;
-        }
-        // names must be equal
-        return 0;
+        return (txtA < txtB) ? -1 : (txtA > txtB) ? 1 : 0
     });
 }
