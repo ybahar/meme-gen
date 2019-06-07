@@ -97,3 +97,25 @@ function onFilterimage(txt) {
     let filteredImages = (txt === '') ? txt : filterImagesByKeywords(txt);
     renderImages(filteredImages);
 }
+
+function onLineSelect(id) {
+    gCurrLine = getLineById(id);
+    document.querySelector('.meme-text').value = gCurrLine.txt;
+}
+
+function increaseFontSize() {
+    gCurrLine.size += 3;
+    if(gCurrLine.size >= 30) gCurrLine.position.y = gCurrLine.position.y + 4.5;
+    writeOnCanvas();
+}
+
+function decreaseFontSize() {
+    gCurrLine.size -= 3;
+    if (gCurrLine.size > 30) gCurrLine.position.y = gCurrLine.position.y - 4.5;
+    writeOnCanvas();
+}
+
+function changeColor(color) {
+    gCurrLine.color = `${color}`;
+    writeOnCanvas()
+}

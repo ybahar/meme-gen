@@ -54,25 +54,6 @@ function alignSelect(alignment) {
     writeOnCanvas()
 }
 
-function onLineSelect(id) {
-    gCurrLine = getLineById(id);
-    document.querySelector('.meme-text').value = gCurrLine.txt;
-}
-
-function increaseFontSize() {
-    gCurrLine.size += 3;
-    writeOnCanvas()
-}
-
-function decreaseFontSize() {
-    gCurrLine.size -= 3;
-    writeOnCanvas()
-}
-
-function changeColor(color) {
-    gCurrLine.color = `${color}`;
-    writeOnCanvas()
-}
 
 function onCanvasClicked(ev) {
     const { offsetX, offsetY } = ev;
@@ -105,3 +86,7 @@ function moveLine(keyboardEvent) {
     }
     writeOnCanvas();
 }
+
+ function getCanvasHeight(){
+     return gCanvas.height;
+ }
