@@ -11,6 +11,9 @@ function createCanvas() {
 function initCanvasForMeme(){
     onCreateLine();
     alignSelect('center');
+    gCanvas.ontouchstart= function(e){
+        console.log(e);
+    }
 
 
 }
