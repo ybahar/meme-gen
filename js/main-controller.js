@@ -9,6 +9,7 @@ function onInit() {
     renderImages();
     renderTopFiveSearches()
     renderFonts();
+    renderDataList();
 }
 
 function renderImages(filteredImages) {
@@ -99,8 +100,7 @@ function downloadImg(elLink) {
 }
 
 function onFilterimage(txt) {
-    let filteredImages = (txt === '') ? txt : filterImagesByKeywords(txt);
-    autocomplete(document.getElementById('image-search'), gKeywords)
+    let filteredImages = (txt === '') ? txt : filterImagesByKeywords(txt.toLowerCase());
     renderImages(filteredImages);
 }
 
@@ -125,4 +125,15 @@ function decreaseFontSize() {
 function changeColor(color) {
     gCurrLine.color = `${color}`;
     writeOnCanvas()
+}
+
+
+function renderDataList() {
+    let elDataList = document.querySelector('datalist');
+    let strHtml = '';
+    let keywords = getAllKeywords();
+    keywords.forEach(keyword=> {
+        strHtml += `<option value="${keyword}">`
+    })
+    elDataList.innerHTML = strHtml;
 }
