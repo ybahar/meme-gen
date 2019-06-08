@@ -1,5 +1,5 @@
 'use strict';
-console.log('new mobile drag test with mouse event idea final version  3.0');
+console.log('new mobile drag test with mouse event idea final version  3.1');
 let gCanvas;
 let gCtx;
 function createCanvas() {
@@ -146,8 +146,8 @@ function addEventListenersToCanvas() {
         }
         dragLine(coords);
         //scrolling fix ? 
-        let coords = getMousePos(gCanvas, ev);
-        let line = findLineByPos(coords);
+        let posClicked = getMousePos(gCanvas, ev);
+        let line = findLineByPos(posClicked);
         if(line){
             ev.preventDefault();
             return true
