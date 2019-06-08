@@ -57,9 +57,10 @@ function getMeme() {
     return gMeme;
 }
 
-function findLineByPos(x, y) {
+function findLineByPos(coords) {
+    console.log(coords)
     return gMeme.txts.find(line => {
-        let xDiff = line.position.x - x;
+        let xDiff = line.position.x - coords.x;
         let txtDimensions = gCtx.measureText(line.txt)
         if (line.align === 'center'){
         if (Math.abs(xDiff) > txtDimensions.width / 2) {
@@ -71,7 +72,7 @@ function findLineByPos(x, y) {
             }
             
         }
-        if (line.position.y < y || line.position.y - line.size > y) return false;
+        if (line.position.y < coords.y || line.position.y - line.size > coords.y) return false;
         else return true;
         /* FINDINGS : average line length is a little less then half
          the font size * number of letters (spaces included) */
@@ -90,3 +91,10 @@ function findLineByPos(x, y) {
 
 })
 }
+function getMousePos(canvasDom, mouseEvent) {
+    var rect = canvasDom.getBoundingClientRect();
+    return {
+      x: mouseEvent.clientX - rect.left,
+      y: mouseEvent.clientY - rect.top
+    }
+  }

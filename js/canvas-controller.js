@@ -1,5 +1,5 @@
 'use strict';
-
+console.log('new mobile drag test with mouse event idea test 1 ');
 let gCanvas;
 let gCtx;
 function createCanvas() {
@@ -11,6 +11,23 @@ function createCanvas() {
 function initCanvasForMeme(){
     onCreateLine();
     alignSelect('center');
+    gCanvas.addEventListener("touchstart", function (ev){
+        let touchEv = ev.touches[0];
+        let mouseEv = new mouseEvent('mousedown',{
+            clientX : touchEv.clientX,
+            clientY : touchEv.clientY
+        })
+        gCanvas.dispatchEvent(mouseEv);
+       } , false);
+    gCanvas.addEventListener("touchmove", function (ev){
+        let touchEv = ev.touches[0];
+        let mouseEv = new mouseEvent('mousemove',{
+            clientX : touchEv.clientX,
+            clientY : touchEv.clientY
+        })
+        gCanvas.dispatchEvent(mouseEv);
+       } , false);
+       gCanvas.addEventListener("touchend" , onMouseRelease,false);
 }
 
 function renderCanvas(elImg) {
@@ -64,8 +81,10 @@ function onCanvasClicked(ev) {
         var { offsetX, offsetY } = ev;
     }
 
-    // console.log(offsetX , offsetY);
-    let line = findLineByPos(offsetX,offsetY);
+    console.log(offsetX , offsetY);
+    let coords= getMousePos(gCanvas,ev);
+    // let line = findLineByPos(offsetX,offsetY); //testing mobile friendly version 
+    let line = findLineByPos(coords);
     if(line){
         onLineSelect(null , line);
         gCurrLine.clicked.isClicked = true;
@@ -131,17 +150,9 @@ function moveLine(keyboardEvent) {
      return gCanvas.height;
  }
 
-//  function mobileDragFailedAttempt(){
-         // gCanvas.addEventListener('touchstart' , function(ev){
-    //      console.log('touch start');
-    //      let offsetX = ev.touches[0].screenX - gCanvas.clientLeft * devicePixelRatio;
-    //      let offsetY = ev.touches[0].screenY - gCanvas.clientTop * devicePixelRatio;
-    //      console.log('moving',offsetX,offsetY);
-    //      onCanvasClicked({offsetX,offsetY});
-    //      ev.preventDefault();
-    //      return false;
-    //     }    )
-    //     gCanvas.addEventListener('tochmove', function(ev){
+
+
+        // gCanvas.addEventListener('tochmove', function(ev){
     //         console.log('touch move');
     //         let offsetX = ev.touches[0].screenX - gCanvas.clietLeft * devicePixelRatio;
     //         let offsetY = ev.touches[0].screenY - gCanvas.clientTop * devicePixelRatio;
@@ -149,10 +160,10 @@ function moveLine(keyboardEvent) {
     //         ev.preventDefault();
     //         return false;
     //     })
-    //     gCanvas.addEventListener('tochend', function(){
+    //     // gCanvas.addEventListener('tochend', function(){
     //         console.log('touch end');
     //        onMouseRelease();
     //        return false;
-    //    })
+    //    }
 
-//  }
+ 
