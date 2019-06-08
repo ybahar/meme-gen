@@ -72,9 +72,9 @@ function setMemeImg(elImg) {
 
 
 function addSearch123(elImg) {
-    let searchWord = document.querySelector('.image-search').value
+    let searchWord = document.getElementById('search-input').value
     if (searchWord) {
-        document.querySelector('.image-search').value = ''
+        document.getElementById('search-input').value = ''
         checkSearchedWord(elImg, searchWord);
         renderTopFiveSearches()
         renderImages()
@@ -90,7 +90,7 @@ function onLineDelete() {
 function renderTopFiveSearches() {
     let topFiveSearches = calcTopFiveSearches()
     let strHTML = topFiveSearches.map(word =>
-        `<p onClick="onFilterimage(this.innerText)" style='font-size:${word.quantity * 13}px'>${word.word}</p>`)
+        `<p onClick="onFilterimage(this.innerText)" style='font-size:${word[1] * 13}px'>${word[0]}</p>`)
     document.querySelector('.topSearches').innerHTML = strHTML.join('');
 }
 
@@ -136,4 +136,17 @@ function renderDataList() {
         strHtml += `<option value="${keyword}">`
     })
     elDataList.innerHTML = strHtml;
+}
+
+function toggleContactModal(){
+    document.querySelector('.contact-us').classList.toggle('open');
+}
+
+function contactUs(){
+    let elForm = document.querySelector('.contact-us form');
+    let name = elForm.querySelector('.contact-select').value;
+    let contactInfo = (name === 'yarin')? 'yarinb1@gmail.com' : 'orielshalem@gmail.com'
+    let subject = elForm.querySelector('#email-subject').value;
+    let emailBody =elForm.querySelector('#contact-body').value;
+    window.location = `https://mail.google.com/mail/?view=cm&fs=1&to=${contactInfo}&su=${subject}&body=${emailBody}`;
 }
