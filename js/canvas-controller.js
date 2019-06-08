@@ -22,8 +22,8 @@ function initCanvasForMeme(){
         }    )
         gCanvas.addEventListener('tochmove', function(ev){
             console.log('touch move');
-            let offsetX = ev.touches[0].screenX - gCanvas.clietLeft;
-            let offsetY = ev.touches[0].screenY - gCanvas.clientTop;
+            let offsetX = ev.touches[0].screenX - gCanvas.clietLeft * devicePixelRatio;
+            let offsetY = ev.touches[0].screenY - gCanvas.clientTop * devicePixelRatio;
             dragLine({offsetX,offsetY});
             return false;
         })
