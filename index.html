@@ -38,7 +38,9 @@
     <button onclick="decreaseFontSize()">-</button>
     <input onchange="changeColor(this.value)" type="color">
     <a href="#" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
-    <input placeholder="search image" class="image-search" oninput="onFilterimage(this.value)" type="text">
+    <div class="autocomplete" style="width:300px;">
+        <input id="image-search" class="image-search" oninput="onFilterimage(this.value)" placeholder="search image" type="text" placeholder="search">
+      </div>
     <button onclick="alignSelect('left')">left</button>
     <button onclick="alignSelect('center')">center</button>
     <button onclick="alignSelect('right')">right</button>
@@ -57,6 +59,8 @@
             aliquam optio impedit libero officia numquam veniam voluptas repudiandae hic. Error, ipsum totam?
         </p>
     </footer>
+
+
     <script src="js/util.js"></script>
     <script src="js/image-service.js"></script>
     <script src="js/meme-service.js"></script>

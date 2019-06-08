@@ -3,6 +3,14 @@
 let gCurrLine;
 let gFonts = ['impact', 'pacifico'];
 
+function onInit() {
+    createCanvas();
+    createImages();
+    renderImages();
+    renderTopFiveSearches()
+    renderFonts();
+}
+
 function renderImages(filteredImages) {
     let images = (!filteredImages) ? getImages() : filteredImages;
     let strHtml = ``;
@@ -16,7 +24,6 @@ function renderImages(filteredImages) {
 function renderFonts() {
     let strHTML = ``;
     gFonts.forEach(font => {
-        console.log('fonts entered')
         strHTML += `<option onclick="onFontChange('${font}')" style="font-family: ${font}">${font}</option>`
     });
     document.querySelector('.font-select').innerHTML = strHTML;
@@ -31,13 +38,6 @@ function openFontArea() {
     document.querySelector('.font-select').classList.toggle('open');
 }
 
-function onInit() {
-    createCanvas();
-    createImages();
-    renderImages();
-    renderTopFiveSearches()
-    renderFonts();
-}
 
 function onCreateLine() {
     createLine();
@@ -62,13 +62,6 @@ function renderLineSelect() {
 function setMemeImg(elImg) {
     getMeme().img = elImg;
     addSearch123(elImg);
-    // let searchWord = document.querySelector('.image-search').value
-    // if (searchWord) {
-    //     document.querySelector('.image-search').value = ''
-    //     checkSearchedWord(elImg, searchWord);
-    //     renderTopFiveSearches()
-    //     renderImages()
-    // }
     renderCanvas(elImg);
     initCanvasForMeme();
 }
@@ -88,12 +81,10 @@ function onLineDelete() {
     renderLineSelect();
     onLineSelect();
     writeOnCanvas();
-
 }
 
 function renderTopFiveSearches() {
     let topFiveSearches = calcTopFiveSearches()
-    console.log(topFiveSearches)
     let strHTML = topFiveSearches.map(word =>
         `<p onClick="onFilterimage(this.innerText)" style='font-size:${word.quantity * 13}px'>${word.word}</p>`)
     document.querySelector('.topSearches').innerHTML = strHTML.join('');
@@ -106,6 +97,7 @@ function downloadImg(elLink) {
 
 function onFilterimage(txt) {
     let filteredImages = (txt === '') ? txt : filterImagesByKeywords(txt);
+    autocomplete(document.getElementById('image-search'), gKeywords)
     renderImages(filteredImages);
 }
 
@@ -113,7 +105,6 @@ function onLineSelect(id , line) {
     gCurrLine =(line)? line : getLineById(id);
     document.querySelector('.meme-text').value = gCurrLine.txt;
     document.querySelector('.line-select').value = gCurrLine.id;
-
 }
 
 function increaseFontSize() {
