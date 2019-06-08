@@ -78,15 +78,15 @@ function alignSelect(alignment) {
 
 function onCanvasClicked(ev) {
  
-    console.log(offsetX , offsetY);
+    // console.log(offsetX , offsetY);
     let coords= getMousePos(gCanvas,ev);
     // let line = findLineByPos(offsetX,offsetY); //testing mobile friendly version 
     let line = findLineByPos(coords);
     if(line){
         onLineSelect(null , line);
         gCurrLine.clicked.isClicked = true;
-        gCurrLine.clicked.offsetX = offsetX;
-        gCurrLine.clicked.offsetY = offsetY;
+        gCurrLine.clicked.offsetX = coords.x;
+        gCurrLine.clicked.offsetY = coords.y;
     }
     // console.log(line);
 
