@@ -9,6 +9,7 @@ function onInit() {
     renderImages();
     renderTopFiveSearches()
     renderFonts();
+    renderDataList();
 }
 
 function renderImages(filteredImages) {
@@ -71,9 +72,9 @@ function setMemeImg(elImg) {
 
 
 function addSearch123(elImg) {
-    let searchWord = document.querySelector('.image-search').value
+    let searchWord = document.getElementById('search-input').value
     if (searchWord) {
-        document.querySelector('.image-search').value = ''
+        document.getElementById('search-input').value = ''
         checkSearchedWord(elImg, searchWord);
         renderTopFiveSearches()
         renderImages()
@@ -89,7 +90,7 @@ function onLineDelete() {
 function renderTopFiveSearches() {
     let topFiveSearches = calcTopFiveSearches()
     let strHTML = topFiveSearches.map(word =>
-        `<p onClick="onFilterimage(this.innerText)" style='font-size:${word.quantity * 13}px'>${word.word}</p>`)
+        `<p onClick="onFilterimage(this.innerText)" style='font-size:${word[1] * 13}px'>${word[0]}</p>`)
     document.querySelector('.topSearches').innerHTML = strHTML.join('');
 }
 
@@ -99,8 +100,7 @@ function downloadImg(elLink) {
 }
 
 function onFilterimage(txt) {
-    let filteredImages = (txt === '') ? txt : filterImagesByKeywords(txt);
-    autocomplete(document.getElementById('image-search'), gKeywords)
+    let filteredImages = (txt === '') ? txt : filterImagesByKeywords(txt.toLowerCase());
     renderImages(filteredImages);
 }
 
@@ -127,6 +127,17 @@ function changeColor(color) {
     writeOnCanvas()
 }
 
+
+function renderDataList() {
+    let elDataList = document.querySelector('datalist');
+    let strHtml = '';
+    let keywords = getAllKeywords();
+    keywords.forEach(keyword=> {
+        strHtml += `<option value="${keyword}">`
+    })
+    elDataList.innerHTML = strHtml;
+}
+
 function toggleContactModal(){
     document.querySelector('.contact-us').classList.toggle('open');
 }
@@ -134,7 +145,7 @@ function toggleContactModal(){
 function contactUs(){
     let elForm = document.querySelector('.contact-us form');
     let name = elForm.querySelector('.contact-select').value;
-    let contactInfo = (name === 'yarin')? 'yarinb1@gmail.com' : 'ORIEL EMAIL'
+    let contactInfo = (name === 'yarin')? 'yarinb1@gmail.com' : 'orielshalem@gmail.com'
     let subject = elForm.querySelector('#email-subject').value;
     let emailBody =elForm.querySelector('#contact-body').value;
     window.location = `https://mail.google.com/mail/?view=cm&fs=1&to=${contactInfo}&su=${subject}&body=${emailBody}`;

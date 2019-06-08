@@ -123,6 +123,7 @@ function getCanvasWidth() {
 
 
 function moveLine(keyboardEvent) {
+    if (!gCurrLine) return
     if ([37, 38, 39, 40].indexOf(keyboardEvent.keyCode) > -1) {
 
         keyboardEvent.preventDefault();

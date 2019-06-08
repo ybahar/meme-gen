@@ -5,13 +5,11 @@ let gSearches = {
     'one': 1,
     'six': 0,
     'three': 3,
-    'thirty': 0,
-    'twelve': 0,
-    'fifteen': 0,
-    'eight': 0,
+    'thirty': 3,
+    'twelve': 3,
+    'fifteen': 6,
+    'eight': 3,
 }
-
-let gKeywords;
 
 
 
@@ -28,7 +26,6 @@ function createImages() {
     createImage('010', []);
     createImage('011', []);
     createImage('012', []);
-    gKeywords = getAllKeywords()
 }
 
 function createImage(id, keywords) {
@@ -61,17 +58,14 @@ function addSearch(txt) {
 }
 
 function calcTopFiveSearches() {
-    let sortedValues = sortByNum(Object.values(gSearches)).slice(0, 5)
-    let mostOften = [];
-    sortedValues.forEach(val => {
-        for (let searchWord in gSearches) {
-            if (gSearches[searchWord] === val && val) {
-                mostOften.push({ word: searchWord, quantity: gSearches[searchWord] })
-            }
+    let sortable = [];
+    for (let searchWord in gSearches) {
+        if (gSearches[searchWord]) {
+            sortable.push([searchWord, gSearches[searchWord]])
         }
-    })
-    mostOften.filter((search, index, self) => index === self.indexOf(search))
-    return mostOften;
+    }
+    sortable.sort((a, b) => b[1] - a[1]);
+    return sortable.slice(0,5);
 }
 
 function checkSearchedWord(elImg, word) {
@@ -86,5 +80,6 @@ function getAllKeywords() {
     keywords = keywords.filter((keyword, index, self) => index === self.indexOf(keyword))
     return keywords
 }
+
 
 
