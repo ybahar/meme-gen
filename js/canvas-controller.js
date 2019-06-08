@@ -14,8 +14,8 @@ function initCanvasForMeme(){
     alignSelect('center');
     gCanvas.addEventListener('touchstart' , function(ev){
          console.log('touch start');
-         let offsetX = ev.touches[0].screenX - gCanvas.clientLeft;
-         let offsetY = ev.touches[0].screenY - gCanvas.clientTop;
+         let offsetX = ev.touches[0].screenX - gCanvas.clientLeft * devicePixelRatio;
+         let offsetY = ev.touches[0].screenY - gCanvas.clientTop * devicePixelRatio;
          console.log('moving',offsetX,offsetY);
          onCanvasClicked({offsetX,offsetY});
          return false;
