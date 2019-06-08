@@ -65,8 +65,14 @@ function alignSelect(alignment) {
 
 
 function onCanvasClicked(ev) {
-    const { offsetX, offsetY } = ev;
-    console.log(offsetX , offsetY);
+    if(!ev.touches){
+        var { offsetX, offsetY } = ev;
+    }
+    else{
+         offsetX = ev.touches[0].screenX;
+         offsetY = ev.touches[0].screenY;
+    }
+    // console.log(offsetX , offsetY);
     let line = findLineByPos(offsetX,offsetY);
     if(line){
         onLineSelect(null , line);
@@ -74,15 +80,21 @@ function onCanvasClicked(ev) {
         gCurrLine.clicked.offsetX = offsetX;
         gCurrLine.clicked.offsetY = offsetY;
     }
-    console.log(line);
+    // console.log(line);
 
 
 }
 
 function dragLine(ev){
     if(!gCurrLine || !gCurrLine.clicked.isClicked) return;
- gCurrLine.position.x += (ev.offsetX - gCurrLine.clicked.offsetX);
- gCurrLine.position.y += (ev.offsetY - gCurrLine.clicked.offsetY);
+    if(ev.touches){
+       var offsetX = ev.touches[0].screenX; 
+       var offsetY = ev.touches[0].screenY; 
+    } else {
+        var {offsetX , offsetY } = ev;
+    }
+ gCurrLine.position.x += (offsetX - gCurrLine.clicked.offsetX);
+ gCurrLine.position.y += (offsetY - gCurrLine.clicked.offsetY);
  gCurrLine.clicked.offsetX = ev.offsetX;
  gCurrLine.clicked.offsetY = ev.offsetY;
  writeOnCanvas();
