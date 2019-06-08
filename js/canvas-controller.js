@@ -1,5 +1,5 @@
 'use strict';
-console.log('new mobile drag test with mouse event idea test 1 ');
+console.log('new mobile drag test with mouse event idea test 2 ');
 let gCanvas;
 let gCtx;
 function createCanvas() {
@@ -13,19 +13,19 @@ function initCanvasForMeme(){
     alignSelect('center');
     gCanvas.addEventListener("touchstart", function (ev){
         let touchEv = ev.touches[0];
-        let mouseEv = new mouseEvent('mousedown',{
+        let coords = {
             clientX : touchEv.clientX,
             clientY : touchEv.clientY
-        })
-        gCanvas.dispatchEvent(mouseEv);
+        }
+        onCanvasClicked(coords);
        } , false);
     gCanvas.addEventListener("touchmove", function (ev){
         let touchEv = ev.touches[0];
-        let mouseEv = new mouseEvent('mousemove',{
+        let coords = {
             clientX : touchEv.clientX,
             clientY : touchEv.clientY
-        })
-        gCanvas.dispatchEvent(mouseEv);
+        }
+        dragLine(coords);
        } , false);
        gCanvas.addEventListener("touchend" , onMouseRelease,false);
 }
@@ -77,10 +77,7 @@ function alignSelect(alignment) {
 }
 
 function onCanvasClicked(ev) {
-    if(!ev.touches){
-        var { offsetX, offsetY } = ev;
-    }
-
+ 
     console.log(offsetX , offsetY);
     let coords= getMousePos(gCanvas,ev);
     // let line = findLineByPos(offsetX,offsetY); //testing mobile friendly version 
@@ -98,16 +95,11 @@ function onCanvasClicked(ev) {
 
 function dragLine(ev){
     if(!gCurrLine || !gCurrLine.clicked.isClicked) return;
-    if(ev.touches){
-       var offsetX = ev.touches[0].screenX; 
-       var offsetY = ev.touches[0].screenY; 
-    } else {
-        var {offsetX , offsetY } = ev;
-    }
- gCurrLine.position.x += (offsetX - gCurrLine.clicked.offsetX);
- gCurrLine.position.y += (offsetY - gCurrLine.clicked.offsetY);
- gCurrLine.clicked.offsetX = ev.offsetX;
- gCurrLine.clicked.offsetY = ev.offsetY;
+    let coords= getMousePos(gCanvas,ev);
+ gCurrLine.position.x += (coords.x - gCurrLine.clicked.offsetX);
+ gCurrLine.position.y += (coords.y - gCurrLine.clicked.offsetY);
+ gCurrLine.clicked.offsetX = x;
+ gCurrLine.clicked.offsetY = y;
  writeOnCanvas();
 }
 
