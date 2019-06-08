@@ -1,5 +1,5 @@
 'use strict';
-console.log('new mobile drag test with mouse event idea final version  2.9');
+console.log('new mobile drag test with mouse event idea final version  3.0');
 let gCanvas;
 let gCtx;
 function createCanvas() {
@@ -65,7 +65,6 @@ function onCanvasClicked(ev) {
 
     // console.log(offsetX , offsetY);
     let coords = getMousePos(gCanvas, ev);
-    // let line = findLineByPos(offsetX,offsetY); //testing mobile friendly version 
     let line = findLineByPos(coords);
     if (line) {
         onLineSelect(null, line);
@@ -146,8 +145,13 @@ function addEventListenersToCanvas() {
             clientY: touchEv.clientY
         }
         dragLine(coords);
-        ev.preventDefault();
-        return true
+        //scrolling fix ? 
+        let coords = getMousePos(gCanvas, ev);
+        let line = findLineByPos(coords);
+        if(line){
+            ev.preventDefault();
+            return true
+        }
     },  false);
     gCanvas.addEventListener("touchend", onMouseRelease, false);
 
