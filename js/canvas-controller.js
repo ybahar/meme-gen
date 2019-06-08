@@ -136,8 +136,10 @@ function addEventListenersToCanvas() {
         }
         onCanvasClicked(coords);
                 //prevent scrolling when touching canvas
-        ev.preventDefault();
-        return true;
+                if(gCurrLine.clicked.isClicked){
+                    ev.preventDefault();
+                    return true;
+                }
     },  false);
     gCanvas.addEventListener("touchmove", function (ev) {
         let touchEv = ev.touches[0];
@@ -147,8 +149,10 @@ function addEventListenersToCanvas() {
         }
         dragLine(coords);
         //prevent scrolling when touching canvas
+        if(gCurrLine.clicked.isClicked){
             ev.preventDefault();
-            return true
+            return true;
+        }
         
     },  false);
     gCanvas.addEventListener("touchend", onMouseRelease, false);
