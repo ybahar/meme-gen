@@ -1,4 +1,5 @@
 'use strict';
+console.log('sol 1 mobile test');
 
 let gCanvas;
 let gCtx;
