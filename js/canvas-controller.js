@@ -2,7 +2,6 @@
 
 let gCanvas;
 let gCtx;
-let isMouseClicked = false;
 function createCanvas() {
     gCanvas = document.getElementById('canvas');
     gCtx = gCanvas.getContext('2d');
@@ -64,25 +63,33 @@ function alignSelect(alignment) {
 
 function onCanvasClicked(ev) {
     const { offsetX, offsetY } = ev;
+    console.log(ev)
     let line = findLineByPos(offsetX,offsetY);
     if(line){
         onLineSelect(null , line);
-        isMouseClicked = true;
+        gCurrLine.clicked.isClicked = true;
+        gCurrLine.clicked.offsetX = offsetX;
+        gCurrLine.clicked.offsetY = offsetY;
     }
 
 
 }
 
 function dragLine(ev){
-    if(!isMouseClicked) return;
- gCurrLine.position.x = ev.offsetX;
- gCurrLine.position.y = ev.offsetY;
+    if(!gCurrLine || !gCurrLine.clicked.isClicked) return;
+ gCurrLine.position.x += (ev.offsetX - gCurrLine.clicked.offsetX);
+ gCurrLine.position.y += (ev.offsetY - gCurrLine.clicked.offsetY);
+ gCurrLine.clicked.offsetX = ev.offsetX;
+ gCurrLine.clicked.offsetY = ev.offsetY;
  writeOnCanvas();
 }
 
 function onMouseRelease(){
-    isMouseClicked = false;
+    gCurrLine.clicked.isClicked = false;
+    gCurrLine.clicked.offsetX = null;
+    gCurrLine.clicked.offsetY = null;
 }
+
 function getCanvasWidth() {
     return gCanvas.width;
 }

@@ -20,7 +20,10 @@ function createLine() {
             y: y,
             x: getCanvasWidth() / 2
         },
-        font: 'impact'
+        font: 'impact',
+        clicked: {
+            isClicked : false
+        }
 
     }
     gMeme.txts.push(newLine);
