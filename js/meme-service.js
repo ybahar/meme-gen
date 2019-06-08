@@ -70,7 +70,7 @@ function findLineByPos(x, y) {
             }
             
         }
-        if (line.position.y < y || line.position.y - txtDimensions.height > y) return false;
+        if (line.position.y < y || line.position.y - line.size > y) return false;
         else return true;
         /* FINDINGS : average line length is a little less then half
          the font size * number of letters (spaces included) */
