@@ -1,5 +1,5 @@
 'use strict';
-console.log('sol 4 mobile test');
+console.log('test 5  mobile test');
 
 let gCanvas;
 let gCtx;
@@ -23,6 +23,7 @@ function initCanvasForMeme(){
         let offsetX = ev.touches[0].screenX - gCanvas.clientLeft;
         let offsetY = ev.touches[0].screenY - gCanvas.clientTop;
         dragLine({offsetX,offsetY});
+        console.log('moving',offsetX,offsetY);
         return false;
 
        }
