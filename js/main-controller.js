@@ -16,7 +16,7 @@ function renderImages(filteredImages) {
     let images = (!filteredImages) ? getImages() : filteredImages;
     let strHtml = ``;
     images.forEach(image =>
-        strHtml += `<img data-id="${image.id}" src="${image.url}" onclick="setMemeImg(this)"></img>`
+        strHtml += `<a href="#canvas"><img data-id="${image.id}" src="${image.url}" onclick="setMemeImg(this)"></img></a>`
     );
     document.querySelector('.gallery-container').innerHTML = strHtml;
 }
@@ -29,7 +29,7 @@ function renderFonts() {
     });
     document.querySelector('.font-select').innerHTML = strHTML;
 }
-function onFillColorSelect(color){
+function onFillColorSelect(color) {
     gCurrLine.fillColor = color;
     writeOnCanvas();
 }
@@ -104,15 +104,15 @@ function onFilterimage(txt) {
     renderImages(filteredImages);
 }
 
-function onLineSelect(id , line) {
-    gCurrLine =(line)? line : getLineById(id);
+function onLineSelect(id, line) {
+    gCurrLine = (line) ? line : getLineById(id);
     document.querySelector('.meme-text').value = gCurrLine.txt;
     document.querySelector('.line-select').value = gCurrLine.id;
 }
 
 function increaseFontSize() {
     gCurrLine.size += 3;
-    if(gCurrLine.size >= 30) gCurrLine.position.y = gCurrLine.position.y + 4.5;
+    if (gCurrLine.size >= 30) gCurrLine.position.y = gCurrLine.position.y + 4.5;
     writeOnCanvas();
 }
 
@@ -132,21 +132,19 @@ function renderDataList() {
     let elDataList = document.querySelector('datalist');
     let strHtml = '';
     let keywords = getAllKeywords();
-    keywords.forEach(keyword=> {
-        strHtml += `<option value="${keyword}">`
-    })
+    keywords.forEach(keyword => strHtml += `<option value="${keyword}">`);
     elDataList.innerHTML = strHtml;
 }
 
-function toggleContactModal(){
+function toggleContactModal() {
     document.querySelector('.contact-us').classList.toggle('open');
 }
 
-function contactUs(){
+function contactUs() {
     let elForm = document.querySelector('.contact-us form');
     let name = elForm.querySelector('.contact-select').value;
-    let contactInfo = (name === 'yarin')? 'yarinb1@gmail.com' : 'orielshalem@gmail.com'
+    let contactInfo = (name === 'yarin') ? 'yarinb1@gmail.com' : 'orielshalem@gmail.com'
     let subject = elForm.querySelector('#email-subject').value;
-    let emailBody =elForm.querySelector('#contact-body').value;
+    let emailBody = elForm.querySelector('#contact-body').value;
     window.location = `https://mail.google.com/mail/?view=cm&fs=1&to=${contactInfo}&su=${subject}&body=${emailBody}`;
 }

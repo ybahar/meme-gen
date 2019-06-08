@@ -15,41 +15,43 @@
         <nav class="main-nav flex space-between">
             <ul class="clean-list flex">
                 <li><a class="nav-link" href="#about-us">About us!</a></li>
-                <li><a class="nav-link" href="#">gallery</a></li>
+                <li><a class="nav-link" href="#gallery">gallery</a></li>
                 <li><a class="nav-link" href="#" onclick="toggleContactModal()">get in touch</a></li>
             </ul>
         </nav>
     </section>
-    <select class="line-select" onchange="onLineSelect(this.value)" name="" id="">
-        <option value="1">1</option>
-    </select>
-    <select onchange="onFontChange(this.value)" class="font-select"></select></select>
+    <section class="editor-container">
+        <section class="flex canvas-container">
+            <canvas id="canvas" onmousedown="onCanvasClicked(event)" onmouseup="onMouseRelease()"
+                onmousemove="dragLine(event)">
+            </canvas>
+        </section>
+        <input type="text" class="meme-text" placeholder="Add your own text." oninput="writeOnCanvas(this.value)">
+        <button onclick="increaseFontSize()">+</button>
+        <button onclick="decreaseFontSize()">-</button>
+        <input onchange="changeColor(this.value)" type="color">
+        <input type="color" onchange="onFillColorSelect(this.value)" value="#ffffff">
+        <a href="#" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
+        <button onclick="alignSelect('left')">left</button>
+        <button onclick="alignSelect('center')">center</button>
+        <button onclick="alignSelect('right')">right</button>
+        <select class="line-select" onchange="onLineSelect(this.value)" name="" id="">
+            <option value="1">1</option>
+        </select>
+        <select onchange="onFontChange(this.value)" class="font-select"></select></select>
 
-    <button onclick="onCreateLine()">add line</button>
-    <button onclick="onLineDelete()">Delete line</button>
-    <section class="gallery-container">
+        <button onclick="onCreateLine()">add line</button>
+        <button onclick="onLineDelete()">Delete line</button>
     </section>
-    <section class="flex canvas-container">
-        <canvas id="canvas" onmousedown="onCanvasClicked(event)" onmouseup="onMouseRelease()"
-            onmousemove="dragLine(event)">
-        </canvas>
+    <section id="gallery" class="main-gallery-container">
+        <section class="search">
+            <input id="search-input" list="search-list" oninput="onFilterimage(this.value)" type="text"
+                placeholder="Search item">
+        </section>
+        <datalist id="search-list"></datalist>
+        <section class="gallery-container"></section>
+        <div class="topSearches flex"></div>
     </section>
-    <input type="text" class="meme-text" placeholder="Add your own text." oninput="writeOnCanvas(this.value)">
-    <button onclick="increaseFontSize()">+</button>
-    <button onclick="decreaseFontSize()">-</button>
-    <input onchange="changeColor(this.value)" type="color">
-    <input type="color" onchange="onFillColorSelect(this.value)" value="#ffffff">
-    <a href="#" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
-    <section class="search"><input id="search-input" list="search-list" oninput="onFilterimage(this.value)" type="text" onchange placeholder="Search...">
-    </section>
-    <datalist id="search-list">
-    </datalist>
-    <button onclick="alignSelect('left')">left</button>
-    <button onclick="alignSelect('center')">center</button>
-    <button onclick="alignSelect('right')">right</button>
-    <div class="topSearches flex">
-
-    </div>
     <footer>
         <h1 id="about-us">About Us!</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta sint nesciunt ex tenetur minus accusamus
@@ -64,16 +66,17 @@
     </footer>
 
     <section class="contact-us modal ">
-        <form class="flex" >
-                <h1>Contact Us</h1>
-                <select name="" class="contact-select">
-                    <option value="yarin">Yarin</option>
-                <option value="oriel">Oriel</option></select>
-                <label for="email-subject">Subject</label><br>
-                <input id="email-subject" type="text" placeholder="Subject" ><br>
-                <label for="contact-body">Message body</label><br>
-                <textarea name="contact-body" id="contact-body" cols="30" rows="10"></textarea>
-                <button type="button" class="btn btn-primary" onclick="contactUs()">Submit</button>
+        <form class="flex">
+            <h1>Contact Us</h1>
+            <select name="" class="contact-select">
+                <option value="yarin">Yarin</option>
+                <option value="oriel">Oriel</option>
+            </select>
+            <label for="email-subject">Subject</label><br>
+            <input id="email-subject" type="text" placeholder="Subject"><br>
+            <label for="contact-body">Message body</label><br>
+            <textarea name="contact-body" id="contact-body" cols="30" rows="10"></textarea>
+            <button type="button" class="btn btn-primary" onclick="contactUs()">Submit</button>
         </form>
     </section>
     <div class="screen" onclick="toggleContactModal()"></div>
