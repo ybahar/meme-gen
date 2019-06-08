@@ -1,5 +1,5 @@
 'use strict';
-console.log('new mobile drag test with mouse event idea final version  2.8 ');
+console.log('new mobile drag test with mouse event idea final version  2.9');
 let gCanvas;
 let gCtx;
 function createCanvas() {
@@ -137,7 +137,8 @@ function addEventListenersToCanvas() {
         }
         onCanvasClicked(coords);
         ev.preventDefault();
-    }, {passive: true});
+        return true;
+    },  false);
     gCanvas.addEventListener("touchmove", function (ev) {
         let touchEv = ev.touches[0];
         let coords = {
@@ -146,7 +147,8 @@ function addEventListenersToCanvas() {
         }
         dragLine(coords);
         ev.preventDefault();
-    }, {passive: true});
+        return true
+    },  false);
     gCanvas.addEventListener("touchend", onMouseRelease, false);
 
     // document.body.addEventListener("touchstart", function (e) {
