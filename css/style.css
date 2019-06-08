@@ -129,6 +129,9 @@ canvas {
     left: 0;
     display: none;
 }
+.contact-us.open~.screen {
+    display: block;
+}
 
 @keyframes open-contact-menu{
   0%{
