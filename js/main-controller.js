@@ -134,3 +134,16 @@ function changeColor(color) {
     gCurrLine.color = `${color}`;
     writeOnCanvas()
 }
+
+function toggleContactModal(){
+    document.querySelector('.contact-us').classList.toggle('open');
+}
+
+function contactUs(){
+    let elForm = document.querySelector('.contact-us form');
+    let name = elForm.querySelector('.contact-select').value;
+    let contactInfo = (name === 'yarin')? 'yarinb1@gmail.com' : 'ORIEL EMAIL'
+    let subject = elForm.querySelector('#email-subject').value;
+    let emailBody =elForm.querySelector('#contact-body').value;
+    window.location = `https://mail.google.com/mail/?view=cm&fs=1&to=${contactInfo}&su=${subject}&body=${emailBody}`;
+}

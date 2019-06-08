@@ -15,8 +15,8 @@
         <nav class="main-nav flex space-between">
             <ul class="clean-list flex">
                 <li><a class="nav-link" href="#about-us">About us!</a></li>
-                <li><a class="nav-link" href="">gallery</a></li>
-                <li><a class="nav-link" href="">get in touch</a></li>
+                <li><a class="nav-link" href="#">gallery</a></li>
+                <li><a class="nav-link" href="#" onclick="toggleContactModal()">get in touch</a></li>
             </ul>
         </nav>
     </section>
@@ -63,6 +63,9 @@
     <section class="contact-us modal ">
         <form class="flex" >
                 <h1>Contact Us</h1>
+                <select name="" class="contact-select">
+                    <option value="yarin">Yarin</option>
+                <option value="oriel">Oriel</option></select>
                 <label for="email-subject">Subject</label><br>
                 <input id="email-subject" type="text" placeholder="Subject" ><br>
                 <label for="contact-body">Message body</label><br>
