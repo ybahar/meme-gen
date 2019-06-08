@@ -127,21 +127,6 @@ function getCanvasHeight() {
 }
 
 
-
-// gCanvas.addEventListener('tochmove', function(ev){
-//         console.log('touch move');
-//         let offsetX = ev.touches[0].screenX - gCanvas.clietLeft * devicePixelRatio;
-//         let offsetY = ev.touches[0].screenY - gCanvas.clientTop * devicePixelRatio;
-//         dragLine({offsetX,offsetY});
-//         ev.preventDefault();
-//         return false;
-//     })
-//     // gCanvas.addEventListener('tochend', function(){
-//         console.log('touch end');
-//        onMouseRelease();
-//        return false;
-//    }
-
 function addEventListenersToCanvas() {
     gCanvas.addEventListener("touchstart", function (ev) {
         let touchEv = ev.touches[0];
