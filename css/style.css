@@ -45,6 +45,17 @@ button {
 canvas {
   border: solid black 1px;
 }
+
+
+.scrolling-box {
+    background-color: #eaeaea;
+    display: block;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    width: 100vw;
+  }
+
 /* main-nav */
 
 .main-nav {
@@ -67,15 +78,29 @@ canvas {
 }
 
 /* canvas */
+
 .editor-container {
-    background-color: #007EA7;
+    background-color: #00A8E8;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .canvas-container {
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
 
+.editor {
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    border: #ffffff 1px solid;
+    margin: 20px;
+}
+.editor >* {
+    margin-bottom: 10px;
+} 
 /* gallery */
 
 .main-gallery-container {
@@ -86,8 +111,13 @@ canvas {
     padding: 10px;
     border: 1px rgba(128, 128, 128, 0.671) solid;
     background-color: #00171f;
+    color: #ffffff;
+
 }
 
+.main-gallery-container input {
+    color: #ffffff;
+}
 .gallery-container {
   display: flex;
   flex-wrap: wrap;
@@ -119,7 +149,6 @@ canvas {
 }
 
 .topSearches {
-  color: #ffffff;
   cursor: pointer;
   justify-content: space-evenly;
 }
