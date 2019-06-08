@@ -1,5 +1,5 @@
 'use strict';
-console.log('test 5  mobile test');
+console.log('test 6  mobile test');
 
 let gCanvas;
 let gCtx;
@@ -12,25 +12,24 @@ function createCanvas() {
 function initCanvasForMeme(){
     onCreateLine();
     alignSelect('center');
-    gCanvas.ontouchstart= function(ev){
+    gCanvas.addEventListener('touchstart' , function(ev){
         
            let offsetX = ev.touches[0].screenX - gCanvas.clientLeft;
             let offsetY = ev.touches[0].screenY - gCanvas.clientTop;
             onCanvasClicked({offsetX,offsetY});
             return false;
-       }    
-       gCanvas.ontouchmove = function(ev){
+       }    )
+       gCanvas.addEventListener('tochmove', function(ev){
         let offsetX = ev.touches[0].screenX - gCanvas.clientLeft;
         let offsetY = ev.touches[0].screenY - gCanvas.clientTop;
         dragLine({offsetX,offsetY});
         console.log('moving',offsetX,offsetY);
         return false;
-
-       }
-       gCanvas.ontouchend = function(){
+       })
+       gCanvas.addEventListener('tochend', function(){
            onMouseRelease();
            return false;
-       }
+       })
 
 
 }
