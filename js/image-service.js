@@ -2,14 +2,17 @@
 let gImages = []
 let gSearches = {
     'five': 5,
-    'one': 0,
+    'one': 1,
     'six': 0,
-    'three': 0,
+    'three': 3,
     'thirty': 0,
     'twelve': 0,
     'fifteen': 0,
     'eight': 0,
 }
+
+let gKeywords;
+
 
 
 function createImages() {
@@ -25,6 +28,7 @@ function createImages() {
     createImage('010', []);
     createImage('011', []);
     createImage('012', []);
+    gKeywords = getAllKeywords()
 }
 
 function createImage(id, keywords) {
@@ -44,7 +48,6 @@ function getImageById(id) {
     return gImages.find(image => id === image.id)
 }
 
-
 function filterImagesByKeywords(txt) {
     return gImages
         .filter(img => img.keywords
@@ -53,31 +56,35 @@ function filterImagesByKeywords(txt) {
         )
 }
 
-
-
 function addSearch(txt) {
     (!gSearches[txt]) ? gSearches[txt] = 1 : gSearches[txt]++;
 }
 
-
 function calcTopFiveSearches() {
-    let sortedValues = sortByNum(Object.values(gSearches))
+    let sortedValues = sortByNum(Object.values(gSearches)).slice(0, 5)
     let mostOften = [];
-    let counter = 0
-    while (counter < 5) {
-        let currWordCount = sortedValues.shift()
+    sortedValues.forEach(val => {
         for (let searchWord in gSearches) {
-            if (gSearches[searchWord] === currWordCount) {
+            if (gSearches[searchWord] === val && val) {
                 mostOften.push({ word: searchWord, quantity: gSearches[searchWord] })
-                counter++;
             }
         }
-    }
+    })
+    mostOften.filter((search, index, self) => index === self.indexOf(search))
     return mostOften;
 }
 
 function checkSearchedWord(elImg, word) {
     let imgKeywords = getImageById(elImg.dataset.id).keywords;
-    let similarWord = imgKeywords.filter(keyword=>keyword.includes(word));
-    addSearch(similarWord);
+    let similarWord = imgKeywords.filter(keyword => keyword === word);
+    if (similarWord.length > 0) addSearch(similarWord[0]);
 }
+
+function getAllKeywords() {
+    let keywords = [];
+    gImages.forEach(img => keywords.push(...img.keywords))
+    keywords = keywords.filter((keyword, index, self) => index === self.indexOf(keyword))
+    return keywords
+}
+
+

@@ -11,8 +11,6 @@ function createCanvas() {
 function initCanvasForMeme(){
     onCreateLine();
     alignSelect('center');
-
-
 }
 
 function renderCanvas(elImg) {
@@ -60,7 +58,6 @@ function alignSelect(alignment) {
     }
     writeOnCanvas()
 }
-
 
 function onCanvasClicked(ev) {
     if(!ev.touches){
