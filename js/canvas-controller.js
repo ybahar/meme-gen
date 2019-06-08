@@ -1,5 +1,5 @@
 'use strict';
-console.log('new mobile drag test with mouse event idea test 2.3 ');
+console.log('new mobile drag test with mouse event idea test 2.4 ');
 let gCanvas;
 let gCtx;
 function createCanvas() {
@@ -98,8 +98,8 @@ function dragLine(ev){
     let coords= getMousePos(gCanvas,ev);
  gCurrLine.position.x += (coords.x - gCurrLine.clicked.offsetX);
  gCurrLine.position.y += (coords.y - gCurrLine.clicked.offsetY);
- gCurrLine.clicked.offsetX = x;
- gCurrLine.clicked.offsetY = y;
+ gCurrLine.clicked.offsetX = coords.x;
+ gCurrLine.clicked.offsetY = coords.y;
  writeOnCanvas();
 }
 
