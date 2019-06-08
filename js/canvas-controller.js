@@ -1,5 +1,5 @@
 'use strict';
-console.log('new mobile drag test with mouse event idea final version  2.6 ');
+console.log('new mobile drag test with mouse event idea final version  2.7.1 ');
 let gCanvas;
 let gCtx;
 function createCanvas() {
@@ -11,6 +11,7 @@ function createCanvas() {
 function initCanvasForMeme() {
     onCreateLine();
     alignSelect('center');
+    addEventListenersToCanvas();
 
 }
 
