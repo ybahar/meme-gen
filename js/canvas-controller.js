@@ -136,7 +136,7 @@ function addEventListenersToCanvas() {
         }
         onCanvasClicked(coords);
         ev.preventDefault();
-    }, false);
+    }, true);
     gCanvas.addEventListener("touchmove", function (ev) {
         let touchEv = ev.touches[0];
         let coords = {
@@ -145,7 +145,7 @@ function addEventListenersToCanvas() {
         }
         dragLine(coords);
         ev.preventDefault();
-    }, false);
+    }, true);
     gCanvas.addEventListener("touchend", onMouseRelease, false);
 
     // document.body.addEventListener("touchstart", function (e) {
