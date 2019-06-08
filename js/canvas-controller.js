@@ -127,6 +127,7 @@ function getCanvasHeight() {
 
 
 function addEventListenersToCanvas() {
+    // handelers for touch events for dragging and line select
     gCanvas.addEventListener("touchstart", function (ev) {
         let touchEv = ev.touches[0];
         let coords = {
@@ -134,6 +135,7 @@ function addEventListenersToCanvas() {
             clientY: touchEv.clientY
         }
         onCanvasClicked(coords);
+                //prevent scrolling when touching canvas
         ev.preventDefault();
         return true;
     },  false);
@@ -144,25 +146,12 @@ function addEventListenersToCanvas() {
             clientY: touchEv.clientY
         }
         dragLine(coords);
+        //prevent scrolling when touching canvas
             ev.preventDefault();
             return true
         
     },  false);
     gCanvas.addEventListener("touchend", onMouseRelease, false);
 
-    // document.body.addEventListener("touchstart", function (e) {
-    //     if (e.target == canvas) {
-    //         e.preventDefault();
-    //     }
-    // }, false);
-    // document.body.addEventListener("touchend", function (e) {
-    //     if (e.target == canvas) {
-    //         e.preventDefault();
-    //     }
-    // }, false);
-    // document.body.addEventListener("touchmove", function (e) {
-    //     if (e.target == canvas) {
-         
-    //     }
-    // }, false);
+
 }
