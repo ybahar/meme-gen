@@ -2,7 +2,6 @@
 
 let gCanvas;
 let gCtx;
-let isMouseClicked = false;
 function createCanvas() {
     gCanvas = document.getElementById('canvas');
     gCtx = gCanvas.getContext('2d');
@@ -36,10 +35,11 @@ function writeOnCanvas(lastWord) {
 function drawText(line) {
     gCtx.textAlign = line.align;
     gCtx.beginPath();
-    gCtx.fillStyle = 'white';
+    gCtx.fillStyle = line.fillColor;
     gCtx.strokeStyle = line.color;
     gCtx.font = `${line.size}px ${line.font}`;
     gCtx.strokeText(line.txt, line.position.x, line.position.y);
+    gCtx.fillText(line.txt, line.position.x, line.position.y);
     gCtx.closePath();
 }
 
@@ -60,26 +60,44 @@ function alignSelect(alignment) {
 }
 
 function onCanvasClicked(ev) {
-    const { offsetX, offsetY } = ev;
+    if(!ev.touches){
+        var { offsetX, offsetY } = ev;
+    }
+
+    // console.log(offsetX , offsetY);
     let line = findLineByPos(offsetX,offsetY);
     if(line){
         onLineSelect(null , line);
-        isMouseClicked = true;
+        gCurrLine.clicked.isClicked = true;
+        gCurrLine.clicked.offsetX = offsetX;
+        gCurrLine.clicked.offsetY = offsetY;
     }
+    // console.log(line);
 
 
 }
 
 function dragLine(ev){
-    if(!isMouseClicked) return;
- gCurrLine.position.x = ev.offsetX;
- gCurrLine.position.y = ev.offsetY;
+    if(!gCurrLine || !gCurrLine.clicked.isClicked) return;
+    if(ev.touches){
+       var offsetX = ev.touches[0].screenX; 
+       var offsetY = ev.touches[0].screenY; 
+    } else {
+        var {offsetX , offsetY } = ev;
+    }
+ gCurrLine.position.x += (offsetX - gCurrLine.clicked.offsetX);
+ gCurrLine.position.y += (offsetY - gCurrLine.clicked.offsetY);
+ gCurrLine.clicked.offsetX = ev.offsetX;
+ gCurrLine.clicked.offsetY = ev.offsetY;
  writeOnCanvas();
 }
 
 function onMouseRelease(){
-    isMouseClicked = false;
+    gCurrLine.clicked.isClicked = false;
+    gCurrLine.clicked.offsetX = null;
+    gCurrLine.clicked.offsetY = null;
 }
+
 function getCanvasWidth() {
     return gCanvas.width;
 }
@@ -111,3 +129,29 @@ function moveLine(keyboardEvent) {
  function getCanvasHeight(){
      return gCanvas.height;
  }
+
+//  function mobileDragFailedAttempt(){
+         // gCanvas.addEventListener('touchstart' , function(ev){
+    //      console.log('touch start');
+    //      let offsetX = ev.touches[0].screenX - gCanvas.clientLeft * devicePixelRatio;
+    //      let offsetY = ev.touches[0].screenY - gCanvas.clientTop * devicePixelRatio;
+    //      console.log('moving',offsetX,offsetY);
+    //      onCanvasClicked({offsetX,offsetY});
+    //      ev.preventDefault();
+    //      return false;
+    //     }    )
+    //     gCanvas.addEventListener('tochmove', function(ev){
+    //         console.log('touch move');
+    //         let offsetX = ev.touches[0].screenX - gCanvas.clietLeft * devicePixelRatio;
+    //         let offsetY = ev.touches[0].screenY - gCanvas.clientTop * devicePixelRatio;
+    //         dragLine({offsetX,offsetY});
+    //         ev.preventDefault();
+    //         return false;
+    //     })
+    //     gCanvas.addEventListener('tochend', function(){
+    //         console.log('touch end');
+    //        onMouseRelease();
+    //        return false;
+    //    })
+
+//  }
