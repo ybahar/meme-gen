@@ -1,5 +1,5 @@
 'use strict';
-console.log('new mobile drag test with mouse event idea test 2 ');
+console.log('new mobile drag test with mouse event idea test 2.3 ');
 let gCanvas;
 let gCtx;
 function createCanvas() {
