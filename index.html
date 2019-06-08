@@ -59,6 +59,18 @@
             aliquam optio impedit libero officia numquam veniam voluptas repudiandae hic. Error, ipsum totam?
         </p>
     </footer>
+
+    <section class="contact-us modal ">
+        <form class="flex" >
+                <h1>Contact Us</h1>
+                <label for="email-subject">Subject</label><br>
+                <input id="email-subject" type="text" placeholder="Subject" ><br>
+                <label for="contact-body">Message body</label><br>
+                <textarea name="contact-body" id="contact-body" cols="30" rows="10"></textarea>
+                <button type="button" class="btn btn-primary" onclick="contactUs()">Submit</button>
+        </form>
+    </section>
+    <div class="screen" onclick="toggleContactModal()"></div>
     <script src="js/util.js"></script>
     <script src="js/image-service.js"></script>
     <script src="js/meme-service.js"></script>

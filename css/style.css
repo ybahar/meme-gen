@@ -66,6 +66,35 @@ canvas {
     align-items: center;
 }
 
+/* modals  z-index 10 for modals*/
+.modal{
+
+    z-index: 10;
+}
+.contact-us{
+    height: 50vh;
+    width: 50vw;
+    position: fixed;
+    top: 25vh;
+    left: 25vw;
+    background-color: #ccccad;
+    transform: translate(0%,-170%);   
+}
+.contact-us form {
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.contact-us form button {
+    max-width: 50%;
+    align-self: center;
+}
+.contact-us.open{
+    animation-name: open-contact-menu ;
+    animation-iteration-count: 1;
+    animation-duration: 0.6s;
+    transform: translate(0,0);
+}
 /* helpers */
 
 .clean-list {
@@ -80,54 +109,56 @@ canvas {
     display: flex;
 }
 
-@keyframes open-menu{
+/* screens */
+.screen {
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.5;
+    background-color: gray;
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+@keyframes open-contact-menu{
   0%{
-     display: none;
-     height: 0vh;
-  }
-  2%{
-      display: block;
-      height: 1vh;
+    transform: translate(4%,-170%);
+    }
+    2%{
+        transform: translate(2%,-148%);
+      
     }
     10%{
-        display: block;
-        height: 5vh;
+        transform: translate(0%,-130%);
         
     }
     20%{
-        display: block;
-        height: 10vh;
+        transform: translate(-2%,-110%);
     }
     30%{
-        display: block;
-        height: 15vh;
+        transform: translate(-4%,-90%);
     }
     40%{
-        display: block;
-        height: 20vh;
+        transform: translate(-2%,-70%);
     }
     50%{
-        display: block;
-        height: 25vh;
+        transform: translate(-2%,-50%);
     }
     60%{
-        display: block;
-        height: 30vh;
+        transform: translate(0%,-40%);
     }
     70%{
-        display: block;
-        height: 35vh;
+        transform: translate(0%,-30%);
     }
     80%{
-        display: block;
-        height: 40vh;
+        transform: translate(0%,-20%);
     }
     90%{
-        display: block;
-        height: 45vh;
+        transform: translate(0%,-10%);
     }
     100%{
-        display: block;
-        height: 50vh;
+        transform: translate(0%,0%);
   }
 }
