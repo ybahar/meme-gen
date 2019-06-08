@@ -1,5 +1,5 @@
 'use strict';
-console.log('sol 3 mobile test');
+console.log('sol 4 mobile test');
 
 let gCanvas;
 let gCtx;
@@ -17,15 +17,18 @@ function initCanvasForMeme(){
            let offsetX = ev.touches[0].screenX - gCanvas.clientLeft;
             let offsetY = ev.touches[0].screenY - gCanvas.clientTop;
             onCanvasClicked({offsetX,offsetY});
+            return false;
        }    
        gCanvas.ontouchmove = function(ev){
         let offsetX = ev.touches[0].screenX - gCanvas.clientLeft;
         let offsetY = ev.touches[0].screenY - gCanvas.clientTop;
         dragLine({offsetX,offsetY});
+        return false;
 
        }
        gCanvas.ontouchend = function(){
            onMouseRelease();
+           return false;
        }
 
 
