@@ -1,33 +1,17 @@
 'use strict';
-console.log('new mobile drag test with mouse event idea test 1 ');
 let gCanvas;
 let gCtx;
 function createCanvas() {
     gCanvas = document.getElementById('canvas');
     gCtx = gCanvas.getContext('2d');
-   
+
 }
 
-function initCanvasForMeme(){
+function initCanvasForMeme() {
     onCreateLine();
     alignSelect('center');
-    gCanvas.addEventListener("touchstart", function (ev){
-        let touchEv = ev.touches[0];
-        let mouseEv = new mouseEvent('mousedown',{
-            clientX : touchEv.clientX,
-            clientY : touchEv.clientY
-        })
-        gCanvas.dispatchEvent(mouseEv);
-       } , false);
-    gCanvas.addEventListener("touchmove", function (ev){
-        let touchEv = ev.touches[0];
-        let mouseEv = new mouseEvent('mousemove',{
-            clientX : touchEv.clientX,
-            clientY : touchEv.clientY
-        })
-        gCanvas.dispatchEvent(mouseEv);
-       } , false);
-       gCanvas.addEventListener("touchend" , onMouseRelease,false);
+    addEventListenersToCanvas();
+
 }
 
 function renderCanvas(elImg) {
@@ -77,41 +61,32 @@ function alignSelect(alignment) {
 }
 
 function onCanvasClicked(ev) {
-    if(!ev.touches){
-        var { offsetX, offsetY } = ev;
-    }
 
-    console.log(offsetX , offsetY);
-    let coords= getMousePos(gCanvas,ev);
-    // let line = findLineByPos(offsetX,offsetY); //testing mobile friendly version 
+    // console.log(offsetX , offsetY);
+    let coords = getMousePos(gCanvas, ev);
     let line = findLineByPos(coords);
-    if(line){
-        onLineSelect(null , line);
+    if (line) {
+        onLineSelect(null, line);
         gCurrLine.clicked.isClicked = true;
-        gCurrLine.clicked.offsetX = offsetX;
-        gCurrLine.clicked.offsetY = offsetY;
+        gCurrLine.clicked.offsetX = coords.x;
+        gCurrLine.clicked.offsetY = coords.y;
     }
     // console.log(line);
 
 
 }
 
-function dragLine(ev){
-    if(!gCurrLine || !gCurrLine.clicked.isClicked) return;
-    if(ev.touches){
-       var offsetX = ev.touches[0].screenX; 
-       var offsetY = ev.touches[0].screenY; 
-    } else {
-        var {offsetX , offsetY } = ev;
-    }
- gCurrLine.position.x += (offsetX - gCurrLine.clicked.offsetX);
- gCurrLine.position.y += (offsetY - gCurrLine.clicked.offsetY);
- gCurrLine.clicked.offsetX = ev.offsetX;
- gCurrLine.clicked.offsetY = ev.offsetY;
- writeOnCanvas();
+function dragLine(ev) {
+    if (!gCurrLine || !gCurrLine.clicked.isClicked) return;
+    let coords = getMousePos(gCanvas, ev);
+    gCurrLine.position.x += (coords.x - gCurrLine.clicked.offsetX);
+    gCurrLine.position.y += (coords.y - gCurrLine.clicked.offsetY);
+    gCurrLine.clicked.offsetX = coords.x;
+    gCurrLine.clicked.offsetY = coords.y;
+    writeOnCanvas();
 }
 
-function onMouseRelease(){
+function onMouseRelease() {
     gCurrLine.clicked.isClicked = false;
     gCurrLine.clicked.offsetX = null;
     gCurrLine.clicked.offsetY = null;
@@ -146,24 +121,41 @@ function moveLine(keyboardEvent) {
     writeOnCanvas();
 }
 
- function getCanvasHeight(){
-     return gCanvas.height;
- }
+function getCanvasHeight() {
+    return gCanvas.height;
+}
 
 
+function addEventListenersToCanvas() {
+    // handelers for touch events for dragging and line select
+    gCanvas.addEventListener("touchstart", function (ev) {
+        let touchEv = ev.touches[0];
+        let coords = {
+            clientX: touchEv.clientX,
+            clientY: touchEv.clientY
+        }
+        onCanvasClicked(coords);
+                //prevent scrolling when touching canvas
+                if(gCurrLine.clicked.isClicked){
+                    ev.preventDefault();
+                    return true;
+                }
+    },  false);
+    gCanvas.addEventListener("touchmove", function (ev) {
+        let touchEv = ev.touches[0];
+        let coords = {
+            clientX: touchEv.clientX,
+            clientY: touchEv.clientY
+        }
+        dragLine(coords);
+        //prevent scrolling when touching canvas
+        if(gCurrLine.clicked.isClicked){
+            ev.preventDefault();
+            return true;
+        }
+        
+    },  false);
+    gCanvas.addEventListener("touchend", onMouseRelease, false);
 
-        // gCanvas.addEventListener('tochmove', function(ev){
-    //         console.log('touch move');
-    //         let offsetX = ev.touches[0].screenX - gCanvas.clietLeft * devicePixelRatio;
-    //         let offsetY = ev.touches[0].screenY - gCanvas.clientTop * devicePixelRatio;
-    //         dragLine({offsetX,offsetY});
-    //         ev.preventDefault();
-    //         return false;
-    //     })
-    //     // gCanvas.addEventListener('tochend', function(){
-    //         console.log('touch end');
-    //        onMouseRelease();
-    //        return false;
-    //    }
 
- 
+}

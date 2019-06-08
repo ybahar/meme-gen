@@ -124,6 +124,26 @@ canvas {
   justify-content: space-evenly;
 }
 
+
+.modal.contact-us{
+    width: 60vw;
+    height: 60vh;
+  position: fixed;
+  top: 20vh;
+  left: 20vw;
+  z-index: 10;
+  background: white;
+  display: none;
+}
+
+.modal.contact-us form{
+flex-direction: column;
+align-items: center;
+
+}
+.modal.contact-us.open{
+    display: block;
+}
 /* helpers */
 
 .clean-list {
