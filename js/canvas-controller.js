@@ -1,5 +1,5 @@
 'use strict';
-console.log('sol 1 mobile test');
+console.log('sol 2 mobile test');
 
 let gCanvas;
 let gCtx;
@@ -12,9 +12,21 @@ function createCanvas() {
 function initCanvasForMeme(){
     onCreateLine();
     alignSelect('center');
-    gCanvas.ontouchstart= function(e){
-        console.log(e);
-    }
+    gCanvas.ontouchstart= function(ev){
+        
+           let offsetX = ev.touches[0].screenX;
+            let offsetY = ev.touches[0].screenY;
+            onCanvasClicked({offsetX,offsetY});
+       }    
+       gCanvas.ontouchmove = function(ev){
+        let offsetX = ev.touches[0].screenX;
+        let offsetY = ev.touches[0].screenY;
+        dragLine({offsetX,offsetY});
+
+       }
+       gCanvas.ontouchend = function(ev){
+           onMouseRelease();
+       }
 
 
 }
@@ -69,10 +81,7 @@ function onCanvasClicked(ev) {
     if(!ev.touches){
         var { offsetX, offsetY } = ev;
     }
-    else{
-         offsetX = ev.touches[0].screenX;
-         offsetY = ev.touches[0].screenY;
-    }
+
     // console.log(offsetX , offsetY);
     let line = findLineByPos(offsetX,offsetY);
     if(line){
