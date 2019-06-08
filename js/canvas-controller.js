@@ -37,10 +37,11 @@ function writeOnCanvas(lastWord) {
 function drawText(line) {
     gCtx.textAlign = line.align;
     gCtx.beginPath();
-    gCtx.fillStyle = 'white';
+    gCtx.fillStyle = line.fillColor;
     gCtx.strokeStyle = line.color;
     gCtx.font = `${line.size}px ${line.font}`;
     gCtx.strokeText(line.txt, line.position.x, line.position.y);
+    gCtx.fillText(line.txt, line.position.x, line.position.y);
     gCtx.closePath();
 }
 

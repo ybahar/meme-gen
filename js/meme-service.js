@@ -16,6 +16,7 @@ function createLine() {
         size: 30,
         align: 'center',
         color: 'black',
+        fillColor: 'white',
         position: {
             y: y,
             x: getCanvasWidth() / 2

@@ -21,7 +21,10 @@ function renderFonts() {
     });
     document.querySelector('.font-select').innerHTML = strHTML;
 }
-
+function onFillColorSelect(color){
+    gCurrLine.fillColor = color;
+    writeOnCanvas();
+}
 function onFontChange(font) {
     gCurrLine.font = font;
     writeOnCanvas();
