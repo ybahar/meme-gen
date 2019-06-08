@@ -1,5 +1,5 @@
 'use strict';
-console.log('new mobile drag test with mouse event idea final version  2.5 ');
+console.log('new mobile drag test with mouse event idea final version  2.6 ');
 let gCanvas;
 let gCtx;
 function createCanvas() {
@@ -135,6 +135,7 @@ function addEventListenersToCanvas() {
             clientY: touchEv.clientY
         }
         onCanvasClicked(coords);
+        ev.preventDefault();
     }, false);
     gCanvas.addEventListener("touchmove", function (ev) {
         let touchEv = ev.touches[0];
@@ -143,22 +144,23 @@ function addEventListenersToCanvas() {
             clientY: touchEv.clientY
         }
         dragLine(coords);
+        ev.preventDefault();
     }, false);
     gCanvas.addEventListener("touchend", onMouseRelease, false);
 
-    document.body.addEventListener("touchstart", function (e) {
-        if (e.target == canvas) {
-            e.preventDefault();
-        }
-    }, false);
-    document.body.addEventListener("touchend", function (e) {
-        if (e.target == canvas) {
-            e.preventDefault();
-        }
-    }, false);
-    document.body.addEventListener("touchmove", function (e) {
-        if (e.target == canvas) {
-            e.preventDefault();
-        }
-    }, false);
+    // document.body.addEventListener("touchstart", function (e) {
+    //     if (e.target == canvas) {
+    //         e.preventDefault();
+    //     }
+    // }, false);
+    // document.body.addEventListener("touchend", function (e) {
+    //     if (e.target == canvas) {
+    //         e.preventDefault();
+    //     }
+    // }, false);
+    // document.body.addEventListener("touchmove", function (e) {
+    //     if (e.target == canvas) {
+         
+    //     }
+    // }, false);
 }
