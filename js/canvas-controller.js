@@ -63,7 +63,7 @@ function alignSelect(alignment) {
 
 function onCanvasClicked(ev) {
     const { offsetX, offsetY } = ev;
-    console.log(ev)
+    console.log(offsetX , offsetY);
     let line = findLineByPos(offsetX,offsetY);
     if(line){
         onLineSelect(null , line);
@@ -71,6 +71,7 @@ function onCanvasClicked(ev) {
         gCurrLine.clicked.offsetX = offsetX;
         gCurrLine.clicked.offsetY = offsetY;
     }
+    console.log(line);
 
 
 }
