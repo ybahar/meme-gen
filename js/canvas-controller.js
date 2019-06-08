@@ -1,5 +1,4 @@
 'use strict';
-console.log('test 8 mobile test');
 
 let gCanvas;
 let gCtx;
@@ -12,26 +11,6 @@ function createCanvas() {
 function initCanvasForMeme(){
     onCreateLine();
     alignSelect('center');
-    gCanvas.addEventListener('touchstart' , function(ev){
-         console.log('touch start');
-         let offsetX = ev.touches[0].screenX - gCanvas.clientLeft * devicePixelRatio;
-         let offsetY = ev.touches[0].screenY - gCanvas.clientTop * devicePixelRatio;
-         console.log('moving',offsetX,offsetY);
-         onCanvasClicked({offsetX,offsetY});
-         return false;
-        }    )
-        gCanvas.addEventListener('tochmove', function(ev){
-            console.log('touch move');
-            let offsetX = ev.touches[0].screenX - gCanvas.clietLeft * devicePixelRatio;
-            let offsetY = ev.touches[0].screenY - gCanvas.clientTop * devicePixelRatio;
-            dragLine({offsetX,offsetY});
-            return false;
-        })
-        gCanvas.addEventListener('tochend', function(){
-            console.log('touch end');
-           onMouseRelease();
-           return false;
-       })
 
 
 }
@@ -152,3 +131,29 @@ function moveLine(keyboardEvent) {
  function getCanvasHeight(){
      return gCanvas.height;
  }
+
+//  function mobileDragFailedAttempt(){
+         // gCanvas.addEventListener('touchstart' , function(ev){
+    //      console.log('touch start');
+    //      let offsetX = ev.touches[0].screenX - gCanvas.clientLeft * devicePixelRatio;
+    //      let offsetY = ev.touches[0].screenY - gCanvas.clientTop * devicePixelRatio;
+    //      console.log('moving',offsetX,offsetY);
+    //      onCanvasClicked({offsetX,offsetY});
+    //      ev.preventDefault();
+    //      return false;
+    //     }    )
+    //     gCanvas.addEventListener('tochmove', function(ev){
+    //         console.log('touch move');
+    //         let offsetX = ev.touches[0].screenX - gCanvas.clietLeft * devicePixelRatio;
+    //         let offsetY = ev.touches[0].screenY - gCanvas.clientTop * devicePixelRatio;
+    //         dragLine({offsetX,offsetY});
+    //         ev.preventDefault();
+    //         return false;
+    //     })
+    //     gCanvas.addEventListener('tochend', function(){
+    //         console.log('touch end');
+    //        onMouseRelease();
+    //        return false;
+    //    })
+
+//  }
