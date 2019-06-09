@@ -1,22 +1,22 @@
 'use strict';
 let gCanvas;
 let gCtx;
-let gElCanvasContainer;
+// let gElCanvasContainer;
 function createCanvas() {
     gCanvas = document.getElementById('canvas');
     gCtx = gCanvas.getContext('2d');
-    gElCanvasContainer = document.querySelector('.canvas-container');
 }
 
 function initCanvasForMeme() {
     onCreateLine();
     alignSelect('center');
     addEventListenersToCanvas();
-
+    
 }
 
 function renderCanvas(elImg) {
-    const { clientHeight, clientWidth } = gElCanvasContainer;
+    let elCanvasContainer = document.querySelector('.canvas-container');
+    const { clientHeight, clientWidth } = elCanvasContainer;
     const { naturalHeight, naturalWidth } = elImg;
 
     if (naturalHeight > naturalWidth) {

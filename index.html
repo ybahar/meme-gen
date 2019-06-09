@@ -11,64 +11,74 @@
 
 <body onload="onInit()" onkeydown="moveLine(event)">
     <div class="page-container scrolling-box">
-    <section class="main-nav">
-        <div class="logo">Memememe</div>
-        <nav class="main-nav flex space-between">
-            <ul class="clean-list flex">
-                <li><a class="nav-link" href="#about-us">About us!</a></li>
-                <li><a class="nav-link" href="#gallery">gallery</a></li>
-                <li><a class="nav-link" href="#" onclick="toggleContactModal()">get in touch</a></li>
-            </ul>
-        </nav>
-    </section>
-    <section class="editor-container">
-        <section class="flex canvas-container">
-            <canvas id="canvas" onmousedown="onCanvasClicked(event)" onmouseup="onMouseRelease()"
-                onmousemove="dragLine(event)">
-            </canvas>
+        <section class="main-nav">
+            <div class="logo">Memememe</div>
+            <nav class="main-nav flex space-between">
+                <ul class="clean-list flex">
+                    <li><a class="nav-link" href="#" onclick="toggleModal('.about-us')">About us!</a></li>
+                    <li><a class="nav-link" href="#gallery">gallery</a></li>
+                    <li><a class="nav-link" href="#" onclick="toggleModal('.contact-us')">get in touch</a></li>
+                </ul>
+            </nav>
         </section>
-        <section class="control-box">
-            <input type="text" class="meme-text" placeholder="Add your own text." oninput="writeOnCanvas(this.value)">
-            <button onclick="increaseFontSize()">+</button>
-            <button onclick="decreaseFontSize()">-</button>
-            <input onchange="changeColor(this.value)" type="color">
- 
-            <input type="color" onchange="onFillColorSelect(this.value)" value="#ffffff">
-            <a href="#" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
-            <button class="left" onclick="alignSelect('left')">left</button>
-            <button class="center" onclick="alignSelect('center')">center</button>
-            <button class="right" onclick="alignSelect('right')">right</button>
-            <select class="line-select" onchange="onLineSelect(this.value)" name="" id="">
-                <option value="1">1</option>
-            </select>
-            <select onchange="onFontChange(this.value)" class="font-select"></select></select>
-            <button onclick="onCreateLine()">add line</button>
-            <button onclick="onLineDelete()">Delete line</button>
-            <input type="file" name="pic" onchange="onUploadImg(event)" accept="image/*">
+        <section class="editor-container">
+            <section class="flex canvas-container">
+                <canvas id="canvas" onmousedown="onCanvasClicked(event)" onmouseup="onMouseRelease()"
+                    onmousemove="dragLine(event)">
+                </canvas>
+            </section>
+            <section class="control-box">
+                <input type="text" class="meme-text" placeholder="Add your own text."
+                    oninput="writeOnCanvas(this.value)">
+                <button onclick="increaseFontSize()">+</button>
+                <button onclick="decreaseFontSize()">-</button>
+                <input onchange="changeColor(this.value)" type="color">
+
+                <input type="color" onchange="onFillColorSelect(this.value)" value="#ffffff">
+                <a href="#" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
+                <button class="left" onclick="alignSelect('left')">left</button>
+                <button class="center" onclick="alignSelect('center')">center</button>
+                <button class="right" onclick="alignSelect('right')">right</button>
+                <select class="line-select" onchange="onLineSelect(this.value)" name="" id="">
+                    <option value="1">1</option>
+                </select>
+                <select onchange="onFontChange(this.value)" class="font-select"></select></select>
+                <button onclick="onCreateLine()">add line</button>
+                <button onclick="onLineDelete()">Delete line</button>
+                <input type="file" name="pic" onchange="onUploadImg(event)" accept="image/*">
+            </section>
         </section>
-    </section>
-    <section id="gallery" class="main-gallery-container">
-        <section class="search">
-            <input id="search-input" list="search-list" oninput="onFilterimage(this.value)" type="text"
-                placeholder="Search item">
+        <section id="gallery" class="main-gallery-container">
+            <section class="search">
+                <input id="search-input" list="search-list" oninput="onFilterimage(this.value)" type="text"
+                    placeholder="Search item">
+            </section>
+            <datalist id="search-list"></datalist>
+            <section class="gallery-container"></section>
+            <div class="topSearches flex"></div>
         </section>
-        <datalist id="search-list"></datalist>
-        <section class="gallery-container"></section>
-        <div class="topSearches flex"></div>
-    </section>
-    <footer>
-        <h1 id="about-us">About Us!</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta sint nesciunt ex tenetur minus accusamus
-            labore soluta obcaecati totam reiciendis voluptatem modi illum, deserunt, quis officiis molestias inventore
-            quisquam in.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus delectus cumque ullam quas ut praesentium
-            officiis maxime sit, expedita suscipit saepe. Explicabo consequuntur reiciendis pariatur voluptate, eaque
-            dolore. Debitis, iste!
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus animi amet, aut at, beatae quis ut, odit
-            aliquam optio impedit libero officia numquam veniam voluptas repudiandae hic. Error, ipsum totam?
-        </p>
-    </footer>
+
+        <footer>
+        </footer>
     </div>
+    <section class="modal about-us">
+        <section class="about-us-container">
+
+            <h1 id="about-us">About Us!</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta sint nesciunt ex tenetur minus accusamus
+                labore soluta obcaecati totam reiciendis voluptatem modi illum, deserunt, quis officiis molestias
+                inventore
+                quisquam in.
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus delectus cumque ullam quas ut
+                praesentium
+                officiis maxime sit, expedita suscipit saepe. Explicabo consequuntur reiciendis pariatur voluptate,
+                eaque
+                dolore. Debitis, iste!
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus animi amet, aut at, beatae quis ut, odit
+                aliquam optio impedit libero officia numquam veniam voluptas repudiandae hic. Error, ipsum totam?
+            </p>
+        </section>
+    </section>
     <section class="contact-us modal ">
         <form class="flex">
             <h1>Contact Us</h1>
@@ -83,7 +93,7 @@
             <button type="button" class="btn btn-primary" onclick="contactUs()">Submit</button>
         </form>
     </section>
-    <div class="screen" onclick="toggleContactModal()"></div>
+    <div class="screen" onclick="toggleModal('.open')"></div>
     <script src="js/util.js"></script>
     <script src="js/image-service.js"></script>
     <script src="js/meme-service.js"></script>

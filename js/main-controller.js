@@ -148,8 +148,8 @@ function renderDataList() {
     elDataList.innerHTML = strHtml;
 }
 
-function toggleContactModal() {
-    document.querySelector('.contact-us').classList.toggle('open');
+function toggleModal(selector) {
+    document.querySelector(selector).classList.toggle('open');
 }
 
 function contactUs() {

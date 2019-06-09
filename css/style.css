@@ -143,6 +143,7 @@ canvas {
   grid-template-columns: repeat(auto-fit,150px);
   justify-content: center;
   margin-bottom: 30px; */
+
 /* } */
 
 .gallery-container {
@@ -151,6 +152,7 @@ canvas {
   justify-content: center;
   margin-bottom: 30px;
 }
+
 /* 
 .gallery-container img {
   width: 35vw;
@@ -179,6 +181,8 @@ canvas {
   justify-content: space-evenly;
 }
 
+/*modals*/
+
 .modal.contact-us {
   width: 50vw;
   height: 80vh;
@@ -190,14 +194,36 @@ canvas {
   display: none;
 }
 
+.modal.contact-us form textarea {
+  max-width: 90%;
+}
+
 .modal.contact-us form {
   flex-direction: column;
   align-items: center;
 }
 
-.modal.contact-us.open {
+.modal.about-us {
+  width: 50vw;
+  height: 80vh;
+  position: fixed;
+  top: 10vh;
+  left: 25vw;
+  z-index: 10;
+  background: white;
+  display: none;
+}
+.about-us-container{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.modal.open {
   display: block;
 }
+
 
 /* helpers */
 
@@ -227,7 +253,7 @@ canvas {
   display: none;
 }
 
-.contact-us.open~.screen {
+.modal.open~.screen {
   display: block;
 }
 
@@ -327,18 +353,19 @@ canvas {
   /* margin-right: 20px; */
 }
 
-.hex-img a{
-width: inherit;
-height: inherit;
-position: relative;
+.hex-img a {
+  width: inherit;
+  height: inherit;
+  position: relative;
 }
-  .hex-img a img {
-    position: relative;
-    width: inherit;
-    height: inherit;
-    object-fit: cover;
-    position: relative;
-    top: 0;
-    left: 0;
-    margin: 0;
-  }
+
+.hex-img a img {
+  position: relative;
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 0;
+}
