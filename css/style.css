@@ -87,6 +87,7 @@ canvas {
   align-items: center;
   margin-bottom: 20px;
   width: 100%;
+  max-width: 50vw;
   height: 100%;
 }
 
@@ -299,8 +300,8 @@ canvas {
   background-position: center center;
   position: relative;
   display: inline-block;
-  transition: width .3s ease;
-  transition: height .3s ease;
+  transition: width .6s ease;
+  transition: height .6s ease;
   /* margin-bottom: 20px; */
   /* margin-right: 20px; */
 }
