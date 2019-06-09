@@ -1,11 +1,11 @@
 'use strict';
 let gCanvas;
 let gCtx;
-let jihrContainer;
+let gElCanvasContainer;
 function createCanvas() {
     gCanvas = document.getElementById('canvas');
     gCtx = gCanvas.getContext('2d');
-    jihrContainer = document.querySelector('.canvas-container');
+    gElCanvasContainer = document.querySelector('.canvas-container');
 }
 
 function initCanvasForMeme() {
@@ -16,7 +16,7 @@ function initCanvasForMeme() {
 }
 
 function renderCanvas(elImg) {
-    const { clientHeight, clientWidth } = jihrContainer;
+    const { clientHeight, clientWidth } = gElCanvasContainer;
     const { naturalHeight, naturalWidth } = elImg;
 
     if (naturalHeight > naturalWidth) {
@@ -40,7 +40,6 @@ function renderCanvas(elImg) {
             gCanvas.height = clientWidth * imgRatio;
         }
     }
-
     gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
 }
 
@@ -183,3 +182,4 @@ function addEventListenersToCanvas() {
 
 
 }
+
