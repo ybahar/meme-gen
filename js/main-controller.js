@@ -21,7 +21,6 @@ function renderImages(filteredImages) {
     document.querySelector('.gallery-container').innerHTML = strHtml;
 }
 
-
 function renderFonts() {
     let strHTML = ``;
     gFonts.forEach(font => {
@@ -147,4 +146,12 @@ function contactUs() {
     let subject = elForm.querySelector('#email-subject').value;
     let emailBody = elForm.querySelector('#contact-body').value;
     window.location = `https://mail.google.com/mail/?view=cm&fs=1&to=${contactInfo}&su=${subject}&body=${emailBody}`;
+}
+
+function onUploadImg(ev) {
+    const [picture] = ev.target.files;
+    const url = URL.createObjectURL(picture);
+    const gContainer = document.querySelector('.gallery-container');
+    
+    gContainer.innerHTML += `<a href="#canvas"><img src="${url}" onclick="setMemeImg(this)" onload="setMemeImg(this)"></img></a>`;
 }

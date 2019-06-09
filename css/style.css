@@ -83,12 +83,15 @@ canvas {
   background-color: rgb(37, 18, 18);
   display: flex;
   justify-content: space-evenly;
+  height: 60vh;
 }
 
 .canvas-container {
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  width: 100%;
+  height: 100%;
 }
 
 .control-box {
@@ -100,9 +103,11 @@ canvas {
   border: #ffffff 1px solid;
   margin: 20px;
   padding: 10px;
+  width: 412px;
 }
 .control-box > * {
   margin-bottom: 10px;
+  /* width: 50px; */
 }
 
 .meme-text {

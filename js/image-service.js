@@ -47,10 +47,7 @@ function getImageById(id) {
 
 function filterImagesByKeywords(txt) {
     return gImages
-        .filter(img => img.keywords
-            .find(image => image
-                .includes(txt))
-        )
+        .filter(img => img.keywords.find(image => image.includes(txt)))
 }
 
 function addSearch(txt) {

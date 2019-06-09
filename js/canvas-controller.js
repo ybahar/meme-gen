@@ -1,10 +1,11 @@
 'use strict';
 let gCanvas;
 let gCtx;
+let jihrContainer;
 function createCanvas() {
     gCanvas = document.getElementById('canvas');
     gCtx = gCanvas.getContext('2d');
-
+    jihrContainer = document.querySelector('.canvas-container');
 }
 
 function initCanvasForMeme() {
@@ -15,8 +16,24 @@ function initCanvasForMeme() {
 }
 
 function renderCanvas(elImg) {
-    gCanvas.width = elImg.naturalWidth;
-    gCanvas.height = elImg.naturalHeight;
+    const { clientHeight, clientWidth } = jihrContainer;
+    const { naturalHeight, naturalWidth } = elImg;
+
+    if (clientHeight >= naturalHeight && clientWidth >= naturalWidth) {
+        gCanvas.width = naturalWidth;
+        gCanvas.height = naturalHeight;
+    } else if (naturalHeight > naturalWidth) {
+        const imgRatio = naturalWidth / naturalHeight;
+
+        gCanvas.width = clientHeight * imgRatio;
+        gCanvas.height = clientHeight;
+    } else {
+        const imgRatio = naturalHeight / naturalWidth;
+
+        gCanvas.width = clientWidth;
+        gCanvas.height = clientWidth * imgRatio;
+    }
+
     gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
 }
 
@@ -135,12 +152,12 @@ function addEventListenersToCanvas() {
             clientY: touchEv.clientY
         }
         onCanvasClicked(coords);
-                //prevent scrolling when touching canvas
-                if(gCurrLine.clicked.isClicked){
-                    ev.preventDefault();
-                    return true;
-                }
-    },  false);
+        //prevent scrolling when touching canvas
+        if (gCurrLine.clicked.isClicked) {
+            ev.preventDefault();
+            return true;
+        }
+    }, false);
     gCanvas.addEventListener("touchmove", function (ev) {
         let touchEv = ev.touches[0];
         let coords = {
@@ -149,12 +166,12 @@ function addEventListenersToCanvas() {
         }
         dragLine(coords);
         //prevent scrolling when touching canvas
-        if(gCurrLine.clicked.isClicked){
+        if (gCurrLine.clicked.isClicked) {
             ev.preventDefault();
             return true;
         }
-        
-    },  false);
+
+    }, false);
     gCanvas.addEventListener("touchend", onMouseRelease, false);
 
 
