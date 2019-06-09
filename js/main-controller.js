@@ -12,11 +12,19 @@ function onInit() {
     renderDataList();
 }
 
+// function renderImages(filteredImages) {
+//     let images = (!filteredImages) ? getImages() : filteredImages;
+//     let strHtml = ``;
+//     images.forEach(image =>
+//         strHtml += `<a href="#canvas"><img data-id="${image.id}" src="${image.url}" onclick="setMemeImg(this)"></img></a>`
+//     );
+//     document.querySelector('.gallery-container').innerHTML = strHtml;
+// }
 function renderImages(filteredImages) {
     let images = (!filteredImages) ? getImages() : filteredImages;
     let strHtml = ``;
     images.forEach(image =>
-        strHtml += `<a href="#canvas"><img data-id="${image.id}" src="${image.url}" onclick="setMemeImg(this)"></img></a>`
+        strHtml += `<div class="hex-img"><a href="#canvas"><img data-id="${image.id}" src="${image.url}" onclick="setMemeImg(this)"></img></a></div>`
     );
     document.querySelector('.gallery-container').innerHTML = strHtml;
 }
