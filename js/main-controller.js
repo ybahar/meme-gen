@@ -24,7 +24,12 @@ function renderImages(filteredImages) {
     let images = (!filteredImages) ? getImages() : filteredImages;
     let strHtml = ``;
     images.forEach(image =>
-        strHtml += `<div class="hex-img"><a href="#canvas"><img data-id="${image.id}" src="${image.url}" onclick="setMemeImg(this)"></img></a></div>`
+        strHtml += `
+            <div class="hex-img">
+                <a href="#canvas">
+                    <img data-id="${image.id}" src="${image.url}" onclick="setMemeImg(this)" />
+                </a>
+            </div>`
     );
     document.querySelector('.gallery-container').innerHTML = strHtml;
 }
@@ -161,5 +166,10 @@ function onUploadImg(ev) {
     const url = URL.createObjectURL(picture);
     const gContainer = document.querySelector('.gallery-container');
     
-    gContainer.innerHTML += `<a href="#canvas"><img src="${url}" onclick="setMemeImg(this)" onload="setMemeImg(this)"></img></a>`;
+    gContainer.innerHTML += `
+        <div class="hex-img">
+            <a href="#canvas">
+                <img src="${url}" onclick="setMemeImg(this)" onload="setMemeImg(this)" />
+            </a>
+        </div>`;
 }

@@ -19,19 +19,26 @@ function renderCanvas(elImg) {
     const { clientHeight, clientWidth } = jihrContainer;
     const { naturalHeight, naturalWidth } = elImg;
 
-    if (clientHeight >= naturalHeight && clientWidth >= naturalWidth) {
-        gCanvas.width = naturalWidth;
-        gCanvas.height = naturalHeight;
-    } else if (naturalHeight > naturalWidth) {
-        const imgRatio = naturalWidth / naturalHeight;
+    if (naturalHeight > naturalWidth) {
+        if (clientHeight >= naturalHeight) {
+            gCanvas.width = naturalWidth;
+            gCanvas.height = naturalHeight;
+        } else {
+            const imgRatio = naturalWidth / naturalHeight;
 
-        gCanvas.width = clientHeight * imgRatio;
-        gCanvas.height = clientHeight;
+            gCanvas.width = clientHeight * imgRatio;
+            gCanvas.height = clientHeight;
+        }
     } else {
-        const imgRatio = naturalHeight / naturalWidth;
+        if (clientWidth >= naturalWidth) {
+            gCanvas.width = naturalWidth;
+            gCanvas.height = naturalHeight;
+        } else {
+            const imgRatio = naturalHeight / naturalWidth;
 
-        gCanvas.width = clientWidth;
-        gCanvas.height = clientWidth * imgRatio;
+            gCanvas.width = clientWidth;
+            gCanvas.height = clientWidth * imgRatio;
+        }
     }
 
     gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)

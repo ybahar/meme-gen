@@ -79,7 +79,7 @@ canvas {
   background-color: rgb(37, 18, 18);
   display: flex;
   justify-content: space-evenly;
-  height: 60vh;
+  height: 90vh;
 }
 
 .canvas-container {
