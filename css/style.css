@@ -257,56 +257,6 @@ canvas {
   display: block;
 }
 
-@keyframes open-contact-menu {
-  0% {
-    display: none;
-    height: 0vh;
-  }
-  2% {
-    display: block;
-    height: 1vh;
-  }
-  10% {
-    display: block;
-    height: 5vh;
-  }
-  20% {
-    display: block;
-    height: 10vh;
-  }
-  30% {
-    display: block;
-    height: 15vh;
-  }
-  40% {
-    display: block;
-    height: 20vh;
-  }
-  50% {
-    display: block;
-    height: 25vh;
-  }
-  60% {
-    display: block;
-    height: 30vh;
-  }
-  70% {
-    display: block;
-    height: 35vh;
-  }
-  80% {
-    display: block;
-    height: 40vh;
-  }
-  90% {
-    display: block;
-    height: 45vh;
-  }
-  100% {
-    display: block;
-    height: 50vh;
-  }
-}
 
 /* hexagonal images  */
 
@@ -349,6 +299,8 @@ canvas {
   background-position: center center;
   position: relative;
   display: inline-block;
+  transition: width .3s ease;
+  transition: height .3s ease;
   /* margin-bottom: 20px; */
   /* margin-right: 20px; */
 }
@@ -368,4 +320,40 @@ canvas {
   top: 0;
   left: 0;
   margin: 0;
+}
+.hex-img:hover{
+  width: 180px;
+  height: 240px;
+  z-index: 2;
+}
+
+.hex-img:hover::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  width: 0;
+  height: 3px;
+  z-index: 3;
+  border-bottom: calc(180px / 3.535) solid transparent;
+  /*toatl width / 3.535*/
+  border-right: 90px solid #00171f;
+  /* half of the total width*/
+  border-left: 90px solid #00171f;
+  /* half of the total width*/
+}
+
+.hex-img:hover::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  width: 0;
+  left: 0px;
+  height: 3px;
+  z-index: 3;
+  border-top: calc(180px / 3.535) solid transparent;
+  /*toatl width / 3.535*/
+  border-right: 90px solid #00171f;
+  /* half of the total width*/
+  border-left: 90px solid #00171f;
+  /* half of the total width*/
 }
