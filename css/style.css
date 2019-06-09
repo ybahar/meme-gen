@@ -171,11 +171,11 @@ canvas {
 }
 
 .modal.contact-us {
-  width: 60vw;
-  height: 60vh;
+  width: 50vw;
+  height: 80vh;
   position: fixed;
-  top: 20vh;
-  left: 20vw;
+  top: 10vh;
+  left: 25vw;
   z-index: 10;
   background: white;
   display: none;
