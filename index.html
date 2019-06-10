@@ -30,31 +30,29 @@
             <section class="control-box">
                 <input type="text" class="meme-text" placeholder="Add your own text."
                     oninput="writeOnCanvas(this.value)">
-                <button onclick="increaseFontSize()">+</button>
-                <button onclick="decreaseFontSize()">-</button>
-                <input onchange="changeColor(this.value)" type="color">
-
-                <input type="color" onchange="onFillColorSelect(this.value)" value="#ffffff">
-                <a href="#" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
                 <button class="left" onclick="alignSelect('left')">left</button>
                 <button class="center" onclick="alignSelect('center')">center</button>
                 <button class="right" onclick="alignSelect('right')">right</button>
+                <button onclick="increaseFontSize()">+</button>
+                <button onclick="decreaseFontSize()">-</button>
+                <input onchange="changeColor(this.value)" type="color">
+                <input type="color" onchange="onFillColorSelect(this.value)" value="#ffffff">
+
                 <select class="line-select" onchange="onLineSelect(this.value)" name="" id="">
                     <option value="1">1</option>
                 </select>
                 <select onchange="onFontChange(this.value)" class="font-select"></select></select>
                 <button onclick="onCreateLine()">add line</button>
                 <button onclick="onLineDelete()">Delete line</button>
+                <a href="#" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
                 <input type="file" name="pic" onchange="onUploadImg(event)" accept="image/*">
                 <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
-                    <input name="img" id="imgData" type="hidden"/>
+                    <input name="img" id="imgData" type="hidden" />
                     <button type="submit">Publish</button>
-                  </form>
-                <div id="fb-root"></div>
-                <div class="share-container"></div>
+                </form>
             </section>
 
-            
+
         </section>
         <section id="gallery" class="main-gallery-container">
             <section class="search">

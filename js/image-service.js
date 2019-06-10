@@ -78,5 +78,7 @@ function getAllKeywords() {
     return keywords
 }
 
-
-
+function getImageAsUrl(ev) {
+    const [picture] = ev.target.files;
+    return URL.createObjectURL(picture);
+}
