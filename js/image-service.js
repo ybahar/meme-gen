@@ -3,15 +3,9 @@ let gImages = []
 let gSearches = {
     'five': 5,
     'one': 1,
-    'six': 0,
-    'three': 3,
-    'thirty': 3,
-    'twelve': 3,
     'fifteen': 6,
     'eight': 3,
 }
-
-
 
 function createImages() {
     createImage('001', ['']);
