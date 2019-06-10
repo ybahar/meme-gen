@@ -1,7 +1,6 @@
 'use strict';
 let gCanvas;
 let gCtx;
-// let gElCanvasContainer;
 function createCanvas() {
     gCanvas = document.getElementById('canvas');
     gCtx = gCanvas.getContext('2d');
@@ -45,7 +44,7 @@ function renderCanvas(elImg) {
     gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
 }
 
-function writeOnCanvas(lastWord) {
+function printOnCanvas(lastWord) {
     let meme = getMeme();
     if (lastWord || lastWord === '') {
         gCurrLine.txt = lastWord;
@@ -80,7 +79,7 @@ function alignSelect(alignment) {
             gCurrLine.position.x = getCanvasWidth();
             break;
     }
-    writeOnCanvas()
+    printOnCanvas()
 }
 
 function onCanvasClicked(ev) {
@@ -101,7 +100,7 @@ function dragLine(ev) {
     gCurrLine.position.y += (coords.y - gCurrLine.clicked.offsetY);
     gCurrLine.clicked.offsetX = coords.x;
     gCurrLine.clicked.offsetY = coords.y;
-    writeOnCanvas();
+    printOnCanvas();
 }
 
 function onMouseRelease() {
@@ -137,7 +136,7 @@ function moveLine(keyboardEvent) {
             break;
         default: return null;
     }
-    writeOnCanvas();
+    printOnCanvas();
 }
 
 function getCanvasHeight() {

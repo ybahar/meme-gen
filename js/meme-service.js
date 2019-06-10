@@ -6,11 +6,24 @@ var gMeme = {
 }
 
 
+
 function createLine() {
     // start at top for first / bottom for last / and account for font size of previous line 
-    //change to switch
-    let y = !(gMeme.txts.length) ? 45 : (gMeme.txts.length === 1) ?
-        getCanvasHeight() - 90 : (gMeme.txts.length === 2) ? gMeme.txts[0].position.y + 45 : getLineById().position.y + 45
+    let y;
+    switch (gMeme.txts.length) {
+        case 0:
+            y = 45;
+            break;
+        case 1:
+            y = getCanvasHeight() - 90
+            break;
+        case 2:
+            y = gMeme.txts[0].position.y + 45;
+            break;
+        default:
+            console.log(gMeme.txts.length);
+            y = getLineById().position.y + 45;
+    }
     let newLine = {
         id: gLineId,
         txt: '',
@@ -24,7 +37,7 @@ function createLine() {
         },
         font: 'impact',
         clicked: {
-            isClicked : false
+            isClicked: false
         }
 
     }
@@ -59,32 +72,31 @@ function getMeme() {
 }
 
 function findLineByPos(coords) {
-    console.log(coords)
     return gMeme.txts.find(line => {
         let xDiff = line.position.x - coords.x;
         let txtDimensions = gCtx.measureText(line.txt)
-        if (line.align === 'center'){
-        if (Math.abs(xDiff) > txtDimensions.width / 2) {
-            return false;
-        }
+        if (line.align === 'center') {
+            if (Math.abs(xDiff) > txtDimensions.width / 2) {
+                return false;
+            }
         } else {
             (line.align === 'left')
             if (xDiff > (txtDimensions.width)) {
                 return false
-            } else if (-xDiff > (txtDimensions.width)){
-            return false;
-            
+            } else if (-xDiff > (txtDimensions.width)) {
+                return false;
+
+            }
         }
-    }
         if (line.position.y < coords.y || line.position.y - line.size > coords.y) return false;
         else return true;
 
-})
+    })
 }
 function getMousePos(canvasDom, mouseEvent) {
-    var rect = canvasDom.getBoundingClientRect();
+    var canvasOffset = canvasDom.getBoundingClientRect();
     return {
-      x: mouseEvent.clientX - rect.left,
-      y: mouseEvent.clientY - rect.top
+        x: mouseEvent.clientX - canvasOffset.left,
+        y: mouseEvent.clientY - canvasOffset.top
     }
-  }
+}

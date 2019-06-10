@@ -1,7 +1,7 @@
 'use strict';
 
 let gCurrLine;
-let gFonts = ['impact', 'pacifico'];
+let gFonts = ['impact', 'pacifico','arial','times new romans','Franklin Gothic Medium' , 'Verdana', 'Segoe UI' , 'fantasy' , 'Cambria'];
 
 function onInit() {
     createCanvas();
@@ -31,12 +31,12 @@ function renderFonts() {
 function onFillColorSelect(color) {
     gCurrLine.fillColor ='#' + color;
     document.querySelector('.fill-color').innerText = 'Fill color';
-    writeOnCanvas();
+    printOnCanvas();
 }
 
 function onFontChange(font) {
     gCurrLine.font = font;
-    writeOnCanvas();
+    printOnCanvas();
 }
 
 function onCreateLine() {
@@ -81,7 +81,7 @@ function onLineDelete() {
     deleteLine(gCurrLine.id);
     renderLineSelect();
     onLineSelect();
-    writeOnCanvas();
+    printOnCanvas();
 }
 
 function renderTopFiveSearches() {
@@ -113,20 +113,19 @@ function onLineSelect(id, line) {
 function increaseFontSize() {
     gCurrLine.size += 3;
     if (gCurrLine.size >= 30) gCurrLine.position.y = gCurrLine.position.y + 4.5;
-    writeOnCanvas();
+    printOnCanvas();
 }
 
 function decreaseFontSize() {
     gCurrLine.size -= 3;
     if (gCurrLine.size > 30) gCurrLine.position.y = gCurrLine.position.y - 4.5;
-    writeOnCanvas();
+    printOnCanvas();
 }
 
 function changeColor(color) {
-    // console.log(color);
     gCurrLine.color = `#${color}`;
     document.querySelector('.stroke-color').innerText = 'Stroke color';
-    writeOnCanvas()
+    printOnCanvas()
 }
 
 function renderDataList() {

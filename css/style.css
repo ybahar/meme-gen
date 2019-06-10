@@ -56,7 +56,7 @@ canvas {
 .main-nav {
   background-color:#00171F;
   color: white;
-  position: fixed;
+  position: absolute;
   top : 0;
   left: 0; 
   display: flex;
@@ -136,7 +136,7 @@ canvas {
 
 .editor-container {
   background-color: #ffffff;
-  position: fixed;
+  position: absolute;
   display: flex;
   justify-content: space-evenly;
   height: calc(100vh - 40px);
@@ -163,7 +163,7 @@ canvas {
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  width: 50%;
+  width: 60%;
   max-width: 50vw;
   height: 100%;
 }
@@ -447,11 +447,13 @@ canvas {
   border-left: 37.5px solid #00A7E1;
   /* half of the total width*/
 }
-
+.search .upload-label{
+  color:black;
+}
 .hex-img a {
   width: inherit;
   height: inherit;
-  position: relative;
+  position: relative; 
 }
 
 .hex-img a img {
@@ -482,7 +484,7 @@ canvas {
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
   .editor-container {
     flex-direction: column;
     padding-top: 10px;
@@ -490,12 +492,19 @@ canvas {
   }
   .control-box {
     width: 90vw;
+    height: 40vh;
+    grid-template-rows: repeat(6,30px);
+    padding: 10px;
+    margin: 5px;
   }
   .control-box * {
     max-width: 91vw;
+    height: 25px;
   }
   .canvas-container {
     max-width: 90vw;
+    margin-bottom: 5px;
+    width: 80%;
   }
 }
 

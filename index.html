@@ -31,7 +31,7 @@
             </section>
             <section class="control-box">
                 <input type="text" class="meme-text" placeholder="Add your own text."
-                    oninput="writeOnCanvas(this.value)">
+                    oninput="printOnCanvas(this.value)">
                 <button onclick="increaseFontSize()" class="font-increase">+</button>
                 <button onclick="decreaseFontSize()" class="font-decrease">-</button>
         
@@ -64,7 +64,8 @@
         <section id="gallery" class="main-gallery-container">
             <section class="search">
                 <input id="search-input" list="search-list" oninput="onFilterimage(this.value)" type="text"
-                    placeholder="Search item">
+                placeholder="Search item">
+                <label for="pic-upload" class="upload-label">Upload image</label>
             </section>
             <datalist id="search-list"></datalist>
             <section class="gallery-container"></section>
