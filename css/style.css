@@ -51,15 +51,6 @@ canvas {
   border: solid black 1px;
 }
 
-.scrolling-box {
-  background-color: #eaeaea;
-  display: block;
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  width: 100vw;
-}
-
 /* main-nav */
 
 .main-nav {
@@ -71,7 +62,7 @@ canvas {
   display: flex;
   justify-content: space-between;
   height: 40px;
-  width: 100vw;
+  width: 90vw;
   align-items: center;
   padding: 0 20px;
   z-index: 105;
@@ -153,16 +144,18 @@ canvas {
   top: 40px;
   left: 0;
   transition: 0.3s;
-  transform: translate(0%, 0%);
-    z-index: 100;
+  z-index: 100;
+  transform: translate(0%, -100%);
 }
 .editor-container.open-canvas{
-  transform: translate(100%, 100%);
+  transform: translate(0%, 0%);
 }
 .editor-container .close-canvas{
   position: absolute;
-  top: 3px;
-  right: 5px;
+  top: 13px;
+  right: 35px;
+  width: 29px;
+  border-radius: 3px;
 }
 
 .canvas-container {
@@ -283,7 +276,7 @@ canvas {
   display: flex;
   height: 100vh;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   text-align: center;
   padding: 10px;
   border: 1px rgba(128, 128, 128, 0.671) solid;
@@ -293,7 +286,7 @@ canvas {
 
 .main-gallery-container input {
   color: black;
-  margin-bottom: 20px;
+  margin: 60px 0;
 }
 
 .gallery-container {
