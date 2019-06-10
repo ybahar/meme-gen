@@ -19,25 +19,26 @@ function createImages() {
     createImage('009', ['haim','good']);
     createImage('010', ['idiot','what']);
     createImage('011', ['smart','idiot']);
-    createImage('012', ['sing','']);
-    createImage('013', []);
-    createImage('014', []);
-    createImage('015', []);
-    createImage('016', []);
-    createImage('017', []);
-    createImage('018', []);
-    createImage('019', []);
-    createImage('020', []);
-    createImage('022', []);
-    createImage('023', []);
-    createImage('024', []);
-    createImage('025', []);
-    createImage('026', []);
+    createImage('012', ['sing','woman']);
+    createImage('013', ['bald']);
+    createImage('014', ['kids','funny']);
+    createImage('015', ['trump','president']);
+    createImage('016', ['baby','surprised']);
+    createImage('017', ['dog','animal']);
+    createImage('018', ['president','obama']);
+    createImage('019', ['kiss','boxers']);
+    createImage('020', ['decaprio']);
+    createImage('021', ['metrix']);
+    createImage('022', ['rings']);
+    createImage('023', ['x-man']);
+    createImage('024', ['president','putin']);
+    createImage('025', ['toy story']);
+    createImage('026', ['idiot']);
     createImage('027', []);
-    createImage('028', []);
-    createImage('029', []);
-    createImage('030', []);
-    createImage('031', []);
+    createImage('028', ['smart']);
+    createImage('029', ['game of thrones']);
+    createImage('030', ['fire']);
+    createImage('031', ['game of thrones']);
 }
 
 function createImage(id, keywords) {
