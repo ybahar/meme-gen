@@ -46,7 +46,15 @@
                 <button onclick="onCreateLine()">add line</button>
                 <button onclick="onLineDelete()">Delete line</button>
                 <input type="file" name="pic" onchange="onUploadImg(event)" accept="image/*">
+                <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                    <input name="img" id="imgData" type="hidden"/>
+                    <button type="submit">Publish</button>
+                  </form>
+                <div id="fb-root"></div>
+                <div class="share-container"></div>
             </section>
+
+            
         </section>
         <section id="gallery" class="main-gallery-container">
             <section class="search">
