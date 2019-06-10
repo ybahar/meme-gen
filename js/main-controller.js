@@ -10,8 +10,16 @@ function onInit() {
     renderTopFiveSearches()
     renderFonts();
     renderDataList();
+    initColorPickers();
 }
+function initColorPickers(){
+   document.querySelector('.fill-color').innerText = 'Fill color';
+   let elStrokePicker = document.querySelector('.stroke-color');
+   elStrokePicker.innerText = 'Stroke color';
+   elStrokePicker.style.color = 'white'
+   elStrokePicker.style.backgroundColor = 'black'
 
+}
 function renderFonts() {
     let strHTML = ``;
     gFonts.forEach(font => {
@@ -21,7 +29,8 @@ function renderFonts() {
 }
 
 function onFillColorSelect(color) {
-    gCurrLine.fillColor = color;
+    gCurrLine.fillColor ='#' + color;
+    document.querySelector('.fill-color').innerText = 'Fill color';
     writeOnCanvas();
 }
 
@@ -114,7 +123,9 @@ function decreaseFontSize() {
 }
 
 function changeColor(color) {
-    gCurrLine.color = `${color}`;
+    // console.log(color);
+    gCurrLine.color = `#${color}`;
+    document.querySelector('.stroke-color').innerText = 'Stroke color';
     writeOnCanvas()
 }
 
