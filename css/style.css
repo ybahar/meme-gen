@@ -56,7 +56,7 @@ canvas {
 .main-nav {
   background-color:#00171F;
   color: white;
-  position: fixed;
+  position: absolute;
   top : 0;
   left: 0; 
   display: flex;
@@ -136,7 +136,7 @@ canvas {
 
 .editor-container {
   background-color: #ffffff;
-  position: fixed;
+  position: absolute;
   display: flex;
   justify-content: space-evenly;
   height: calc(100vh - 40px);
@@ -490,12 +490,17 @@ canvas {
   .control-box {
     width: 90vw;
     height: 40vh;
+    grid-template-rows: repeat(6,30px);
+    padding: 10px;
+    margin: 5px;
   }
   .control-box * {
     max-width: 91vw;
+    height: 25px;
   }
   .canvas-container {
     max-width: 90vw;
+    margin-bottom: 5px;
   }
 }
 
