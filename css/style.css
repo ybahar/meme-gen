@@ -26,8 +26,8 @@ p {
 input {
   border: 1px solid gray;
   background-color: gray;
-  padding: 10px;
-  height: 20px;
+  /* padding: 10px; */
+  height: 30px;
 }
 
 button {
@@ -35,8 +35,9 @@ button {
   background-color: gray;
   border: 1px solid black;
   border-collapse: collapse;
-  padding: 10px;
-  line-height: 20px;
+height: 30px;
+/* line-height: 20px; */
+  /* justify-self: ; */
 }
 
 canvas {
@@ -94,9 +95,17 @@ canvas {
 .control-box {
   padding-bottom: 20px;
   display: grid;
-  grid-template: "text text text" "left center right";
+  grid-template: 
+  "text text text" 
+  "left center right" 
+  "increase font decrease"
+   "add line-select delete"
+   "stroke . fill" 
+  "download upload publish";
+  /* grid-template: "text text text" "left center right" ; */
   border: #ffffff 1px solid;
-  grid-template-columns: repeat(3,33%);
+  grid-column-gap: 10px;
+  grid-template-columns: repeat(3,32%);
   grid-template-rows: 50px;
   margin: 20px;
   padding: 10px;
@@ -107,7 +116,7 @@ canvas {
   margin-bottom: 10px;
   /* width: 50px; */
 }
-
+/* grid area control box  */
 .meme-text {
   grid-area: text;
 }
@@ -122,6 +131,40 @@ canvas {
 
 .right {
   grid-area: right;
+}
+.font-increase{
+  grid-area: increase;
+}
+.font-select{
+  grid-area: font;
+}
+.font-decrease{
+  grid-area: decrease;
+}
+.add-line{
+  grid-area: add;
+}
+.line-select{
+  grid-area: line-select;
+
+}
+.delete-line{
+  grid-area: delete;
+}
+.stroke-color{
+  grid-area: stroke;
+}
+.fill-color{
+  grid-area: fill;
+}
+.download{
+  grid-area: download;
+}
+.upload{
+  grid-area: upload;
+}
+.upload-form{
+  grid-area: publish;
 }
 
 /* gallery */
