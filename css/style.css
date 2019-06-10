@@ -306,6 +306,10 @@ canvas {
   display: block;
 }
 
+.screen.open{
+  display: block;
+}
+
 /* hexagonal images  */
 
 .hex-img::before {
@@ -410,7 +414,7 @@ canvas {
 @media (max-width: 800px) {
   .editor-container {
     flex-direction: column;
-    margin-top: 10px;
+    padding-top: 10px;
     height: auto;
     align-items: center;
   }

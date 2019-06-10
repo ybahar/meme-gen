@@ -76,7 +76,6 @@ function onLineDelete() {
 
 function toggleMenuHamburger() {
     document.querySelector('.nav-bar-links').classList.toggle('open');
-    toggleModal();
 }
 
 function renderTopFiveSearches() {
@@ -128,7 +127,7 @@ function renderDataList() {
 }
 
 function toggleModal(selector) {
-    document.querySelector(selector).classList.toggle('open');
+    document.querySelectorAll(selector).classList.toggle('open');
 }
 
 function contactUs() {
@@ -169,7 +168,7 @@ function renderImages(filteredImages) {
     images.forEach(image =>
         strHtml += `
         <div class="hex-img">
-            <a href="#canvas">
+            <a href="#editor-container">
                 <img data-id="${image.id}" src="${image.url}" onclick="setMemeImg(this)" />
             </a>
         </div>`
