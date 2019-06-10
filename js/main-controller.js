@@ -10,16 +10,8 @@ function onInit() {
     renderTopFiveSearches()
     renderFonts();
     renderDataList();
-    initColorPickers();
 }
-function initColorPickers(){
-   document.querySelector('.fill-color').innerText = 'Fill color';
-   let elStrokePicker = document.querySelector('.stroke-color');
-   elStrokePicker.innerText = 'Stroke color';
-   elStrokePicker.style.color = 'white'
-   elStrokePicker.style.backgroundColor = 'black'
 
-}
 function renderFonts() {
     let strHTML = ``;
     gFonts.forEach(font => {
@@ -29,8 +21,7 @@ function renderFonts() {
 }
 
 function onFillColorSelect(color) {
-    gCurrLine.fillColor ='#' + color;
-    document.querySelector('.fill-color').innerText = 'Fill color';
+    gCurrLine.fillColor = color;
     writeOnCanvas();
 }
 
@@ -123,9 +114,7 @@ function decreaseFontSize() {
 }
 
 function changeColor(color) {
-    // console.log(color);
-    gCurrLine.color = `#${color}`;
-    document.querySelector('.stroke-color').innerText = 'Stroke color';
+    gCurrLine.color = `${color}`;
     writeOnCanvas()
 }
 
@@ -138,7 +127,7 @@ function renderDataList() {
 }
 
 function toggleModal(selector) {
-    document.querySelectorAll(selector).classList.toggle('open');
+    document.querySelector(selector).classList.toggle('open');
 }
 
 function contactUs() {
@@ -179,7 +168,7 @@ function renderImages(filteredImages) {
     images.forEach(image =>
         strHtml += `
         <div class="hex-img">
-            <a href="#editor-container">
+            <a href="#canvas">
                 <img data-id="${image.id}" src="${image.url}" onclick="setMemeImg(this)" />
             </a>
         </div>`
