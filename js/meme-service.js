@@ -68,11 +68,14 @@ function findLineByPos(coords) {
             return false;
         }
         } else {
-            if (Math.abs(xDiff) > (txtDimensions.width)) {
+            (line.align === 'left')
+            if (xDiff > (txtDimensions.width)) {
                 return false
-            }
+            } else if (-xDiff > (txtDimensions.width)){
+            return false;
             
         }
+    }
         if (line.position.y < coords.y || line.position.y - line.size > coords.y) return false;
         else return true;
 
