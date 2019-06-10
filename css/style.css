@@ -514,6 +514,7 @@ canvas {
   }
   .control-box {
     width: 90vw;
+    height: 40vh;
   }
   .control-box * {
     max-width: 91vw;
