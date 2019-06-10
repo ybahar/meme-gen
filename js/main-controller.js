@@ -64,6 +64,7 @@ function setMemeImg(elImg) {
     addSearch123(elImg);
     renderCanvas(elImg);
     initCanvasForMeme();
+    toggleCanvas();
 }
 
 

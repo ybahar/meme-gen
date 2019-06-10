@@ -22,7 +22,8 @@
                 <a class="menu-btn" onclick="toggleModal('.nav-bar-links')">&#9776</a>
             </nav>
         </section>
-        <section id="editor-container" class="editor-container">
+        <section id="editor-container" class="editor-container modal">
+            <button onclick="toggleCanvas()" class="close-canvas">x</button>
             <section class="flex canvas-container">
                 <canvas id="canvas" onmousedown="onCanvasClicked(event)" onmouseup="onMouseRelease()"
                     onmousemove="dragLine(event)">

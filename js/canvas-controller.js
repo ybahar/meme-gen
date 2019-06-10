@@ -13,7 +13,9 @@ function initCanvasForMeme() {
     addEventListenersToCanvas();
     
 }
-
+function toggleCanvas(){
+    document.querySelector('.editor-container').classList.toggle('open-canvas');
+}
 function renderCanvas(elImg) {
     let elCanvasContainer = document.querySelector('.canvas-container');
     const { clientHeight, clientWidth } = elCanvasContainer;
