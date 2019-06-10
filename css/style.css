@@ -65,11 +65,16 @@ canvas {
 .main-nav {
   background-color:#00171F;
   color: white;
+  position: fixed;
+  top : 0;
+  left: 0; 
   display: flex;
   justify-content: space-between;
   height: 40px;
+  width: 100vw;
   align-items: center;
   padding: 0 20px;
+  z-index: 105;
 }
 
 .logo {
@@ -143,9 +148,9 @@ canvas {
   position: fixed;
   display: flex;
   justify-content: space-evenly;
-  height: 100vh;
+  height: calc(100vh - 40px);
   width: 100vw;
-  top: 0;
+  top: 40px;
   left: 0;
   transform: translateX(-1111%);
   z-index: 100;
@@ -505,7 +510,6 @@ canvas {
   .editor-container {
     flex-direction: column;
     padding-top: 10px;
-    height: auto;
     align-items: center;
   }
   .control-box {
