@@ -113,7 +113,7 @@ canvas {
   border: #ffffff 1px solid;
   grid-column-gap: 10px;
   grid-template-columns: repeat(3,32%);
-  grid-template-rows: 50px;
+  grid-template-rows: repeat(6,50px);
   margin: 20px;
   padding: 10px;
   width: 412px;
@@ -122,6 +122,9 @@ canvas {
 .control-box > * {
   margin-bottom: 10px;
   /* width: 50px; */
+}
+.control-box select {
+  height: 30px;
 }
 /* grid area control box  */
 .meme-text {
@@ -416,6 +419,11 @@ canvas {
   /* half of the total width*/
 }
 
+@media (max-width: 900px){
+  .canvas-container{
+    max-width: 40vw;
+  }
+}
 @media (max-width: 800px) {
   .editor-container {
     flex-direction: column;
