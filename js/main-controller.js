@@ -109,6 +109,9 @@ function onLineSelect(id, line) {
     gCurrLine = (line) ? line : getLineById(id);
     document.querySelector('.meme-text').value = gCurrLine.txt;
     document.querySelector('.line-select').value = gCurrLine.id;
+    document.querySelector('.stroke-color').style.backgroundColor = gCurrLine.color
+    document.querySelector('.fill-color').style.backgroundColor = gCurrLine.fillColor
+
 }
 
 function increaseFontSize() {

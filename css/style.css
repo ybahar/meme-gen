@@ -350,9 +350,11 @@ canvas {
   /* half of the total width*/
   border-left: 75px solid #00171f;
   /* half of the total width*/
+  pointer-events: none;
 }
 
 .hex-img::after {
+  pointer-events: none;
   content: "";
   position: absolute;
   bottom: 0px;
