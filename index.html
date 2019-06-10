@@ -9,7 +9,7 @@
     <title>Meme-gen</title>
 </head>
 
-<body onload="onInit()" onkeydown="moveLine(event)">
+<body onload="onInit()" onkeydown="moveLine(event)" onmouseup="onMouseRelease()">
     <div class="page-container scrolling-box">
         <section class="main-nav">
             <div class="logo">Memememe</div>
@@ -31,23 +31,24 @@
             <section class="control-box">
                 <input type="text" class="meme-text" placeholder="Add your own text."
                     oninput="writeOnCanvas(this.value)">
+                <button onclick="increaseFontSize()" class="font-increase">+</button>
+                <button onclick="decreaseFontSize()" class="font-decrease">-</button>
+                <input onchange="changeColor(this.value)" class="stroke-color" type="color">
+
+                <input type="color" onchange="onFillColorSelect(this.value)" class="fill-color" value="#ffffff">
+                <a href="#" onclick="downloadImg(this)" class="download" download="my-img.jpg">Download as jpeg</a>
                 <button class="left" onclick="alignSelect('left')">left</button>
                 <button class="center" onclick="alignSelect('center')">center</button>
                 <button class="right" onclick="alignSelect('right')">right</button>
-                <button onclick="increaseFontSize()">+</button>
                 <select onchange="onFontChange(this.value)" class="font-select"></select></select>
-                <button onclick="decreaseFontSize()">-</button>
                 <button onclick="onCreateLine()">Add line</button>
                 <select class="line-select" onchange="onLineSelect(this.value)" name="" id="">
                     <option value="1">1</option>
                 </select>
-                <button onclick="onLineDelete()">Delete line</button>
-                <input onchange="changeColor(this.value)" type="color">
-                <input type="color" onchange="onFillColorSelect(this.value)" value="#ffffff">
-                <a href="#" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
-                <input type="file" name="pic" onchange="onUploadImg(event)" accept="image/*">
-                <form action="" method="POST" enctype="multipart/form-data" onsubmit="onPublishImg(this, event)">
-                    <input name="img" id="imgData" type="hidden" />
+                <button onclick="onLineDelete()" class="delete-line">Delete line</button>
+                <input type="file" name="pic" onchange="onUploadImg(event)" accept="image/*" class="upload">
+                <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)" class="upload-form">
+                    <input name="img" id="imgData" type="hidden"/>
                     <button type="submit">Publish</button>
                 </form>
             </section>
