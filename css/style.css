@@ -2,7 +2,6 @@
   font-family: pacifico;
   src: url(../Fonts/Pacifico/Pacifico-Regular.ttf);
 }
-/* https://colorhunt.co/palette/144330 */
 /* Base */
 
 body {
@@ -14,6 +13,10 @@ a {
   text-decoration: none;
   color: white;
   cursor: pointer;
+}
+
+select {
+  border: black 1px solid;
 }
 
 h1,
@@ -62,7 +65,7 @@ canvas {
 /* main-nav */
 
 .main-nav {
-  background-color: rgb(15, 25, 31);
+  background-color:#00171F;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -79,7 +82,7 @@ canvas {
 /* canvas */
 
 .editor-container {
-  background-color: rgb(37, 18, 18);
+  background-color: #ffffff;
   display: flex;
   justify-content: space-evenly;
   height: 90vh;
@@ -118,6 +121,10 @@ canvas {
   padding: 10px;
   width: 412px;
   height: 300px;
+  background-color: #81F4E1;
+  border-radius: 10px;
+  padding: 30px;
+  align-self: center;
 }
 .upload {
   display: none;
@@ -189,7 +196,7 @@ canvas {
   text-align: center;
   padding: 10px;
   border: 1px rgba(128, 128, 128, 0.671) solid;
-  background-color: #00171f;
+  background-color: #00A7E1;
   color: #ffffff;
 }
 
@@ -332,9 +339,9 @@ canvas {
   z-index: 3;
   border-bottom: calc(150px / 3.535) solid transparent;
   /*toatl width / 3.535*/
-  border-right: 75px solid #00171f;
+  border-right: 75px solid #00A7E1;
   /* half of the total width*/
-  border-left: 75px solid #00171f;
+  border-left: 75px solid #00A7E1;
   /* half of the total width*/
 }
 
@@ -348,9 +355,9 @@ canvas {
   z-index: 3;
   border-top: calc(150px / 3.535) solid transparent;
   /*toatl width / 3.535*/
-  border-right: 75px solid #00171f;
+  border-right: 75px solid #00A7E1;
   /* half of the total width*/
-  border-left: 75px solid #00171f;
+  border-left: 75px solid #00A7E1;
   /* half of the total width*/
 }
 

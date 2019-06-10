@@ -51,7 +51,7 @@
                 <button onclick="onLineDelete()" class="delete-line">Delete line</button>
                 <input type="file" name="pic" id="pic-upload" onchange="onUploadImg(event)" accept="image/*" class="upload">
                 <label for="pic-upload" class="upload-label">Select file</label>
-                <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)"
+                <form action="" method="POST" enctype="multipart/form-data" onsubmit="onPublishImg(this, event)"
                     class="upload-form">
                     <input name="img" id="imgData" type="hidden" />
                     <button type="submit">Publish</button>
