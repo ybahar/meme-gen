@@ -147,14 +147,15 @@ canvas {
   width: 100vw;
   top: 0;
   left: 0;
-  transform: translateX(-1111%);
-  z-index: 100;
+  transition: 0.3s;
+  transform: translate(0%, 0%);
+    z-index: 100;
 }
 .editor-container.open-canvas{
-  transform : translateX(0px);
+  transform: translate(100%, 100%);
 }
 .editor-container .close-canvas{
-  position: fixed;
+  position: absolute;
   top: 3px;
   right: 5px;
 }
@@ -201,7 +202,6 @@ canvas {
 }
 .control-box > * {
   margin-bottom: 10px;
-  /* width: 50px; */
 }
 .control-box select {
   height: 30px;
@@ -276,8 +276,9 @@ canvas {
 
 .main-gallery-container {
   display: flex;
+  height: 100vh;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   text-align: center;
   padding: 10px;
   border: 1px rgba(128, 128, 128, 0.671) solid;
@@ -290,14 +291,6 @@ canvas {
   margin-bottom: 20px;
 }
 
-/* .gallery-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,150px);
-  justify-content: center;
-  margin-bottom: 30px; */
-
-/* } */
-
 .gallery-container {
   display: flex;
   flex-wrap: wrap;
@@ -305,19 +298,9 @@ canvas {
   margin-bottom: 30px;
 }
 
-/* 
-.gallery-container img {
-  width: 35vw;
-  height: 150px;
-  margin: 10px;
-  object-fit: cover;
-  border: black 1px solid;
-} */
-
 @media (min-width: 600px) {
   .gallery-container img {
     width: 25vw;
-    /* height: 250px; */
   }
 }
 
@@ -333,7 +316,6 @@ canvas {
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
-
 
 /*modals*/
 
@@ -422,9 +404,9 @@ canvas {
 /* hexagonal images  */
 
 .hex-img {
-  width: 150px;
+  width: 75px;
   /*entire before and after are depandnt on width UPDATE ALL*/
-  height: 200px;
+  height: 100px;
   background-size: cover;
   background-position: center center;
   position: relative;
@@ -441,11 +423,11 @@ canvas {
   width: 0;
   height: 3px;
   z-index: 3;
-  border-bottom: calc(150px / 3.535) solid transparent;
+  border-bottom: calc(75px / 3.535) solid transparent;
   /*toatl width / 3.535*/
-  border-right: 75px solid #00A7E1;
+  border-right: 37.5px solid #00A7E1;
   /* half of the total width*/
-  border-left: 75px solid #00A7E1;
+  border-left: 37.5px solid #00A7E1;
   /* half of the total width*/
   pointer-events: none;
 }
@@ -459,11 +441,11 @@ canvas {
   left: 0px;
   height: 3px;
   z-index: 3;
-  border-top: calc(150px / 3.535) solid transparent;
+  border-top: calc(75px / 3.535) solid transparent;
   /*toatl width / 3.535*/
-  border-right: 75px solid #00A7E1;
+  border-right: 37.5px solid #00A7E1;
   /* half of the total width*/
-  border-left: 75px solid #00A7E1;
+  border-left: 37.5px solid #00A7E1;
   /* half of the total width*/
 }
 
@@ -485,14 +467,14 @@ canvas {
 }
 
  .hex-img:hover {
-  transform: scale(1.3);
+  transform: scale(1.6);
 }
 .hex-img::after:hover {
-  transform: scale(1.3);
+  transform: scale(1.6);
 }
 
 .hex-img::after:hover {
-  transform: scale(1.3);
+  transform: scale(1.6);
 }
 
 @media (max-width: 900px){
