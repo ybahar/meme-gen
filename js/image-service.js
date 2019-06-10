@@ -3,15 +3,9 @@ let gImages = []
 let gSearches = {
     'five': 5,
     'one': 1,
-    'six': 0,
-    'three': 3,
-    'thirty': 3,
-    'twelve': 3,
     'fifteen': 6,
     'eight': 3,
 }
-
-
 
 function createImages() {
     createImage('001', ['']);
@@ -78,5 +72,7 @@ function getAllKeywords() {
     return keywords
 }
 
-
-
+function getImageAsUrl(ev) {
+    const [picture] = ev.target.files;
+    return URL.createObjectURL(picture);
+}

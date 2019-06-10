@@ -39,22 +39,20 @@
                 <button class="left" onclick="alignSelect('left')">left</button>
                 <button class="center" onclick="alignSelect('center')">center</button>
                 <button class="right" onclick="alignSelect('right')">right</button>
+                <select onchange="onFontChange(this.value)" class="font-select"></select></select>
+                <button onclick="onCreateLine()">Add line</button>
                 <select class="line-select" onchange="onLineSelect(this.value)" name="" id="">
                     <option value="1">1</option>
                 </select>
-                <select onchange="onFontChange(this.value)" class="font-select"></select></select>
-                <button onclick="onCreateLine()" class="add-line">add line</button>
                 <button onclick="onLineDelete()" class="delete-line">Delete line</button>
                 <input type="file" name="pic" onchange="onUploadImg(event)" accept="image/*" class="upload">
                 <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)" class="upload-form">
                     <input name="img" id="imgData" type="hidden"/>
                     <button type="submit">Publish</button>
-                  </form>
-                <div id="fb-root"></div>
-                <div class="share-container"></div>
+                </form>
             </section>
 
-            
+
         </section>
         <section id="gallery" class="main-gallery-container">
             <section class="search">

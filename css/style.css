@@ -421,3 +421,26 @@ canvas {
       max-width: 90vw;
     }
   }
+
+  /* font-size */
+
+
+.font-size0{
+font-size: 4rem;
+}
+
+.font-size1{
+font-size: 3rem;
+}
+
+.font-size2{
+font-size: 2rem;
+}
+
+.font-size3{
+font-size: 1.5rem;
+}
+
+.font-size4{
+font-size: 1rem;
+}

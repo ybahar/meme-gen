@@ -12,28 +12,6 @@ function onInit() {
     renderDataList();
 }
 
-// function renderImages(filteredImages) {
-//     let images = (!filteredImages) ? getImages() : filteredImages;
-//     let strHtml = ``;
-//     images.forEach(image =>
-//         strHtml += `<a href="#canvas"><img data-id="${image.id}" src="${image.url}" onclick="setMemeImg(this)"></img></a>`
-//     );
-//     document.querySelector('.gallery-container').innerHTML = strHtml;
-// }
-function renderImages(filteredImages) {
-    let images = (!filteredImages) ? getImages() : filteredImages;
-    let strHtml = ``;
-    images.forEach(image =>
-        strHtml += `
-            <div class="hex-img">
-                <a href="#canvas">
-                    <img data-id="${image.id}" src="${image.url}" onclick="setMemeImg(this)" />
-                </a>
-            </div>`
-    );
-    document.querySelector('.gallery-container').innerHTML = strHtml;
-}
-
 function renderFonts() {
     let strHTML = ``;
     gFonts.forEach(font => {
@@ -41,19 +19,16 @@ function renderFonts() {
     });
     document.querySelector('.font-select').innerHTML = strHTML;
 }
+
 function onFillColorSelect(color) {
     gCurrLine.fillColor = color;
     writeOnCanvas();
 }
+
 function onFontChange(font) {
     gCurrLine.font = font;
     writeOnCanvas();
-
 }
-function openFontArea() {
-    document.querySelector('.font-select').classList.toggle('open');
-}
-
 
 function onCreateLine() {
     createLine();
@@ -101,9 +76,9 @@ function onLineDelete() {
 
 function renderTopFiveSearches() {
     let topFiveSearches = calcTopFiveSearches()
-    let strHTML = topFiveSearches.map(word =>
-        `<p onClick="onFilterimage(this.innerText)" style='font-size:${word[1] * 13}px'>${word[0]}</p>`)
-    document.querySelector('.topSearches').innerHTML = strHTML.join('');
+    let strHTML = topFiveSearches.map((word, index) =>
+        `<p onClick="onFilterimage(this.innerText)" class="font-size${index}">${word[0]}</p>`)
+    document.querySelector('.topSearches').innerHTML = shuffle(strHTML).join('');
 }
 
 function downloadImg(elLink) {
@@ -139,10 +114,9 @@ function changeColor(color) {
     writeOnCanvas()
 }
 
-
 function renderDataList() {
     let elDataList = document.querySelector('datalist');
-    let strHtml = '';
+    let strHtml;
     let keywords = getAllKeywords();
     keywords.forEach(keyword => strHtml += `<option value="${keyword}">`);
     elDataList.innerHTML = strHtml;
@@ -162,68 +136,38 @@ function contactUs() {
 }
 
 function onUploadImg(ev) {
-    const [picture] = ev.target.files;
-    const url = URL.createObjectURL(picture);
+    const url = getImageAsUrl(ev)
     const gContainer = document.querySelector('.gallery-container');
-    
     gContainer.innerHTML += `
-        <div class="hex-img">
-            <a href="#canvas">
-                <img src="${url}" onclick="setMemeImg(this)" onload="setMemeImg(this)" />
-            </a>
-        </div>`;
+    <div class="hex-img">
+    <a href="#canvas">
+    <img src="${url}" onclick="setMemeImg(this)" onload="setMemeImg(this)" />
+    </a>
+    </div>`;
 }
 
-function handleImageFromInput(ev, onImageReady) {
-    document.querySelector('.share-container').innerHTML = ''
-    var reader = new FileReader();
-
-    reader.onload = function (event) {
-        var img = new Image();
-        img.onload = onImageReady.bind(null, img)
-        img.src = event.target.result;
-    }
-    reader.readAsDataURL(ev.target.files[0]);
-}
-
-
-(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/he_IL/sdk.js#xfbml=1&version=v3.0&appId=807866106076694&autoLogAppEvents=1';
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-function uploadImg(elForm, ev) {
+function onPublishImg(elForm, ev) {
     ev.preventDefault();
-
     document.getElementById('imgData').value = gCanvas.toDataURL("image/jpeg");
-   
+
     // A function to be called if request succeeds
     function onSuccess(uploadedImgUrl) {
-        console.log('uploadedImgUrl', uploadedImgUrl);
-
         uploadedImgUrl = encodeURIComponent(uploadedImgUrl)
-        document.querySelector('.share-container').innerHTML = `
-        <a class="w-inline-block social-share-btn fb" href="https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
-           Share   
-        </a>`
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}`)
     }
     doUploadImg(elForm, onSuccess);
 }
 
-function doUploadImg(elForm, onSuccess) {
-    var formData = new FormData(elForm);
-
-    fetch('http://ca-upload.com/here/upload.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(function (response) {
-        return response.text()
-    })
-    .then(onSuccess)
-    .catch(function (error) {
-     })
+function renderImages(filteredImages) {
+    let images = (!filteredImages) ? getImages() : filteredImages;
+    let strHtml = ``;
+    images.forEach(image =>
+        strHtml += `
+        <div class="hex-img">
+            <a href="#canvas">
+                <img data-id="${image.id}" src="${image.url}" onclick="setMemeImg(this)" />
+            </a>
+        </div>`
+    );
+    document.querySelector('.gallery-container').innerHTML = strHtml;
 }
