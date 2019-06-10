@@ -103,6 +103,7 @@ function dragLine(ev) {
 }
 
 function onMouseRelease() {
+    if(!gCurrLine) return;
     gCurrLine.clicked.isClicked = false;
     gCurrLine.clicked.offsetX = null;
     gCurrLine.clicked.offsetY = null;
