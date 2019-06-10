@@ -83,11 +83,6 @@ function onLineDelete() {
     writeOnCanvas();
 }
 
-function toggleMenuHamburger() {
-    document.querySelector('.nav-bar-links').classList.toggle('open');
-    toggleModal();
-}
-
 function renderTopFiveSearches() {
     let topFiveSearches = calcTopFiveSearches()
     let strHTML = topFiveSearches.map((word, index) =>
@@ -159,7 +154,7 @@ function onUploadImg(ev) {
     const gContainer = document.querySelector('.gallery-container');
     gContainer.innerHTML += `
     <div class="hex-img">
-    <a href="#canvas">
+    <a href="#editor-container">
     <img src="${url}" onclick="setMemeImg(this)" onload="setMemeImg(this)" />
     </a>
     </div>`;
@@ -183,7 +178,7 @@ function renderImages(filteredImages) {
     images.forEach(image =>
         strHtml += `
         <div class="hex-img">
-            <a href="#canvas">
+            <a href="#editor-container">
                 <img data-id="${image.id}" src="${image.url}" onclick="setMemeImg(this)" />
             </a>
         </div>`
