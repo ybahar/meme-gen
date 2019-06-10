@@ -106,7 +106,8 @@ canvas {
   border: #ffffff 1px solid;
   grid-column-gap: 10px;
   grid-template-columns: repeat(3,32%);
-  grid-template-rows: 50px;
+  grid-template-rows: repeat(6,50px);
+  height: 300px;
   margin: 20px;
   padding: 10px;
   width: 412px;
@@ -116,6 +117,7 @@ canvas {
   margin-bottom: 10px;
   /* width: 50px; */
 }
+
 /* grid area control box  */
 .meme-text {
   grid-area: text;
@@ -137,6 +139,7 @@ canvas {
 }
 .font-select{
   grid-area: font;
+  height: 30px;
 }
 .font-decrease{
   grid-area: decrease;
@@ -146,7 +149,7 @@ canvas {
 }
 .line-select{
   grid-area: line-select;
-
+height: 30px;
 }
 .delete-line{
   grid-area: delete;
@@ -318,6 +321,7 @@ canvas {
   /* half of the total width*/
   border-left: 75px solid #00171f;
   /* half of the total width*/
+  pointer-events: none;
 }
 
 .hex-img::after {
@@ -334,6 +338,7 @@ canvas {
   /* half of the total width*/
   border-left: 75px solid #00171f;
   /* half of the total width*/
+  pointer-events: none;
 }
 
 .hex-img {
@@ -346,8 +351,10 @@ canvas {
   display: inline-block;
   transition: width .6s ease;
   transition: height .6s ease;
+  /* transition: margin .6s ease; */
   /* margin-bottom: 20px; */
   /* margin-right: 20px; */
+  /* margin:6px; */
 }
 
 .hex-img a {
@@ -364,12 +371,12 @@ canvas {
   position: relative;
   top: 0;
   left: 0;
-  margin: 0;
 }
-
+/*
 .hex-img:hover {
-  width: 180px;
-  height: 240px;
+  margin: 0;
+  width: 159px;
+  height: 212px;
   z-index: 2;
 }
 
@@ -380,15 +387,15 @@ canvas {
   width: 0;
   height: 3px;
   z-index: 3;
-  border-bottom: calc(180px / 3.535) solid transparent;
+  border-bottom: calc(159px / 3.535) solid transparent;
   /*toatl width / 3.535*/
-  border-right: 90px solid #00171f;
+  /* border-right: 80px solid #00171f; */
   /* half of the total width*/
-  border-left: 90px solid #00171f;
+  /* border-left: 80px solid #00171f; */
   /* half of the total width*/
-}
+/* } */
 
-.hex-img:hover::after {
+/* .hex-img:hover::after {
   content: "";
   position: absolute;
   bottom: 0px;
@@ -396,13 +403,13 @@ canvas {
   left: 0px;
   height: 3px;
   z-index: 3;
-  border-top: calc(180px / 3.535) solid transparent;
+  border-top: calc(159px / 3.535) solid transparent;
   /*toatl width / 3.535*/
-  border-right: 90px solid #00171f;
+  /* border-right: 80px solid #00171f; */
   /* half of the total width*/
-  border-left: 90px solid #00171f;
+  /* border-left: 80px solid #00171f; */
   /* half of the total width*/
-}
+/* } */ 
 
 @media (max-width:800px) {
   .editor-container {

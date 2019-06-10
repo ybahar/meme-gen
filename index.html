@@ -32,9 +32,12 @@
                     oninput="writeOnCanvas(this.value)">
                 <button onclick="increaseFontSize()" class="font-increase">+</button>
                 <button onclick="decreaseFontSize()" class="font-decrease">-</button>
-                <input onchange="changeColor(this.value)" class="stroke-color" type="color">
+        
+                <button id="valueInput" class="jscolor{onFineChange:'changeColor(this)'} stroke-color" style="border:2px solid black">
+                </button>
+                <button id="valueInput" class="jscolor {onFineChange:'onFillColorSelect(this)'} fill-color" style="border:2px solid black">
+                </button>
 
-                <input type="color" onchange="onFillColorSelect(this.value)" class="fill-color" value="#ffffff">
                 <a href="#" onclick="downloadImg(this)" class="download" download="my-img.jpg">Download as jpeg</a>
                 <button class="left" onclick="alignSelect('left')">left</button>
                 <button class="center" onclick="alignSelect('center')">center</button>
@@ -46,8 +49,9 @@
                 </select>
                 <button onclick="onLineDelete()" class="delete-line">Delete line</button>
                 <input type="file" name="pic" onchange="onUploadImg(event)" accept="image/*" class="upload">
-                <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)" class="upload-form">
-                    <input name="img" id="imgData" type="hidden"/>
+                <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)"
+                    class="upload-form">
+                    <input name="img" id="imgData" type="hidden" />
                     <button type="submit">Publish</button>
                 </form>
             </section>
@@ -85,6 +89,7 @@
             </p>
         </section>
     </section>
+
     <section class="contact-us modal ">
         <form class="flex">
             <h1>Contact Us</h1>
@@ -100,6 +105,7 @@
         </form>
     </section>
     <div class="screen" onclick="toggleModal('.open')"></div>
+    <script src="lib/jscolor.js"></script>
     <script src="js/util.js"></script>
     <script src="js/image-service.js"></script>
     <script src="js/meme-service.js"></script>
