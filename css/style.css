@@ -489,6 +489,11 @@ canvas {
     flex-direction: column;
     padding-top: 10px;
     align-items: center;
+    height: 100vh;
+    top: 0;
+    position: fixed;
+    z-index: 106;
+
   }
   .control-box {
     width: 90vw;
