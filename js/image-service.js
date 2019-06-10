@@ -8,18 +8,36 @@ let gSearches = {
 }
 
 function createImages() {
-    createImage('001', ['']);
+    createImage('001', ['cinderella']);
     createImage('002', ['president', 'trump']);
     createImage('003', ['baby', 'kid', 'qute']);
     createImage('004', ['dog', 'animal']);
     createImage('005', ['baby', 'animal', 'qute']);
-    createImage('006', ['thirty']);
-    createImage('007', []);
-    createImage('008', []);
-    createImage('009', []);
-    createImage('010', []);
-    createImage('011', []);
-    createImage('012', []);
+    createImage('006', ['cat']);
+    createImage('007', ['magician', 'evil']);
+    createImage('008', ['kid', 'evil']);
+    createImage('009', ['haim','good']);
+    createImage('010', ['idiot','what']);
+    createImage('011', ['smart','idiot']);
+    createImage('012', ['sing','']);
+    createImage('013', []);
+    createImage('014', []);
+    createImage('015', []);
+    createImage('016', []);
+    createImage('017', []);
+    createImage('018', []);
+    createImage('019', []);
+    createImage('020', []);
+    createImage('022', []);
+    createImage('023', []);
+    createImage('024', []);
+    createImage('025', []);
+    createImage('026', []);
+    createImage('027', []);
+    createImage('028', []);
+    createImage('029', []);
+    createImage('030', []);
+    createImage('031', []);
 }
 
 function createImage(id, keywords) {

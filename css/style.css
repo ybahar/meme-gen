@@ -141,10 +141,12 @@ canvas {
   justify-content: space-evenly;
   height: calc(100vh - 40px);
   width: 100vw;
+  top: 40px;
   left: 0;
   transition: 0.3s;
   z-index: 100;
-  transform: translate(0%, -100%);
+  transform: translate(0%, -1000%);
+  /* padding: 0 20px; */
 }
 .editor-container.open-canvas{
   transform: translate(0%, 0%);
@@ -273,7 +275,7 @@ canvas {
 
 .main-gallery-container {
   display: flex;
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
   justify-content: flex-start;
   text-align: center;
