@@ -13,12 +13,13 @@
     <div class="page-container scrolling-box">
         <section class="main-nav">
             <div class="logo">Memememe</div>
-            <nav class="main-nav flex space-between">
-                <ul class="clean-list flex">
-                    <li><a class="nav-link" href="#" onclick="toggleModal('.about-us')">About us!</a></li>
-                    <li><a class="nav-link" href="#gallery">gallery</a></li>
-                    <li><a class="nav-link" href="#" onclick="toggleModal('.contact-us')">get in touch</a></li>
+            <nav class="main-nav-bar flex space-between">
+                <ul class="nav-bar-links clean-list flex">
+                    <li><a class="nav-bar-link" href="#" onclick="toggleModal('.about-us')">About us!</a></li>
+                    <li><a class="nav-bar-link" href="#gallery">gallery</a></li>
+                    <li><a class="nav-bar-link" href="#" onclick="toggleModal('.contact-us')">get in touch</a></li>
                 </ul>
+                <a class="menu-btn" onclick="toggleMenuHamburger(this)">&#9776</a>
             </nav>
         </section>
         <section class="editor-container">
@@ -60,7 +61,7 @@
             </section>
             <datalist id="search-list"></datalist>
             <section class="gallery-container"></section>
-            <div class="topSearches flex"></div>
+            <div class="top-searches flex"></div>
         </section>
 
         <footer>

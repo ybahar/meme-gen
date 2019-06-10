@@ -51,9 +51,7 @@ function writeOnCanvas(lastWord) {
     if (meme.img) {
         renderCanvas(meme.img);
     }
-    meme.txts.forEach(line => {
-        drawText(line);
-    })
+    meme.txts.forEach(line => drawText(line))
 }
 
 function drawText(line) {
@@ -84,8 +82,6 @@ function alignSelect(alignment) {
 }
 
 function onCanvasClicked(ev) {
-
-    // console.log(offsetX , offsetY);
     let coords = getMousePos(gCanvas, ev);
     let line = findLineByPos(coords);
     if (line) {
@@ -94,9 +90,6 @@ function onCanvasClicked(ev) {
         gCurrLine.clicked.offsetX = coords.x;
         gCurrLine.clicked.offsetY = coords.y;
     }
-    // console.log(line);
-
-
 }
 
 function dragLine(ev) {
@@ -176,10 +169,6 @@ function addEventListenersToCanvas() {
             ev.preventDefault();
             return true;
         }
-
     }, false);
     gCanvas.addEventListener("touchend", onMouseRelease, false);
-
-
 }
-

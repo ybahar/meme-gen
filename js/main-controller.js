@@ -74,11 +74,16 @@ function onLineDelete() {
     writeOnCanvas();
 }
 
+function toggleMenuHamburger() {
+    document.querySelector('.nav-bar-links').classList.toggle('open');
+    toggleModal();
+}
+
 function renderTopFiveSearches() {
     let topFiveSearches = calcTopFiveSearches()
     let strHTML = topFiveSearches.map((word, index) =>
         `<p onClick="onFilterimage(this.innerText)" class="font-size${index}">${word[0]}</p>`)
-    document.querySelector('.topSearches').innerHTML = shuffle(strHTML).join('');
+    document.querySelector('.top-searches').innerHTML = shuffle(strHTML).join('');
 }
 
 function downloadImg(elLink) {
