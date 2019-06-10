@@ -95,7 +95,7 @@ canvas {
 }
 @media(min-width:1100px){
   .canvas-container{
-    max-width: 35vw;
+    max-width: 40vw;
   }
 }
 
@@ -109,7 +109,6 @@ canvas {
    "add line-select delete"
    "stroke . fill" 
   "download upload publish";
-  /* grid-template: "text text text" "left center right" ; */
   border: #ffffff 1px solid;
   grid-column-gap: 10px;
   grid-template-columns: repeat(3,32%);
@@ -172,12 +171,27 @@ canvas {
 }
 .download{
   grid-area: download;
+  background-color: white;
+  border: 1px solid black;
+  height: 30px;
+  color: black;
 }
 .upload-label{
   grid-area: upload;
+  background-color: white;
+  border: 1px solid black;
+  height: 30px;
 }
 .upload-form{
   grid-area: publish;
+  height: 50px;
+}
+.upload-form button{
+  /* height: 30px; */
+  line-height: 30px;
+  width: 100%;  
+  /* position: relative;
+  top: 1px; */
 }
 
 /* gallery */
