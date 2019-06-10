@@ -96,6 +96,8 @@ canvas {
   display: grid;
   grid-template: "text text text" "left center right";
   border: #ffffff 1px solid;
+  grid-template-columns: repeat(3,33%);
+  grid-template-rows: 50px;
   margin: 20px;
   padding: 10px;
   width: 412px;
@@ -214,7 +216,8 @@ canvas {
   background: white;
   display: none;
 }
-.about-us-container{
+
+.about-us-container {
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -224,7 +227,6 @@ canvas {
 .modal.open {
   display: block;
 }
-
 
 /* helpers */
 
@@ -257,7 +259,6 @@ canvas {
 .modal.open~.screen {
   display: block;
 }
-
 
 /* hexagonal images  */
 
@@ -322,7 +323,8 @@ canvas {
   left: 0;
   margin: 0;
 }
-.hex-img:hover{
+
+.hex-img:hover {
   width: 180px;
   height: 240px;
   z-index: 2;
@@ -358,3 +360,21 @@ canvas {
   border-left: 90px solid #00171f;
   /* half of the total width*/
 }
+
+@media (max-width:800px) {
+  .editor-container {
+    flex-direction: column;
+    margin-top: 10px;
+    height: auto;
+    align-items: center;
+  }
+  .control-box{
+    width: 90vw;
+  }
+  .control-box * {
+    max-width: 85vw;
+  }
+    .canvas-container {
+      max-width: 90vw;
+    }
+  }
