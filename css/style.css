@@ -161,7 +161,7 @@ canvas {
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  width: 50%;
+  width: 60%;
   max-width: 50vw;
   height: 100%;
 }
@@ -445,11 +445,13 @@ canvas {
   border-left: 37.5px solid #00A7E1;
   /* half of the total width*/
 }
-
+.search .upload-label{
+  color:black;
+}
 .hex-img a {
   width: inherit;
   height: inherit;
-  position: relative;
+  position: relative; 
 }
 
 .hex-img a img {
@@ -480,7 +482,7 @@ canvas {
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
   .editor-container {
     flex-direction: column;
     padding-top: 10px;
@@ -500,6 +502,7 @@ canvas {
   .canvas-container {
     max-width: 90vw;
     margin-bottom: 5px;
+    width: 80%;
   }
 }
 

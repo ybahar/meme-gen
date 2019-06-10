@@ -1,7 +1,7 @@
 'use strict';
 
 let gCurrLine;
-let gFonts = ['impact', 'pacifico'];
+let gFonts = ['impact', 'pacifico','arial','times new romans','Franklin Gothic Medium' , 'Verdana', 'Segoe UI' , 'fantasy' , 'Cambria'];
 
 function onInit() {
     createCanvas();
