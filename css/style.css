@@ -35,7 +35,6 @@ p {
 input {
   border: 1px solid gray;
   background-color: white;
-  /* padding: 10px; */
   height: 30px;
 }
 
@@ -64,7 +63,6 @@ canvas {
   width: 100vw;
   justify-content: space-around;
   align-items: center;
-  padding-right: 130px;
   z-index: 105;
 }
 
